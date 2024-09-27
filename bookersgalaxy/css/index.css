@@ -46,6 +46,6 @@
     height: 350px;
 }
 #corpo .livro:hover p{
-    line-clamp: 1;
-    -webkit-line-clamp: 1;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
 }
