@@ -1,5 +1,6 @@
 <?php
     include("connect.php");
+    include("callimg.php");
 
     if (isset($_GET['deletar'])){
 
@@ -67,7 +68,7 @@
         <div id="loadingscreen">
                 <h1>Booker's Galaxy</h1>
                 <h2>Carregando...</h2>
-            <img src="img/book loading.gif">
+            <img src="<?php Src(2) ?>">
         </div>
         <div id="header-gradiente"></div>
         <main id="corpo">

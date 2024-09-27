@@ -61,7 +61,7 @@
         </header>
 
         <main id="corpo">
-            <img style="width: 200px; height: auto;" src="img/biblio.jpg">
+            <img style="width: 200px; height: auto;" src="<?php Src(6) ?>">
 
             <h1>TOP 10 DO MÊS</h1>
             <section class="carrossel">
