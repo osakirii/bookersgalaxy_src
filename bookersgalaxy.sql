@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/09/2024 às 21:12
+-- Tempo de geração: 29/09/2024 às 19:35
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -47,7 +47,12 @@ INSERT INTO `arquivos` (`id`, `nome`, `path`, `data_upload`) VALUES
 (6, 'biblio.jpg', 'img/66f6fafdeb14b.jpg', '2024-09-27 15:35:41'),
 (7, 'panini.png', 'img/66f6fb0ca179e.png', '2024-09-27 15:35:56'),
 (8, 'seguinte.png', 'img/66f6fb15aff2d.png', '2024-09-27 15:36:05'),
-(9, 'todavia.png', 'img/66f6fb1f4efac.png', '2024-09-27 15:36:15');
+(9, 'todavia.png', 'img/66f6fb1f4efac.png', '2024-09-27 15:36:15'),
+(10, 'dracula.jpg', 'img/66f71717d8291.jpg', '2024-09-27 17:35:35'),
+(11, 'draculamini.jpg', 'img/66f7171b935d9.jpg', '2024-09-27 17:35:39'),
+(12, 'draculaowo.jpg', 'img/66f7172589c8d.jpg', '2024-09-27 17:35:49'),
+(13, 'draculainfo.jpg', 'img/66f7172cadb58.jpg', '2024-09-27 17:35:56'),
+(14, 'draculamao.jpg', 'img/66f717390b75e.jpg', '2024-09-27 17:36:09');
 
 --
 -- Índices para tabelas despejadas
@@ -67,7 +72,7 @@ ALTER TABLE `arquivos`
 -- AUTO_INCREMENT de tabela `arquivos`
 --
 ALTER TABLE `arquivos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

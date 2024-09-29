@@ -89,7 +89,7 @@
             <h1>EDITORAS</h1>
             <section class="carrossel">
                 <a href="#"><img id="primeiro" src="<?php Src(7) ?>"></a>
-                <a href="#"><img src="<?php Src(8) ?>"></a>
+                <a href="#"><img src="<?php Src(9) ?>"></a>
                 <a href="#"><img src="<?php Src(8) ?>"></a>
                 <a href="#"><img src="<?php Src(8) ?>"></a>
                 <a href="#"><img src="<?php Src(8) ?>"></a>
