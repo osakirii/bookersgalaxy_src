@@ -11,10 +11,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Livro</title>
         <link rel="stylesheet" href="css/modulos.css">
-        <link rel="stylesheet" href="css/livros.css">
+        <link rel="stylesheet" href="css/livro.css">
         <script src="https://kit.fontawesome.com/7162ac436f.js" 
         crossorigin="anonymous"></script>
-        <script src="js/headerfooter.js"></script>
+        <script src="js/modulos.js"></script>
 
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -63,23 +63,7 @@
         <main id="corpo">
             
             <section id="livro">
-                <div class="slider-galeria-thumbs">
-                    <div><span><img src="<?php Src(10) ?>"</span></div>
-                    <div><span>Slide 2</span></div>
-                    <div><span>Slide 3</span></div>
-                    <div><span>Slide 4</span></div>
-                    <div><span>Slide 5</span></div>
-                    <div><span>Slide 6</span></div>
-                </div>
-
-                <div class="slider-galeria">
-                    <div><span><img src="<?php Src(10) ?>"</span></div>
-                    <div><span>Slide 2</span></div>
-                    <div><span>Slide 3</span></div>
-                    <div><span>Slide 4</span></div>
-                    <div><span>Slide 5</span></div>
-                    <div><span>Slide 6</span></div>
-                </div>
+                
             </section>
 
         </main>
