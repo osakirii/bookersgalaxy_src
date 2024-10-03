@@ -51,7 +51,7 @@
             <a href="#" class="daltonismo">Tenho Daltonismo</a>
             <a href="categorias.php">Categorias</a>
             <form id="headerform">
-                <input size="40" onfocus="pesquisafocus()" onblur="pesquisablur()"><button type="submit"><i class="fas fa-magnifying-glass"></i></button>
+                <input size="40" id="searchbar" onfocus="pesquisafocus()" onblur="pesquisablur()"><button type="submit" onclick="openSearchBar()"><i class="fas fa-magnifying-glass"></i></button>
             </form>
             <div id="header-container">
                 <a href="#"><i class="fas fa-cart-shopping"></i></a>

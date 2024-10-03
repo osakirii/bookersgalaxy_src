@@ -133,7 +133,7 @@ html{
 #header img{
     margin: 0 50px 0 10px;
     float: left;
-    width: 150px;
+    width: 128px;
     height: auto;
 }
 
@@ -168,6 +168,7 @@ html{
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     outline: none;
+    display: inline;
 }
 #header button{
     border: none;
@@ -346,80 +347,4 @@ html{
     text-decoration: none;
     color: #1D1E1D;
     transition: 0.3s;
-}
-
-@media (max-width: 768px) {
-    #header img {
-        width: 120px;
-        margin: 0 20px 0 5px;
-    }
-
-    #header a {
-        font-size: 16px;
-        margin: 15px 5px;
-    }
-
-    #navbar img {
-        width: 120px;
-    }
-
-    /* Ajuste no carrossel para caber na tela */
-    .carrossel img {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    /* Ajustar tamanho dos livros no carrossel */
-    .estante .livro img {
-        width: 100px;
-    }
-
-    /* Diminuir a largura dos inputs */
-    #header input {
-        width: 80%;
-    }
-}
-
-@media (max-width: 480px) {
-    #header img {
-        width: 100px;
-    }
-
-    #header a {
-        font-size: 14px;
-    }
-
-    #navbar img {
-        width: 100px;
-    }
-
-    /* Diminuir o tamanho das imagens no carrossel */
-    .carrossel img {
-        width: 70%;
-    }
-
-    .estante .livro img {
-        width: 80px;
-    }
-
-    /* Estilizar o formulário para pesquisa */
-    #header input {
-        width: 70%;
-        font-size: 14px;
-    }
-
-    /* Botões menores */
-    button.slide {
-        margin-top: 20px;
-        font-size: 12px;
-    }
-
-    /* Ajustes no footer */
-    #footer-categorias, #footer-booksters, #footer-inscreva {
-        text-align: center;
-    }
-
-    #footer-inscreva p {
-        font-size: 14px;
-    }
 }
