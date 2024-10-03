@@ -15,7 +15,6 @@ function openNav() {
 
   function LoadingScreenEnd(){
     document.getElementById("loadingscreen").style.display = "none";
-
   }
 
   window.addEventListener('load', function() {

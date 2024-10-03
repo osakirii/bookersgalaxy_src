@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&family=Montaga&family=Squada+One&display=swap');
-
-@media (max-width: 1024px) {
     
 
 *{
@@ -348,9 +346,6 @@ html{
     text-decoration: none;
     color: #1D1E1D;
     transition: 0.3s;
-}
-
-
 }
 
 @media (max-width: 768px) {
