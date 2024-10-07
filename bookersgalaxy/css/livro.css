@@ -1,0 +1,23 @@
+#livro {
+    width: 50%;
+}
+
+#livro #galeria {
+    display: flex;
+    flex-flow: column wrap;
+    width: 15%;
+    overflow: hidden;
+}
+
+#livro #galeria img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid white;
+    margin: 4px;
+}
+
+#livro #galeria
+
+#livro #imagem {
+    display: flex;
+}

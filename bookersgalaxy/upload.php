@@ -1,6 +1,5 @@
 <?php
     include("connect.php");
-    include("callimg.php");
 
     if (isset($_GET['deletar'])){
 
@@ -51,13 +50,16 @@
     }
 
     $sql_query = $mysqli->query("SELECT * FROM arquivos") or die ($mysqli->error);
+
+    include("loadingscreen.php");
+    include("header.php");   
 ?>
 
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Booker's Galaxy</title>
+        <title>Booker's Galaxy: Upload</title>
         <link rel="stylesheet" href="css/modulos.css">
         <script src="https://kit.fontawesome.com/7162ac436f.js" 
         crossorigin="anonymous"></script>
@@ -65,12 +67,6 @@
     </head>
 
     <body>
-        <div id="loadingscreen">
-                <h1>Booker's Galaxy</h1>
-                <h2>Carregando...</h2>
-            <img src="<?php Src(2) ?>">
-        </div>
-        <div id="header-gradiente"></div>
         <main id="corpo">
             <br><br>
             <form method="post" enctype="multipart/form-data" action="">

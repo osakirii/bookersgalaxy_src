@@ -348,3 +348,29 @@ html{
     color: #1D1E1D;
     transition: 0.3s;
 }
+
+@media (max-width: 480px) {
+
+    #navbar #nav-content a{
+        margin-bottom: 30px;
+        padding: 0;
+        font-size: 20px;
+    }
+    #navbar #nav-content a:hover{
+        font-size: 21px;
+    }
+
+    #navbar #nav-rodape a{
+        margin-top: 10px;
+        font-size: 18px;
+    }
+    #navbar #nav-rodape a:hover{
+        font-size: 19px;
+    }
+
+    #navbar #nav-content #closebtn{
+        font-size: 36px;
+    }
+
+    
+}
