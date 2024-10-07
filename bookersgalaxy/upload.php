@@ -51,8 +51,8 @@
 
     $sql_query = $mysqli->query("SELECT * FROM arquivos") or die ($mysqli->error);
 
-    include("loadingscreen.php");
-    include("header.php");   
+    include("modulos/loadingscreen.php");
+    include("modulos/header.php");   
 ?>
 
 <html lang="pt-br">
@@ -99,9 +99,10 @@
                     ?>
                 </tbody>
             </table>
-                    
         </main>
-
+        <?php
+            include("modulos/footer.php"); 
+        ?>
         
     </body>
 </html>

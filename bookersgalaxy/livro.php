@@ -1,6 +1,6 @@
 <?php
-    include("loadingscreen.php");
-    include("header.php");
+    include("modulos/loadingscreen.php");
+    include("modulos/header.php");
 ?>
 
 <!--https://picsum.photos/-->
@@ -37,7 +37,7 @@
         </main>
         
         <?php
-            include("footer.php"); 
+            include("modulos/footer.php"); 
         ?>
 
        <script>
