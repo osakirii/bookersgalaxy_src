@@ -1,6 +1,6 @@
 <?php
-    include("loadingscreen.php");
-    include("header.php");
+    include_once("loadingscreen.php");
+    include_once("header.php");
 ?>
 
 <html lang="pt-br">
@@ -20,7 +20,7 @@
         </main>
         
         <?php
-            include("footer.php");
+            include_once("footer.php");
          ?>
     </body>
 </html>
