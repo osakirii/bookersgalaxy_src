@@ -25,7 +25,7 @@
 
             <h1>TOP 10 DO MÊS</h1>
             <section class="carrossel">
-                <a href="#"><img id="primeiro" src="<?php Src(3) ?>"></a>
+                <a href="livro.php"><img id="primeiro" src="<?php Src(3) ?>"></a>
                 <a href="#"><img src="<?php Src(4) ?>"></a>
                 <a href="#"><img src="<?php Src(5) ?>"></a>
                 <a href="#"><img src="<?php Src(3) ?>"></a>
@@ -42,7 +42,7 @@
             <h1>DESTAQUES DE 2023</h1>
               <section class="estante">
                 <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
+                    <a href="livro.php"><img src="https://picsum.photos/141/216"></a>
                     <div class="livro-texto">
                         <p class="nomeAutor">Robert Pattinson</p>
                         <p>O chamado de Cthulhu e outros contos Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt molestiae nisi asperiores eveniet expedita quidem facere officia, commodi distinctio? Aperiam consectetur voluptatum odio debitis doloribus dignissimos natus magni fuga sunt.</p>
