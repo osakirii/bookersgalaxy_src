@@ -3,9 +3,6 @@
     include_once("modulos/header.php");
 ?>
 
-<!--https://picsum.photos/-->
-<!--<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>-->
-
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">

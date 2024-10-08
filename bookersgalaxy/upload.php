@@ -100,9 +100,5 @@
                 </tbody>
             </table>
         </main>
-        <?php
-            include_once("modulos/footer.php"); 
-        ?>
-        
     </body>
 </html>

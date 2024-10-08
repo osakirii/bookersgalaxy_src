@@ -6,6 +6,7 @@
     </head>
 <body>
         <footer id="footer">
+            <div class="horizontal-row"></div>
             <div id="footer-conclusao">
                 <p>A Booker’s Galaxy agradece por sua preferência! <br> Visite nossas redes e fique por dentro dos próximos lançamentos!!</p>
             </div>

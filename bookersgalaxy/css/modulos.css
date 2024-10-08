@@ -282,6 +282,14 @@ html{
     height: 500px;
     display: flex;
     padding: 10%;
+    position: relative;
+}
+
+#footer .horizontal-row{
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    background: grey;
 }
 
 #footer-conclusao{
@@ -356,5 +364,4 @@ html{
     #footer #footer-login a{
         padding: 7px 50px 7px 50px;
     }
-
 }

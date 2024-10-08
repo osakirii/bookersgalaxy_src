@@ -24,10 +24,10 @@
                 <a href="#">Meu perfil</a>
             </div>
             <div id="nav-rodape">
-                <a href="#"><i class="fas fa-laptop-code"></i> Administração</a>
-                <a href="#">Configurações</a>
-                <a href="#">Ajuda</a>
-                <a href="#">Fale Conosco</a>
+                <a href="upload.php"><i class="fas fa-laptop-code"></i> Administração</a>
+                <a href="#"><i class="fas fa-gear"></i> Configurações</a>
+                <a href="#"><i class="far fa-circle-question"></i> Ajuda</a>
+                <a href="#"><i class="fas fa-info"></i> Fale Conosco</a>
             </div>
         </nav>
 
