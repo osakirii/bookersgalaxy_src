@@ -8,10 +8,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Categorias</title>
-        <link rel="stylesheet" href="css/modulos.css">
-        <script src="https://kit.fontawesome.com/7162ac436f.js" 
-        crossorigin="anonymous"></script>
-        <script src="js/modulos.js"></script>
         <style>
             #corpo button.slide{
                 margin-top: 75px;

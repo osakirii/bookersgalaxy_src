@@ -1,5 +1,7 @@
 #livro {
     width: 50%;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 #livro #galeria {
@@ -16,8 +18,11 @@
     margin: 1px;
 }
 
-#livro #galeria
-
 #livro #imagem {
     display: flex;
+}
+
+#livro #imagem img{
+    width: 350px;
+    height: auto;
 }

@@ -8,11 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Livro</title>
-        <link rel="stylesheet" href="css/modulos.css">
         <link rel="stylesheet" href="css/livro.css">
-        <script src="https://kit.fontawesome.com/7162ac436f.js" 
-        crossorigin="anonymous"></script>
-        <script src="js/modulos.js"></script>
     </head>
 
     <body>
@@ -28,6 +24,7 @@
                     <i class="fas fa-chevron-down arrow"></i>
                 </div>
                 <div id="imagem">
+                    <img src="<?php Src(10) ?>">
                 </div>
             </section>
 
