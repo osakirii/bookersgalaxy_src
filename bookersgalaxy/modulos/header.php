@@ -7,6 +7,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/modulos.css">
+        <script src="https://kit.fontawesome.com/7162ac436f.js" 
+        crossorigin="anonymous"></script>
         <script src="js/modulos.js"></script>
     </head>
     <body>
@@ -22,6 +24,7 @@
                 <a href="#">Meu perfil</a>
             </div>
             <div id="nav-rodape">
+                <a href="#"><i class="fas fa-laptop-code"></i> Administração</a>
                 <a href="#">Configurações</a>
                 <a href="#">Ajuda</a>
                 <a href="#">Fale Conosco</a>
