@@ -343,22 +343,36 @@ html{
     #navbar #nav-content a{
         margin-bottom: 30px;
         padding: 0;
-        font-size: 20px;
+        font-size: 18px;
     }
     #navbar #nav-content a:hover{
-        font-size: 21px;
+        font-size: 20px;
+    }
+
+    #navbar #nav-rodape{
+        bottom: 10px;
     }
 
     #navbar #nav-rodape a{
         margin-top: 10px;
-        font-size: 18px;
+        font-size: 16px;
     }
     #navbar #nav-rodape a:hover{
-        font-size: 19px;
+        font-size: 18px;
     }
 
     #navbar #nav-content #closebtn{
         font-size: 32px;
+    }
+
+    #header a{
+        display: none;
+    }
+    #header #headerform{
+        display: none;
+    }
+    #header #header-container #header-bars{
+        display: block;
     }
 
     #footer #footer-login a{

@@ -45,7 +45,7 @@
             <div id="header-container">
                 <a href="#"><i class="fas fa-cart-shopping"></i></a>
                 <a href="#"><i class="far fa-circle-user"></i></a>
-                <a href="#" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
+                <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
             </div>
         </header>
     </body>
