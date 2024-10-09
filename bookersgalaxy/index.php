@@ -17,7 +17,7 @@
     </head>
     <body>
         <main id="corpo">
-            <img style="width: 300px; height: auto;" src="<?php Src(6) ?>">
+            <img style="width: 250px; height: auto;" src="<?php Src(6) ?>">
 
             <h1>TOP 10 DO MÊS</h1>
             <section class="carrossel">
