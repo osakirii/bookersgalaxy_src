@@ -224,7 +224,7 @@
                     </div>
                 </div>
                     <button class="ir-esquerda" type="button" onclick="esquerda(1)"><i class="fas fa-arrow-left"></i></button>
-                    <button class="ir-direita" type="button" onclick="direita(1)"> <i class="fas fa-arrow-right"></i></button>
+                    <button class="ir-direita" type="button" onclick="direita(1)"><i class="fas fa-arrow-right"></i></button>
               </section>
         </main>
 

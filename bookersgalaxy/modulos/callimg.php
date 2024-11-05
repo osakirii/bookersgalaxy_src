@@ -6,4 +6,3 @@
         $mostrar = $results->fetch_assoc();
         echo $mostrar['path'];
     }
-?>
