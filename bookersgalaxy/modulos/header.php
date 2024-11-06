@@ -24,7 +24,12 @@
                 <a href="#">Meu perfil</a>
             </div>
             <div id="nav-rodape">
-                <a href="upload.php"><i class="fas fa-laptop-code"></i> Administração</a>
+                <?php 
+                    if (isset($_SESSION['Nivel_acesso']) && $_SESSION['Nivel_acesso'] == 1) {
+                        echo '<a href="adm.php"><i class="fas fa-laptop-code"></i> Administração</a>';
+                     }
+                ?>
+                <a href="adm.php"><i class="fas fa-laptop-code"></i> Administração</a>
                 <a href="#"><i class="fas fa-gear"></i> Configurações</a>
                 <a href="#"><i class="far fa-circle-question"></i> Ajuda</a>
                 <a href="#"><i class="far fa-comments"></i> Fale Conosco</a>
