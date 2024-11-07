@@ -2,7 +2,6 @@
 include_once 'connect.php';
 $con = Connect::getInstance();
 session_start();
-$_SESSION['cliente_id'];
 if (isset($_SESSION['cliente_id'])) {
     $userId = $_SESSION['cliente_id'];
     echo $userId;
@@ -13,10 +12,9 @@ if (isset($_SESSION['cliente_id'])) {
 // Obtém o ID do livro da URL
 $id_livro = isset($_GET['id_livro']) ? (int)$_GET['id_livro'] : null;
 
-// Consulta para obter informações do livro
 try {
     if ($id_livro !== null) {
-        $stmt = $con->prepare("SELECT * FROM livro WHERE id_livro = :id_livro");
+        $stmt = $con->prepare("SELECT * FROM livros WHERE id_livro = :id_livro");
         $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -78,7 +76,7 @@ include("modulos/header.php");
     <aside>
         <div class="carrossel-container">
             <?php
-            $stmtImagem = $con->prepare("SELECT * FROM imagens WHERE livro_id = :id_livro");
+            $stmtImagem = $con->prepare("SELECT * FROM arquivos WHERE livro_id = :id_livro");
             $stmtImagem->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
             $stmtImagem->execute();
             $imagens = $stmtImagem->fetchAll(PDO::FETCH_ASSOC);
@@ -93,9 +91,9 @@ include("modulos/header.php");
                 </button>
                 <?php if ($imagens): ?>
                     <?php foreach ($imagens as $imagem): ?>
-                        <img src="<?php echo htmlspecialchars($imagem['caminho']); ?>" class="carrossel-item"
+                        <img src="<?php echo htmlspecialchars($imagem['path']); ?>" class="carrossel-item"
                             alt="Imagem de <?php echo htmlspecialchars($livro['Titulo']); ?>"
-                            style="max-width: 12.5rem; cursor: pointer;">
+                            style="max-width: 200px; cursor: pointer;">
                     <?php endforeach; ?>
                 <?php endif; ?>
                 <button class="next" onclick="plusSlides(1)">
@@ -112,13 +110,13 @@ include("modulos/header.php");
         <div id="imagemCentral">
             <?php
             if ($livros) {
-                $primeiroLivro = $livros[0]['id_livro'];
-                $stmtImagem = $con->prepare("SELECT * FROM imagens WHERE livro_id = :id_livro");
+                $primeiroLivro = isset($livros[0]['id_livro']) ? $livros[0]['id_livro'] : null;
+                $stmtImagem = $con->prepare("SELECT * FROM arquivos WHERE livro_id = :id_livro");
                 $stmtImagem->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
                 $stmtImagem->execute();
                 $imagem = $stmtImagem->fetch(PDO::FETCH_ASSOC);
                 if ($imagem) {
-                    echo '<img src="' . htmlspecialchars($imagem['caminho']) . '" alt="Imagem de ' . htmlspecialchars($livros[0]['Titulo']) . '">';
+                    echo '<img src="' . htmlspecialchars($imagem['path']) . '" alt="Imagem de ' . htmlspecialchars($livros[0]['Titulo']) . '">';
                 }
             }
             ?>
@@ -144,23 +142,23 @@ include("modulos/header.php");
                 <div class="container_additions">
                     <div class="info_column">
                         <div class="info_item">
-                            <img src="icons/book_icon.png" style="width:3.125rem;">
+                            <img src="icons/book_icon.png" style="width:50px;">
                             <span><?php echo htmlspecialchars($livro['QntPaginas']); ?> Páginas</span>
                         </div>
                         <div class="info_item">
-                            <img src="icons/editar_icon.png" style="width: 3.125rem;">
+                            <img src="icons/editar_icon.png" style="width: 50px;">
                             <span><?php echo htmlspecialchars($livro['Genero']); ?></span>
                         </div>
                         <div class="info_item">
-                            <img src="icons/teatro_icon.png" style="width: 3.125rem;">
+                            <img src="icons/teatro_icon.png" style="width: 50px;">
                             <span><?php echo htmlspecialchars($livro['Genero']); ?></span>
                         </div>
                         <div class="info_item">
-                            <img src="icons/estoque_icon.png" style="width: 3.125rem;">
+                            <img src="icons/estoque_icon.png" style="width: 50px;">
                             <span><?php echo htmlspecialchars($livro['Genero']); ?></span>
                         </div>
                         <div class="info_item">
-                            <img src="icons/estrela_icon.png" style="width: 3.125rem;">
+                            <img src="icons/estrela_icon.png" style="width: 50px;">
                             <span><?php echo htmlspecialchars($livro['Genero']); ?></span>
                         </div>
                     </div>
@@ -228,27 +226,29 @@ include("modulos/header.php");
 <h2 style="font-weight:500;">SEMELHANTES A ESSE LIVRO</h2>
 <div class="similar_books"><?php
                             // IDs específicos das imagens que você quer exibir
-                            $idsDesejados = [7, 17, 22, 29, 32, 34, 40];
+                            $idsDesejados = [32,33,34];
 
                             // Transformar o array de IDs em uma string separada por vírgulas para a query SQL
                             $idsFormatados = implode(',', $idsDesejados);
-
                             $stmtImagem = $con->prepare("
-    SELECT imagens.caminho, livro.Titulo,livro.Autor,livro.Preco, livro.id_livro AS livro_id 
-    FROM imagens 
-    INNER JOIN livro ON livro.id_livro = imagens.livro_id 
-    WHERE imagens.id IN ($idsFormatados)
-");
-                            // Adicione esta linha para executar a query
+                            SELECT arquivos.path, livros.Titulo, livros.Autor, livros.Preco, livros.id_livro
+                            FROM arquivos 
+                            INNER JOIN livros ON livros.id_livro = arquivos.livro_id 
+                            WHERE livros.id_livro IN ($idsFormatados)
+                            GROUP BY livros.id_livro
+                        ");
+                        
+
                             $stmtImagem->execute();
                             $livros = $stmtImagem->fetchAll(PDO::FETCH_ASSOC);
 
+
                             foreach ($livros as $livro) {
                                 echo '<div class="book_card">';
-                                echo '<a href="listarLivros.php?id_livro=' . urlencode($livro['livro_id']) . '">';
-                                echo '<img src="' . htmlspecialchars($livro['caminho']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
-                                echo htmlspecialchars($livro['Titulo'])."-".htmlspecialchars($livro['Autor']);
-                                echo "<br>R$".htmlspecialchars($livro['Preco']);
+                                echo '<a href="listarLivros.php?id_livro=' . urlencode($livro['id_livro']) . '">';
+                                echo '<img src="' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
+                                echo htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
+                                echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
                                 echo '</a>';
                                 echo '</div>';
                             }
@@ -318,10 +318,8 @@ include("modulos/header.php");
 
     <div class="image_container">
         <h2>Imagens do Livro</h2>
-        <!-- Aqui você pode adicionar as imagens do livro -->
         <img src="imagem_do_livro_1.jpg" alt="Imagem do Livro 1" class="book_image">
         <img src="imagem_do_livro_2.jpg" alt="Imagem do Livro 2" class="book_image">
-        <!-- Continue adicionando as imagens conforme necessário -->
     </div>
 </div>
 <p></p>COMENTÁRIOS RELEVANTES</p>
@@ -330,7 +328,7 @@ include("modulos/header.php");
         <?php
         $con = Connect::getInstance();
         try {
-            $stmt = $con->prepare("SELECT nome_completo,foto FROM clientes WHERE id_usuario = :id_usuario");
+            $stmt = $con->prepare("SELECT nome_completo,foto FROM usuario WHERE id_usuario = :id_usuario");
             $stmt->bindParam(':id_usuario', $userId, PDO::PARAM_INT);
             $stmt->execute();
             $infos_p = $stmt->fetchAll(PDO::FETCH_ASSOC);
