@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -17,32 +21,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         // <!--INSERINDO OS DADOS NO BANCO DE DADOS-->
-        $stmt = $con->prepare("INSERT INTO livros (Titulo, Autor,Data_lancamento,QntPaginas, Genero, Sinopse, Preco,ISBN) VALUES (?, ?, ?, ?, ?, ?,?,?)");
+        $stmt = $con->prepare("INSERT INTO livros (Titulo, Autor, Data_lancamento, QntPaginas, Genero, Sinopse, Preco, ISBN) VALUES (?, ?, ?, ?, ?, ?,?,?)");
         $stmt->execute([$titulo, $autor, $data_lancamento, $qtd_paginas, $genero, $sinopse, $preco, $isbn]);
 
-        // <--OBTENDO O ID DO LIVRO RECEM ADICIONANDO-->
+        // <--OBTENDO O ID DO LIVRO RECEM ADICIONADO-->
         $livro_id = $con->lastInsertId();
 
         // Verifica se foram enviadas imagens
-        if (isset($_FILES['Imagens']) && $_FILES['Imagens']['error'][0] === 0) {
-            foreach ($_FILES['Imagens']['tmp_name'] as $key => $tmp_name) {
-                if ($_FILES['Imagens']['error'][$key] === 0) { // <--VERIFICANDO SE HOUVE ERROS NO UPLOAD-->
-                    $name = $_FILES['Imagens']['name'][$key];
-                    $full_path = 'uploads/' . basename($name);
+        if (isset($_FILES['arquivo']) && $_FILES['arquivo']['error'][0] === 0) {
+            foreach ($_FILES['arquivo']['tmp_name'] as $key => $tmp_name) {
 
-                    // Move a imagem para o diretório de uploads
-                    if (move_uploaded_file($tmp_name, $full_path)) {
-                        // Insere a imagem no banco de dados
-                        $stmtImagem = $con->prepare("INSERT INTO arquivos (livro_id, nome, path, data_upload) VALUES (?, ?, ?, NOW())");
-                        $stmtImagem->execute([$livro_id, $name, $full_path]);
-                    } else {
-                        echo "Erro ao mover a imagem: $name";
+                    $arquivo = $_FILES['arquivo'];
+                    var_export($arquivo, true);
+                    $folder = "img/";
+                    $archiveName = $arquivo['name'][$key];
+                    $newArchiveName = uniqid();
+                    $extension = strtolower(pathinfo($archiveName, PATHINFO_EXTENSION));
+            
+                    if($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg' && $extension != 'gif'){
+                        die("Tipo de arquivo inaceitável para arquivo " . $arquivo['name'][$key] . "!! Apenas .jpg, .png, .jpeg ou .gif");
+            
                     }
-                } else {
-                    echo "Erro no upload da imagem: $name - Código do erro: " . $_FILES['Imagens']['error'][$key];
+            
+                    $path = $folder . $newArchiveName. ".". $extension;
+            
+                    $accepted = move_uploaded_file($tmp_name, $path);
+                    if($accepted){
+                        $stmtImagem = $con->prepare("INSERT INTO arquivos (livro_id, nome, path, data_upload) VALUES (?, ?, ?, NOW())");
+                        $stmtImagem->execute([$livro_id, $archiveName, $path]);
+                    } else {
+                        echo "<p>Falha ao enviar arquivo." . $arquivo['name'][$key] . "</p>";
+                    }
                 }
-            }
-        } else {
+            } else {
             echo "Nenhuma imagem enviada ou ocorreu um erro no envio da imagem.";
         }
 
@@ -73,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <!-- Campo de upload para múltiplas imagens -->
     <label>Selecione as imagens:</label>
-    <input type="file" name="Imagens[]" multiple required>
+    <input type="file" name="arquivo[]" multiple required>
 
     <!-- Dropdown para selecionar a capa -->
     <label for="capa">Escolha a capa:</label>
@@ -87,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script>
     // JavaScript para preencher as opções do dropdown com base na quantidade de imagens
-    const fileInput = document.querySelector('input[name="Imagens[]"]');
+    const fileInput = document.querySelector('input[name="arquivo[]"]');
     const capaSelect = document.querySelector('select[name="capa"]');
 
     fileInput.addEventListener('change', function() {
