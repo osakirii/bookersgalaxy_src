@@ -31,7 +31,6 @@ try {
     echo "Erro: " . htmlspecialchars($e->getMessage());
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
