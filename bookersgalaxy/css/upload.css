@@ -1,0 +1,74 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+main #formLivro{
+    padding: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    border-radius: 10px;
+    background-image: linear-gradient(#96B29D, white, #F3C3B2);
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 20px;
+}
+
+main #formLivro input, main #formLivro textarea{
+    width: 1000px;
+    outline: none;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    font-family: "Josefin Sans", sans-serif;
+    box-shadow: 0 0 3px #7e7c7c;
+    border-radius: 8px;
+    transition: 0.3s;
+
+        &:focus{
+            outline: 1px solid black;
+        }
+}
+
+main #formLivro select{
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 3px #7e7c7c;
+}
+
+main #formLivro button{
+    width: 250px;
+    height: 50px;
+    background: #A5DDB8;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #7e7c7c;
+    transition: 0.3s;
+
+        &:active{
+            background: #7faf8f;
+        }
+}
+
+main a#voltar{
+    padding: 10px 90px 10px 90px;
+    background: #99CDD8;
+    margin: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #7e7c7c;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+
+        &:active{
+            background: #7ca5ad;
+        }
+}

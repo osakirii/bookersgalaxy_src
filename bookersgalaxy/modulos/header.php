@@ -15,7 +15,6 @@
         <nav id="navbar">
             <div id="nav-content">
                 <a href="javascript:void(0)" id="closebtn" onclick="closeNav()"><i class="fas fa-xmark"></i></a>
-                <a href="index.php" style="padding: 0; border: 0;"><img src="<?php Src(1) ?>"></a>
                 <a href="#">Tenho Daltonismo</a>
                 <a href="categorias.php">Categorias</a>
                 <a href="#">Lançamentos</a>
@@ -41,7 +40,6 @@
         <div id="header-gradiente"></div>
 
        <header id="header">
-            <a href="index.php" style="margin: 0; padding: 0; display: inline;"><img src="<?php Src(1)?>"></a>
             <a href="#" class="daltonismo">Tenho Daltonismo</a>
             <a href="categorias.php">Categorias</a>
             <form id="headerform">

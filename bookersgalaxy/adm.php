@@ -12,15 +12,14 @@
         <main id="corpo">
             <h1>Sala da Administração</h1>
             <h2>Livros</h2>
-            <button><a href="uploadLivro.php">Adicionar novo Livro</a></button>
-            <button><a href="uploadLivro.php">Ver livros</a></button>
-            <button><a href="uploadLivro.php">Alterar Livro</a></button>
-            <button><a href="uploadLivro.php">Excluir Livro</a></button>
+            <button><a href="uploadLivro.php">Adicionar novo Livro</a></button><br>
+            <button><a href="uploadLivro.php">Ver livros</a></button><br>
+            <button><a href="uploadLivro.php">Alterar Livro</a></button><br>
+            <button><a href="uploadLivro.php">Excluir Livro</a></button><br>
             
         </main>
         
         <?php
-            include_once 'modulos/footer.php';
         ?>
     </body>
 </html>

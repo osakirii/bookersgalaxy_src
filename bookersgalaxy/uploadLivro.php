@@ -66,71 +66,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Livro</title>
-</head>
-<body>
-<form method="POST" enctype="multipart/form-data" action="uploadLivro.php">
-    <input type="text" name="Titulo" placeholder="Título do Livro" required>
-    <input type="text" name="Autor" required>
-    <input type="date" name="Data_lancamento" required>
-    <input type="number" name="QtdPaginas" placeholder="Quantidade de Páginas" required>
-    <input type="text" name="Genero" placeholder="Gênero" required>
-    <textarea name="Sinopse" placeholder="Sinopse" required></textarea>
-    <input type="number" step="0.01" name="Preco" placeholder="Preço" required>
-    <input type="text" name="ISBN" id="isbn" placeholder="ISBN" required maxlength="17">
-    
-    <!-- Campo de upload para múltiplas imagens -->
-    <label>Selecione as imagens:</label>
-    <input type="file" name="arquivo[]" multiple required>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/upload.css">
+        <title>Cadastro de Livro</title>
+    </head>
 
-    <!-- Dropdown para selecionar a capa -->
-    <label for="capa">Escolha a capa:</label>
-    <select name="capa" required>
-        <option value="">Selecione uma imagem como capa</option>
-        <!-- Vamos adicionar opções em JavaScript, após o upload -->
-    </select>
+    <body>
+        <?php
+            include_once 'modulos/header.php';
+         ?>
+        <main>
+            <form id="formLivro" method="POST" enctype="multipart/form-data" action="uploadLivro.php">
+                <label>Insira as informações do livro:</label>
+                <input type="text" name="Titulo" placeholder="Título do Livro" required>
+                <input type="text" name="Autor" placeholder="Autor do Livro" required>
+                <input type="date" name="Data_lancamento" required>
+                <input type="number" name="QtdPaginas" placeholder="Quantidade de Páginas" required>
+                <input type="text" name="Genero" placeholder="Gênero" required>
+                <textarea name="Sinopse" placeholder="Sinopse" required rows="10"></textarea>
+                <input type="number" step="0.01" name="Preco" placeholder="Preço" required>
+                <input type="text" name="ISBN" id="isbn" placeholder="ISBN" required maxlength="17">
+                
+                <!-- Campo de upload para múltiplas imagens -->
+                <label>Selecione as imagens:</label>
+                <input type="file" name="arquivo[]" multiple required>
 
-    <input type="submit" value="Cadastrar Livro">
-</form>
+                <!-- Dropdown para selecionar a capa -->
+                <label for="capa">Escolha a capa:</label>
+                <select name="capa" required>
+                    <option value="">Selecione uma imagem como capa</option>
+                    <!-- Vamos adicionar opções em JavaScript, após o upload -->
+                </select>
 
-<script>
-    // JavaScript para preencher as opções do dropdown com base na quantidade de imagens
-    const fileInput = document.querySelector('input[name="arquivo[]"]');
-    const capaSelect = document.querySelector('select[name="capa"]');
+                <center><button type="submit">Cadastrar Livro</button></center>
+                
+            </form>
+            <a id="voltar" href="adm.php">Voltar</a></button>
+            </div>
+        </main>
 
-    fileInput.addEventListener('change', function() {
-        // Limpa as opções anteriores
-        capaSelect.innerHTML = '<option value="">Selecione uma imagem como capa</option>';
+    <script>
+        // JavaScript para preencher as opções do dropdown com base na quantidade de imagens
+        const fileInput = document.querySelector('input[name="arquivo[]"]');
+        const capaSelect = document.querySelector('select[name="capa"]');
 
-        // Adiciona uma opção para cada imagem
-        Array.from(fileInput.files).forEach((file, index) => {
-            const option = document.createElement('option');
-            option.value = index;
-            option.textContent = `Imagem ${index + 1} - ${file.name}`;
-            capaSelect.appendChild(option);
+        fileInput.addEventListener('change', function() {
+            // Limpa as opções anteriores
+            capaSelect.innerHTML = '<option value="">Selecione uma imagem como capa</option>';
+
+            // Adiciona uma opção para cada imagem
+            Array.from(fileInput.files).forEach((file, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `Imagem ${index + 1} - ${file.name}`;
+                capaSelect.appendChild(option);
+            });
         });
+
+        const isbnInput = document.getElementById('isbn');
+
+    isbnInput.addEventListener('input', function() {
+        let value = isbnInput.value.replace(/\D/g, ''); // Remove qualquer caractere que não seja número
+        if (value.length <= 3) {
+            isbnInput.value = value;
+        } else if (value.length <= 5) {
+            isbnInput.value = value.slice(0, 3) + '-' + value.slice(3);
+        } else if (value.length <= 9) {
+            isbnInput.value = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5);
+        } else if (value.length <= 12) {
+            isbnInput.value = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5, 9) + '-' + value.slice(9);
+        } else {
+            isbnInput.value = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5, 9) + '-' + value.slice(9, 12) + '-' + value.slice(12, 13);
+        }
     });
-
-    const isbnInput = document.getElementById('isbn');
-
-isbnInput.addEventListener('input', function() {
-    let value = isbnInput.value.replace(/\D/g, ''); // Remove qualquer caractere que não seja número
-    if (value.length <= 3) {
-        isbnInput.value = value;
-    } else if (value.length <= 5) {
-        isbnInput.value = value.slice(0, 3) + '-' + value.slice(3);
-    } else if (value.length <= 9) {
-        isbnInput.value = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5);
-    } else if (value.length <= 12) {
-        isbnInput.value = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5, 9) + '-' + value.slice(9);
-    } else {
-        isbnInput.value = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5, 9) + '-' + value.slice(9, 12) + '-' + value.slice(12, 13);
-    }
-});
-</script>
+    </script>
 
 </body>
 </html>
