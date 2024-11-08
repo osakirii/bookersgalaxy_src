@@ -13,6 +13,7 @@ main #formLivro{
     background-image: linear-gradient(#96B29D, white, #F3C3B2);
     font-family: "Josefin Sans", sans-serif;
     font-size: 20px;
+    box-shadow: 0 0 3px #7e7c7c;
 }
 
 main #formLivro input, main #formLivro textarea{
