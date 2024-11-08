@@ -15,3 +15,4 @@ function Busca($id) {
             'id_livro'=>$mostrar['id_livro']
         ];    }
 }
+?>
