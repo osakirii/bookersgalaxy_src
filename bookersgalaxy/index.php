@@ -1,6 +1,7 @@
 <?php
     include_once("modulos/loadingscreen.php");
     include_once("modulos/header.php");
+
 ?>
 
 <html lang="pt-br">
@@ -17,20 +18,37 @@
     </head>
     <body>
         <main id="corpo">
-            <img style="width: 200px; height: auto;" src="<?php Src(6) ?>">
-
+            <img style="width: 200px; height: auto;" src="<?php echo Busca(6)['path']?>">
             <h1>TOP 10 DO MÊS</h1>
             <section class="carrossel">
-                <a href="livro.php"><img id="primeiro" src="<?php Src(3) ?>"></a>
-                <a href="#"><img src="<?php Src(4) ?>"></a>
-                <a href="#"><img src="<?php Src(5) ?>"></a>
-                <a href="#"><img src="<?php Src(3) ?>"></a>
-                <a href="#"><img src="<?php Src(3) ?>"></a>
-                <a href="#"><img src="<?php Src(3) ?>"></a>
-                <a href="#"><img src="<?php Src(3) ?>"></a>
-                <a href="#"><img src="<?php Src(3) ?>"></a>
-                <a href="#"><img src="<?php Src(3) ?>"></a>
-                <a href="#" id="ultimo"><img id="ultimo" src="<?php Src(3) ?>"></a>
+            <?php
+                            $idsDesejados = [32,33,34];
+
+                            // Transformar o array de IDs em uma string separada por vírgulas para a query SQL
+                            $idsFormatados = implode(',', $idsDesejados);
+                            $stmtImagem = $pdo->prepare("
+                            SELECT arquivos.path, livros.Titulo, livros.Autor, livros.Preco, livros.id_livro
+                            FROM arquivos 
+                            INNER JOIN livros ON livros.id_livro = arquivos.livro_id 
+                            WHERE livros.id_livro IN ($idsFormatados)
+                            GROUP BY livros.id_livro
+                        ");
+                        
+
+                            $stmtImagem->execute();
+                            $livros = $stmtImagem->fetchAll(PDO::FETCH_ASSOC);
+
+
+                            foreach ($livros as $livro) {
+                                echo '<div class="book_card">';
+                                echo '<a href="listarLivros.php?id_livro=' . urlencode($livro['id_livro']) . '">';
+                                echo '<img src="' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
+                                echo htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
+                                echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
+                                echo '</a>';
+                                echo '</div>';
+                            }
+                            ?>
                 <button class="slide slide-esquerda" onclick="slidee()" type="button"><i class="fas fa-arrow-left"></i></button>
                 <button class="slide slide-direita" onclick="slided()" type="button"> <i class="fas fa-arrow-right"></i></button>
             </section>
