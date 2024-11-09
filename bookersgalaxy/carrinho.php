@@ -46,7 +46,7 @@
     </head>
 
     <body>
-        <?php include("./modulos/header.php"); ?>
+        <?php include("modulos/header.php"); ?>
         <main>
             <div class="loved_books">
                 <label style="text-align:initial">MEU CARRINHO</label>
