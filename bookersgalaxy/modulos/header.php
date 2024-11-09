@@ -30,7 +30,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             <a href="categorias.php">Categorias</a>
             <a href="#">Lançamentos</a>
             <a href="favoritos.php">Favoritos</a>
-            <a href="compra/carrinho.php">Carrinho</a>
+            <a href="carrinho.php">Carrinho</a>
             <a href="#">Meu perfil</a>
         </div>
         <div id="nav-rodape">
@@ -52,12 +52,22 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
 
     <header id="header">
         <a href="index.php" style="margin: 0; padding : 0;"><img src="<?php echo Busca(1) ?>"></a>
+        <div>
+            <label for="filtro-daltonismo">Tenho Daltonismo:</label>
+            <select id="filtro-daltonismo">
+                <option value="">Normal</option>
+                <option value="correcaopro-protanopia">Correção para Protanopia</option>
+                <option value="correcaopro-deuteranopia">Correção para Deuteranopia</option>
+                <option value="correcaopro-tritanopia">Correção para Tritanopia</option>
+                <option value="correcaopro-monocromacia">Correção para Monocromacia</option>
+            </select>
+        </div>
         <a href="categorias.php">Categorias</a>
         <form id="headerform">
             <input size="40" id="searchbar" onfocus="pesquisafocus()" onblur="pesquisablur()"><button type="submit" onclick="openSearchBar()"><i class="fas fa-magnifying-glass"></i></button>
         </form>
         <div id="header-container">
-            <a href="compra/carrinho.php"><i class="fas fa-cart-shopping"></i></a>
+            <a href="carrinho.php"><i class="fas fa-cart-shopping"></i></a>
             <a href="#"><i class="far fa-circle-user"></i></a>
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
         </div>
