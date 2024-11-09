@@ -31,7 +31,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             <a href="#">Lançamentos</a>
             <a href="favoritos.php">Favoritos</a>
             <a href="carrinho.php">Carrinho</a>
-            <a href="#">Meu perfil</a>
+            <a href="perfil.php">Meu perfil</a>
         </div>
         <div id="nav-rodape">
             <?php
@@ -68,7 +68,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
         </form>
         <div id="header-container">
             <a href="carrinho.php"><i class="fas fa-cart-shopping"></i></a>
-            <a href="#"><i class="far fa-circle-user"></i></a>
+            <a href="perfil.php"><i class="far fa-circle-user"></i></a>
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
         </div>
     </header>

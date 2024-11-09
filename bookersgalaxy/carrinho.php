@@ -31,6 +31,14 @@
         $stmt->execute();
         $livrosCarrinho = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    include_once("modulos/loadingscreen.php");
+    include_once("modulos/header.php");
+    $con = Connect::getInstance();
+    if (isset($_SESSION['cliente_id'])) {
+        $userId = $_SESSION['cliente_id'];
+        echo $userId;
+    }
     ?>
 
     <!DOCTYPE html>
@@ -46,7 +54,6 @@
     </head>
 
     <body>
-        <?php include("modulos/header.php"); ?>
         <main>
             <div class="loved_books">
                 <label style="text-align:initial">MEU CARRINHO</label>

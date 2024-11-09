@@ -1,4 +1,25 @@
-#corpo img{
+#perfil{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+#perfil img{
     width: 218px;
-    height: auto;
+    height: 218px;
+}
+
+#perfil .perfilContainer{
+    display: flex;
+    justify-content: center;
+    flex: 0 0 120px;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#perfil .perfilContainer p{
+    font-family: "Josefin Sans", sans-serif;
+}
+
+#perfil .perfilContainer span{
+    margin-top: 50px;
 }

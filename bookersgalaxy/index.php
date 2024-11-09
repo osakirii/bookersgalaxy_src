@@ -58,19 +58,12 @@
                 <button class="slide slide-direita" onclick="slided()" type="button"> <i class="fas fa-arrow-right"></i></button>
             </section>
 
-            <h1>DESTAQUES DE 2023</h1>
-              <section class="estante">
-                    <
-                    <button class="ir-esquerda" type="button" onclick="esquerda(0)"><i class="fas fa-arrow-left"></i></button>
-                    <button class="ir-direita" type="button" onclick="direita(0)"> <i class="fas fa-arrow-right"></i></button>
-              </section>
-
               <h1>DESTAQUES DE 2023</h1>
               <section class="estante">
                 <div class="livro">
                     <a href="#"><img src="https://picsum.photos/141/216"></a>
                     <div class="livro-texto">
-                        <p>O chamado de Cthulhu e outros contos</p>
+                        <p>O chamado de Cthulhu e outros contos Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum quasi illum in eius quae debitis, id perspiciatis quia, aspernatur, similique iste adipisci. Suscipit, vitae tenetur. Animi quaerat excepturi rem cum.</p>
                         <p class="valor">R$ 30,00</p>
                     </div>
                 </div>
