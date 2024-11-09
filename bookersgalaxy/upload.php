@@ -1,30 +1,41 @@
 <?php
     include("connect.php");
 
-    if (isset($_GET['deletar'])){
+    // Instancia a conexão usando a classe Connect
+    $pdo = Connect::getInstance();
 
+    // Deletar arquivo
+    if (isset($_GET['deletar'])) {
         $id = intval($_GET['deletar']);
-        $sql_query = $mysqli->query("SELECT * FROM arquivos WHERE id = $id") or die($mysqli->error);
-        $arquivo = $sql_query->fetch_assoc();
+        
+        // Obtém o arquivo para exclusão segura do disco e do banco
+        $sql_query = $pdo->prepare("SELECT * FROM arquivossite WHERE id = :id");
+        $sql_query->bindParam(':id', $id, PDO::PARAM_INT);
+        $sql_query->execute();
+        $arquivo = $sql_query->fetch(PDO::FETCH_ASSOC);
 
-        if(unlink($arquivo['path'])){
-           $accepted = $mysqli->query("DELETE FROM arquivos WHERE id = $id") or die($mysqli->error);
-                if($accepted){
-                    echo "<p>Arquivo excluído com sucesso.</p>";
-                }
-           
+        if ($arquivo && unlink($arquivo['path'])) {
+            // Deleta o registro do banco
+            $delete_query = $pdo->prepare("DELETE FROM arquivossite WHERE id = :id");
+            $delete_query->bindParam(':id', $id, PDO::PARAM_INT);
+            if ($delete_query->execute()) {
+                echo "<p>Arquivo excluído com sucesso.</p>";
+            }
+        } else {
+            echo "<p>Falha ao excluir o arquivo.</p>";
         }
     }
 
-    if(isset($_FILES['arquivo'])){
+    // Upload de arquivo
+    if (isset($_FILES['arquivo'])) {
         $arquivo = $_FILES['arquivo'];
 
-        if($arquivo['error']){
+        if ($arquivo['error']) {
             die("Falha ao enviar arquivo.");
         }
 
-        if($arquivo['size'] > 2097152){
-            die("Arquivo muito grande!!! Max: 2MB");
+        if ($arquivo['size'] > 2097152) {
+            die("Arquivo muito grande! Max: 2MB");
         }
 
         $folder = "img/";
@@ -32,24 +43,30 @@
         $newArchiveName = uniqid();
         $extension = strtolower(pathinfo($archiveName, PATHINFO_EXTENSION));
 
-        if($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg' && $extension != 'gif'){
-            die("Tipo de arquivo inaceitável!! Apenas .jpg, .png, .jpeg ou .gif");
-
+        if (!in_array($extension, ['jpg', 'png', 'jpeg', 'gif'])) {
+            die("Tipo de arquivo inaceitável! Apenas .jpg, .png, .jpeg ou .gif");
         }
 
-        $path = $folder . $newArchiveName. ".". $extension;
+        $path = $folder . $newArchiveName . "." . $extension;
 
-        $accepted = move_uploaded_file($arquivo['tmp_name'], $path);
-        if($accepted){
-            echo '<p>Arquivo enviado com sucesso. Para acessá-lo, clique <a target="_blank" href="img/'.$newArchiveName.".".$extension.'">aqui</a>. </p>';
+        if (move_uploaded_file($arquivo['tmp_name'], $path)) {
+            echo '<p>Arquivo enviado com sucesso. Para acessá-lo, clique <a target="_blank" href="' . htmlspecialchars($path) . '">aqui</a>. </p>';
 
-            $mysqli->query("INSERT INTO arquivos (nome, path, data_upload) VALUES ('$archiveName', '$path', NOW())") or die($mysqli->error);
+            // Inserir no banco de dados usando PDO e protegendo contra SQL injection
+            $insert_query = $pdo->prepare("INSERT INTO arquivossite (nome, path, data_upload) VALUES (:nome, :path, NOW())");
+            $insert_query->bindParam(':nome', $archiveName, PDO::PARAM_STR);
+            $insert_query->bindParam(':path', $path, PDO::PARAM_STR);
+
+            if (!$insert_query->execute()) {
+                echo "<p>Falha ao salvar registro no banco de dados.</p>";
+            }
         } else {
-            echo "<p>Falha ao enviar arquivo.</p>";
+            echo "<p>Falha ao mover o arquivo.</p>";
         }
     }
 
-    $sql_query = $mysqli->query("SELECT * FROM arquivos") or die ($mysqli->error);
+    // Consulta para listar arquivos
+    $sql_query = $pdo->query("SELECT * FROM arquivossite");
 
     include_once("modulos/loadingscreen.php");
     include_once("modulos/header.php");   
@@ -61,11 +78,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Booker's Galaxy: Upload</title>
         <link rel="stylesheet" href="css/modulos.css">
-        <script src="https://kit.fontawesome.com/7162ac436f.js" 
-        crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
         <script src="js/modulos.js"></script>
     </head>
-
     <body>
         <main id="corpo">
             <br><br>
@@ -84,19 +99,15 @@
                     <th></th>
                 </thead>
                 <tbody>
-                <?php
-                        while($arquivo = $sql_query->fetch_assoc()){
-                    ?>
+                <?php while ($arquivo = $sql_query->fetch(PDO::FETCH_ASSOC)): ?>
                     <tr>
-                        <td><img height="100" src="<?php echo $arquivo['path']; ?>" alt="<?php echo $arquivo['nome']; ?>"></td>
-                        <td><?php echo '<p>'. $arquivo['id']. '</p>'; ?></td>
-                        <td><a target="_blank" href="<?php echo $arquivo['path']; ?>"> <?php echo $arquivo['nome']; ?></a></td>
+                        <td><img height="100" src="<?php echo htmlspecialchars($arquivo['path']); ?>" alt="<?php echo htmlspecialchars($arquivo['nome']); ?>"></td>
+                        <td><?php echo '<p>' . htmlspecialchars($arquivo['id']) . '</p>'; ?></td>
+                        <td><a target="_blank" href="<?php echo htmlspecialchars($arquivo['path']); ?>"> <?php echo htmlspecialchars($arquivo['nome']); ?></a></td>
                         <td><?php echo date("d/m/Y H:i", strtotime($arquivo['data_upload'])); ?></td>
-                        <td><a href="upload.php?deletar=<?php echo $arquivo['id'];?>">Deletar</a></td>
+                        <td><a href="upload.php?deletar=<?php echo htmlspecialchars($arquivo['id']); ?>">Deletar</a></td>
                     </tr>
-                    <?php
-                        }
-                    ?>
+                <?php endwhile; ?>
                 </tbody>
             </table>
         </main>

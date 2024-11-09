@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/11/2024 às 15:05
+-- Tempo de geração: 09/11/2024 às 02:26
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -42,25 +42,38 @@ CREATE TABLE `arquivos` (
 --
 
 INSERT INTO `arquivos` (`id`, `livro_id`, `nome`, `path`, `data_upload`, `is_capa`) VALUES
-(1, 0, 'logo.png', 'img/66f6e502d3ae7.png', '2024-09-27 14:01:54', 0),
-(2, 0, 'book loading.gif', 'img/66f6f50f58268.gif', '2024-09-27 15:10:23', 0),
-(3, 0, 'top1.png', 'img/66f6f6c4cfa05.png', '2024-09-27 15:17:40', 0),
-(4, 0, 'top2.png', 'img/66f6fae0e6a37.png', '2024-09-27 15:35:12', 0),
-(5, 0, 'top3.png', 'img/66f6fae9a4634.png', '2024-09-27 15:35:21', 0),
-(6, 0, 'biblio.jpg', 'img/66f6fafdeb14b.jpg', '2024-09-27 15:35:41', 0),
-(7, 0, 'panini.png', 'img/66f6fb0ca179e.png', '2024-09-27 15:35:56', 0),
-(8, 0, 'seguinte.png', 'img/66f6fb15aff2d.png', '2024-09-27 15:36:05', 0),
-(9, 0, 'todavia.png', 'img/66f6fb1f4efac.png', '2024-09-27 15:36:15', 0),
-(10, 0, 'dracula.jpg', 'img/66f71717d8291.jpg', '2024-09-27 17:35:35', 0),
-(11, 0, 'draculamini.jpg', 'img/66f7171b935d9.jpg', '2024-09-27 17:35:39', 0),
-(12, 0, 'draculaowo.jpg', 'img/66f7172589c8d.jpg', '2024-09-27 17:35:49', 0),
-(13, 0, 'draculainfo.jpg', 'img/66f7172cadb58.jpg', '2024-09-27 17:35:56', 0),
-(14, 0, 'draculamao.jpg', 'img/66f717390b75e.jpg', '2024-09-27 17:36:09', 0),
+(108, 56, 'stranger_thing_capa.jpg', 'img/672eac3865c2f.jpg', '2024-11-08 21:26:32', 1),
+(109, 56, 'stranger_thing_capadeitada.jpg', 'img/672eac386604d.jpg', '2024-11-08 21:26:32', 0),
+(110, 56, 'stranger_thing_contracapa.jpg', 'img/672eac38664af.jpg', '2024-11-08 21:26:32', 0),
+(107, 56, 'stranger_thing_aberto2.jpg', 'img/672eac38658b6.jpg', '2024-11-08 21:26:32', 0),
+(106, 56, 'stranger_thing_aberto.jpg', 'img/672eac386552e.jpg', '2024-11-08 21:26:32', 0),
 (105, 55, 'stranger_thing_contracapa.jpg', 'img/672e1242cef6e.jpg', '2024-11-08 10:29:38', 0),
 (104, 55, 'stranger_thing_capadeitada.jpg', 'img/672e1242ced05.jpg', '2024-11-08 10:29:38', 0),
 (103, 55, 'stranger_thing_capa.jpg', 'img/672e1242ce9bb.jpg', '2024-11-08 10:29:38', 1),
 (102, 55, 'stranger_thing_aberto2.jpg', 'img/672e1242ce6a9.jpg', '2024-11-08 10:29:38', 0),
 (101, 55, 'stranger_thing_aberto.jpg', 'img/672e1242ce3b8.jpg', '2024-11-08 10:29:38', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `arquivossite`
+--
+
+CREATE TABLE `arquivossite` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(150) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `data_upload` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `arquivossite`
+--
+
+INSERT INTO `arquivossite` (`id`, `nome`, `path`, `data_upload`) VALUES
+(1, '66f6e502d3ae7.png', 'img/672eb8e5e9338.png', '2024-11-09 01:20:37'),
+(2, '66f6f50f58268.gif', 'img/672eb90b8c6b8.gif', '2024-11-09 01:21:15');
+
 
 -- --------------------------------------------------------
 
@@ -161,7 +174,8 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`ID_livro`, `Titulo`, `Autor`, `Data_lancamento`, `QntPaginas`, `Sinopse`, `Preco`, `ISBN`, `id_categoria`) VALUES
-(55, 'Stranger things: cidade nas trevas: Volume 2 ', 'Adam Christopher', '2024-06-05', 384, 'A terceira temporada de Stranger Things causou grande comoção, e o último episódio deixou os fãs perplexos e ansiosos por respostas. As pistas estão lançadas em Cidade nas trevas, segundo livro oficial da série, que explora o passado de um dos personagens mais queridos do público: o chefe de polícia Jim Hopper.\r\n\r\nEm Hawkins, durante o Natal de 1984, ele mal consegue conter a alegria. É sua primeira comemoração familiar com Eleven, sua chance de aproveitar momentos de tranquilidade com a filha adotiva. Mas a menina tem outros planos. Contra a vontade de Hopper, ela vasculha uma caixa em que está escrito “Nova York”. É aí que começam as perguntas. Por que Hopper foi embora de Hawkins anos atrás? Por que nunca contou sobre Nova York? O que ele está escondendo?\r\n\r\nEmbora prefira enfrentar uma horda de demogorgons a mergulhar em seu passado, Hopper sabe que não pode mais esconder a verdade. Por isso, ele conta a Eleven os detalhes de um dos casos mais avassaladores de sua carreira, o último antes de tudo mudar...\r\n\r\nEm 1977, após retornar da Guerra do Vietnã, ele se muda com a esposa e a filha para Nova York e passa a atuar na divisão de homicídios. A cada dia, se depara com inúmeras tragédias, mas nenhuma se compara a uma série de assassinatos brutais e incompreensíveis. Quando agentes federais assumem o caso, Hopper e sua irreverente parceira, Rosario Delgado, decidem agir por conta própria, e logo o detetive se vê infiltrado entre as perigosas gangues da cidade. No momento em que está prestes a desvendar quem ― ou o quê ― está por trás dos assassinatos, um apagão lança a cidade nas trevas, e Hopper fica frente a frente com uma escuridão que mudará sua vida para sempre.', 24.99, '978-85-5100-629-0', 1);
+(55, 'Stranger things: cidade nas trevas: Volume 2 ', 'Adam Christopher', '2024-06-05', 384, 'A terceira temporada de Stranger Things causou grande comoção, e o último episódio deixou os fãs perplexos e ansiosos por respostas. As pistas estão lançadas em Cidade nas trevas, segundo livro oficial da série, que explora o passado de um dos personagens mais queridos do público: o chefe de polícia Jim Hopper.\r\n\r\nEm Hawkins, durante o Natal de 1984, ele mal consegue conter a alegria. É sua primeira comemoração familiar com Eleven, sua chance de aproveitar momentos de tranquilidade com a filha adotiva. Mas a menina tem outros planos. Contra a vontade de Hopper, ela vasculha uma caixa em que está escrito “Nova York”. É aí que começam as perguntas. Por que Hopper foi embora de Hawkins anos atrás? Por que nunca contou sobre Nova York? O que ele está escondendo?\r\n\r\nEmbora prefira enfrentar uma horda de demogorgons a mergulhar em seu passado, Hopper sabe que não pode mais esconder a verdade. Por isso, ele conta a Eleven os detalhes de um dos casos mais avassaladores de sua carreira, o último antes de tudo mudar...\r\n\r\nEm 1977, após retornar da Guerra do Vietnã, ele se muda com a esposa e a filha para Nova York e passa a atuar na divisão de homicídios. A cada dia, se depara com inúmeras tragédias, mas nenhuma se compara a uma série de assassinatos brutais e incompreensíveis. Quando agentes federais assumem o caso, Hopper e sua irreverente parceira, Rosario Delgado, decidem agir por conta própria, e logo o detetive se vê infiltrado entre as perigosas gangues da cidade. No momento em que está prestes a desvendar quem ― ou o quê ― está por trás dos assassinatos, um apagão lança a cidade nas trevas, e Hopper fica frente a frente com uma escuridão que mudará sua vida para sempre.', 24.99, '978-85-5100-629-0', 1),
+(56, 'Stranger things: cidade nas trevas: Volume 2 ', 'Adam Christopher', '2024-06-05', 384, 'A terceira temporada de Stranger Things causou grande comoção, e o último episódio deixou os fãs perplexos e ansiosos por respostas. As pistas estão lançadas em Cidade nas trevas, segundo livro oficial da série, que explora o passado de um dos personagens mais queridos do público: o chefe de polícia Jim Hopper.\r\n\r\nEm Hawkins, durante o Natal de 1984, ele mal consegue conter a alegria. É sua primeira comemoração familiar com Eleven, sua chance de aproveitar momentos de tranquilidade com a filha adotiva. Mas a menina tem outros planos. Contra a vontade de Hopper, ela vasculha uma caixa em que está escrito “Nova York”. É aí que começam as perguntas. Por que Hopper foi embora de Hawkins anos atrás? Por que nunca contou sobre Nova York? O que ele está escondendo?\r\n\r\nEmbora prefira enfrentar uma horda de demogorgons a mergulhar em seu passado, Hopper sabe que não pode mais esconder a verdade. Por isso, ele conta a Eleven os detalhes de um dos casos mais avassaladores de sua carreira, o último antes de tudo mudar...\r\n\r\nEm 1977, após retornar da Guerra do Vietnã, ele se muda com a esposa e a filha para Nova York e passa a atuar na divisão de homicídios. A cada dia, se depara com inúmeras tragédias, mas nenhuma se compara a uma série de assassinatos brutais e incompreensíveis. Quando agentes federais assumem o caso, Hopper e sua irreverente parceira, Rosario Delgado, decidem agir por conta própria, e logo o detetive se vê infiltrado entre as perigosas gangues da cidade. No momento em que está prestes a desvendar quem ― ou o quê ― está por trás dos assassinatos, um apagão lança a cidade nas trevas, e Hopper fica frente a frente com uma escuridão que mudará sua vida para sempre.', 24.99, '978-85-5100-629-0', 1);
 
 -- --------------------------------------------------------
 
@@ -192,6 +206,12 @@ CREATE TABLE `usuario` (
 ALTER TABLE `arquivos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_livro_id` (`livro_id`);
+
+--
+-- Índices de tabela `arquivossite`
+--
+ALTER TABLE `arquivossite`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `categorias`
@@ -228,7 +248,13 @@ ALTER TABLE `livros`
 -- AUTO_INCREMENT de tabela `arquivos`
 --
 ALTER TABLE `arquivos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+
+--
+-- AUTO_INCREMENT de tabela `arquivossite`
+--
+ALTER TABLE `arquivossite`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `genero`
@@ -240,7 +266,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `ID_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `ID_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

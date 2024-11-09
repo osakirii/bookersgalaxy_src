@@ -1,7 +1,12 @@
 <?php
+    session_start();
     include_once("modulos/loadingscreen.php");
     include_once("modulos/header.php");
-
+    $con = Connect::getInstance();
+    if (isset($_SESSION['cliente_id'])) {
+        $userId = $_SESSION['cliente_id'];
+        echo $userId;
+    }
 ?>
 
 <html lang="pt-br">
@@ -18,7 +23,7 @@
     </head>
     <body>
         <main id="corpo">
-            <img style="width: 200px; height: auto;" src="<?php echo Busca(6)['path']?>">
+            <img style="width: 200px; height: auto;" src="<?php echo Busca(6)?>">
             <h1>TOP 10 DO MÊS</h1>
             <section class="carrossel">
             <?php
@@ -55,102 +60,7 @@
 
             <h1>DESTAQUES DE 2023</h1>
               <section class="estante">
-                <div class="livro">
-                    <a href="livro.php"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt molestiae nisi asperiores eveniet expedita quidem facere officia, commodi distinctio? Aperiam consectetur voluptatum odio debitis doloribus dignissimos natus magni fuga sunt.</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos lor</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
-                <div class="livro">
-                    <a href="#"><img src="https://picsum.photos/141/216"></a>
-                    <div class="livro-texto">
-                        <p class="nomeAutor">Robert Pattinson</p>
-                        <p>O chamado de Cthulhu e outros contos</p>
-                        <p class="valor">R$ 30,00</p>
-                    </div>
-                </div>
+                    <
                     <button class="ir-esquerda" type="button" onclick="esquerda(0)"><i class="fas fa-arrow-left"></i></button>
                     <button class="ir-direita" type="button" onclick="direita(0)"> <i class="fas fa-arrow-right"></i></button>
               </section>
