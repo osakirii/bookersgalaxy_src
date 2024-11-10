@@ -1,4 +1,4 @@
-    <?php
+<?php
     include_once(__DIR__ . '/../config.php'); // Inclui todas as configurações e funções globais
 
     $con = Connect::getInstance();

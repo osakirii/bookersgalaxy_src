@@ -44,14 +44,14 @@
 
             <h1>EDITORAS</h1>
             <section class="carrossel">
-                <a href="#"><img id="primeiro" src="<?php Src(7) ?>"></a>
-                <a href="#"><img src="<?php Src(9) ?>"></a>
-                <a href="#"><img src="<?php Src(8) ?>"></a>
-                <a href="#"><img src="<?php Src(8) ?>"></a>
-                <a href="#"><img src="<?php Src(8) ?>"></a>
-                <a href="#"><img src="<?php Src(8) ?>"></a>
-                <a href="#"><img src="<?php Src(8) ?>"></a>
-                <a href="#"><img src="<?php Src(8) ?>"></a>
+                <a href="#"><img id="primeiro" src="<?php Busca(7) ?>"></a>
+                <a href="#"><img src="<?php Busca(9) ?>"></a>
+                <a href="#"><img src="<?php Busca(8) ?>"></a>
+                <a href="#"><img src="<?php Busca(8) ?>"></a>
+                <a href="#"><img src="<?php Busca(8) ?>"></a>
+                <a href="#"><img src="<?php Busca(8) ?>"></a>
+                <a href="#"><img src="<?php Busca(8) ?>"></a>
+                <a href="#"><img src="<?php Busca(8) ?>"></a>
                 <a href="#" id="ultimo"><img id="ultimo" src="https://picsum.photos/320/194"></a>
                 <button class="slide slide-esquerda" onclick="esquerda(1)" type="button"><i class="fas fa-arrow-left"></i></button>
                 <button class="slide slide-direita" onclick="direita(1)" type="button"> <i class="fas fa-arrow-right"></i></button>

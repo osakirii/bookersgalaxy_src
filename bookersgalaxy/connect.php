@@ -40,4 +40,5 @@ class Connect extends PDO{
     }
 
 }
+$pdo = Connect::getInstance();
 ?>
