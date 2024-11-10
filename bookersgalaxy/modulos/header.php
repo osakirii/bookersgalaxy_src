@@ -54,20 +54,23 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
 
     <header id="header">
         <a href="/bookersgalaxy/index.php" style="margin: 0; padding : 0;"><img src="<?php echo Busca(1) ?>"></a>
-        <div>
-            <label for="filtro-daltonismo">Tenho Daltonismo:</label>
-            <select id="filtro-daltonismo">
-                <option value="">Padrão</option>
-                <option value="correcaopro-protanopia">Correção para Protanopia</option>
-                <option value="correcaopro-deuteranopia">Correção para Deuteranopia</option>
-                <option value="correcaopro-tritanopia">Correção para Tritanopia</option>
-                <option value="correcaopro-monocromacia">Correção para Monocromacia</option>
-            </select>
-            <button onclick="ajustarFonte(1)">A+</button>
-            <button onclick="resetarFonte()">Resetar Fonte</button>
-            <button onclick="ajustarFonte(-1)">A-</button>
-            <button onclick="toggleContraste()">Alto Contraste</button>
-
+        <div id="headerCookies">
+            <div>
+                <label for="filtro-daltonismo">Tenho Daltonismo:</label>
+                <select id="filtro-daltonismo">
+                    <option value="">Padrão</option>
+                    <option value="correcaopro-protanopia">Correção para Protanopia</option>
+                    <option value="correcaopro-deuteranopia">Correção para Deuteranopia</option>
+                    <option value="correcaopro-tritanopia">Correção para Tritanopia</option>
+                    <option value="correcaopro-monocromacia">Correção para Monocromacia</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="ajustarFonte(1)">A+</button>
+                <button onclick="resetarFonte()">Resetar Fonte</button>
+                <button onclick="ajustarFonte(-1)">A-</button>
+                <button onclick="toggleContraste()">Alto Contraste</button>
+            </div>
         </div>
         <a href="/bookersgalaxy/categorias.php">Categorias</a>
         <form id="headerform">

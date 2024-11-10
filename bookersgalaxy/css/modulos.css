@@ -179,6 +179,15 @@ html{
     color: white;
 }
 
+#header #headerCookies{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+#header #headerCookies div{
+    display: flex;
+}
+
 #header #headerform{
     display: inline-flex;
     border-radius: 8px;
