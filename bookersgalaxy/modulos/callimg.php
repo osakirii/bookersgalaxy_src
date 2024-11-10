@@ -1,11 +1,12 @@
     <?php
-include_once(__DIR__ . '/../config.php'); // Inclui todas as configurações e funções globais
+    include_once(__DIR__ . '/../config.php'); // Inclui todas as configurações e funções globais
 
     $con = Connect::getInstance();
-    function Busca($id) {
+    function Busca($id)
+    {
 
         global $pdo;
-        
+
         $stmt = $pdo->prepare("SELECT path FROM arquivossite WHERE id = :id"); // Confirme se 'path' é o nome correto do campo
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -16,29 +17,61 @@ include_once(__DIR__ . '/../config.php'); // Inclui todas as configurações e f
             echo 'Deu erro no callimg';
         }
     }
-    function BuscaLivro(){
+    function BuscaLivro($id_livro = null, $todasImagens = false){
         global $pdo;
         
-        // Prepare a query para buscar os dados
-        $stmtImagem = $pdo->prepare("
+        // Define a consulta base, incluindo o nome da editora
+        $sql = "
             SELECT 
-                arquivos.path, 
+                arquivos.path,  
                 livros.Titulo, 
                 livros.Autor, 
+                livros.Data_lancamento,
+                livros.QntPaginas,
+                livros.Sinopse,
                 livros.Preco, 
-                livros.id_livro
+                livros.id_livro,
+                genero.Genero AS Genero,
+                editora.nome AS NomeEditora
             FROM arquivos 
             INNER JOIN livros 
                 ON livros.id_livro = arquivos.livro_id 
-            WHERE arquivos.is_capa = 1
-        ");
+            INNER JOIN genero 
+                ON livros.id_categoria = genero.id_categoria
+            INNER JOIN editora
+                ON livros.id_editora = editora.id_editora
+        ";
+    
+        // Adiciona a condição para buscar imagens de capa ou todas as imagens
+        $sql .= " WHERE ";
+        if (!$todasImagens) {
+            $sql .= "arquivos.is_capa = 1 AND ";
+        }
+    
+        // Adiciona a condição para um livro específico, se fornecido
+        if ($id_livro !== null) {
+            $sql .= "livros.id_livro = :id_livro";
+        } else {
+            $sql .= "1"; // Evita erro de SQL
+        }
+    
+        $sql .= " LIMIT 15"; // Limite opcional
+    
+        $stmtImagem = $pdo->prepare($sql);
+    
+        // Associa o id_livro, se aplicável
+        if ($id_livro !== null) {
+            $stmtImagem->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+        }
         
         // Executa a consulta
         $stmtImagem->execute();
         
-        // Obtém os resultados da consulta
+        // Retorna os resultados
         return $stmtImagem->fetchAll(PDO::FETCH_ASSOC);
-
     }
     
+
+
+
     ?>
