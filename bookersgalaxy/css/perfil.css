@@ -1,6 +1,6 @@
 #perfil{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 0;
 }
 
@@ -9,17 +9,25 @@
     height: 218px;
 }
 
-#perfil .perfilContainer{
+.perfilContainer{
+    width: 320px;
+    height: auto;
+    font-family: "Josefin Sans", sans-serif;
+    margin: 20px;
+    margin-top: 0;
+}
+
+.perfilContainer span{
     display: flex;
-    justify-content: center;
-    flex: 0 0 120px;
-    font-family: "Josefin Sans", sans-serif;
+    align-items: center;
+    transition: 0.3s;
+
+        &:hover{
+            font-size: large;
+        }
 }
 
-#perfil .perfilContainer p{
-    font-family: "Josefin Sans", sans-serif;
-}
-
-#perfil .perfilContainer span{
-    margin-top: 50px;
+.perfilContainer span i{
+    font-size: 20px;
+    margin-right: 10px;
 }
