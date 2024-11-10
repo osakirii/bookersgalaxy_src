@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+body {
+    height: 100vh;
+    }
+main {
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+
+}
+.loved_books {
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    align-items: center;
+    height: 100%;
+    overflow-y: auto;
+}
+ .carousel_section, .loved_books {
+    flex: 1; /* Faz com que ambas as seções ocupem o mesmo espaço */
+}
+ .box_favorite {
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
+    width:90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 30%;
+    margin: 10px 0 20px 0;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+ }
+ .box_favorite img {
+    object-fit: contain;
+    width: 20%;
+    height: 80%;
+    padding: 5px;
+ }
+ .box_favorite h4, .box_favorite p {
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: 'Montaga',sans-serif;
+ 
+ }
+button.favorito,
+button.carrinho {
+    background-color: inherit;
+    border: none;
+    font-size: 30px;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.icon-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: grey; /* Estado inicial cinza */
+    transition: background-color 0.3s;
+}
+
+.icon-box[data-favorited="true"] {
+    background-color: blue; /* Estado selecionado azul */
+    color: white;
+}
+
+.icon-box[data-favorited="true"]::after {
+    content: '✓'; /* Símbolo de check */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+.livro-info {
+    display: flex;
+    flex-direction: column;
+}
+.selected-book {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    background-color: wheat;
+    box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 2px solid #B2ADAD   ;
+    border-radius: 4px;
+}
+.selected-book img {
+    border-radius: 4px;
+    aspect-ratio: 3/4;
+    width: 50%;
+}
+.empty-cart {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.empty-cart p {
+    color: #666;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.home-button:hover {
+    background-color: #2980b9;
+}
+
+/*
+
+
+
+
+
+
+*/
+@media screen and (max-width: 768px) {
+    main {
+        flex-direction: column; /* Muda a direção do flex para coluna */
+        align-items: center; /* Centraliza os itens no centro */
+        height: 100vh;
+    }
+
+    .loved_books {
+        display: flex;
+        order: 1;
+        flex-direction: column;
+        height: 50%;
+        min-width: 100%;
+    }
+     .carousel_section, .loved_books {
+        flex: 1; /* Faz com que ambas as seções ocupem o mesmo espaço */
+    }
+     .box_favorite {
+        box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
+        width:90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height:100%;
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+     }
+     .box_favorite img {
+        object-fit: contain;
+        width: 20%;
+        height: 80%;
+        padding: 5px;
+     }
+     .box_favorite h4, .box_favorite p {
+        font-size: 18px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-family: 'Montaga',sans-serif;
+     
+     }
+    button.favorito,
+    button.carrinho {
+        background-color: inherit;
+        border: none;
+        font-size: 30px;
+    }
+
+}
+

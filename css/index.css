@@ -1,0 +1,56 @@
+#corpo button.ir-esquerda{
+    left: 5px;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-top: 80px;
+}
+
+#corpo button.ir-direita{
+    right: 5px;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-top: 80px;
+}
+
+#corpo .estante{
+    height: 360px;
+    border-radius: 5px;
+    scroll-behavior: smooth;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 60px;
+}
+
+#corpo .livro{
+    flex: 0 0 141px;
+    height: 250px;
+    margin: 0px 20px 0px 0px;
+}
+#corpo .livro p{
+    font-family: "Montaga", serif;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+#corpo .livro p.nomeAutor{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+#corpo .livro:hover{
+    height: 350px;
+}
+#corpo .livro:hover p{
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+}
