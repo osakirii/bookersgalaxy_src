@@ -1,6 +1,5 @@
 <?php
-    include_once("modulos/loadingscreen.php");
-    include_once("modulos/header.php");
+    include_once(__DIR__ . '/config.php'); // Inclui todas as configurações e funções globais
 ?>
 
 <html lang="pt-br">
