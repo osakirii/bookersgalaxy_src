@@ -17,8 +17,8 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/modulos.css">
-        <script src="https://kit.fontawesome.com/7162ac436f.js"
-        crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
     <script src="js/modulos.js"></script>
 </head>
 
