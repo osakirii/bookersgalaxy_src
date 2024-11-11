@@ -1,4 +1,5 @@
     <?php
+    session_start();
     include_once(__DIR__ . '/../config.php'); // Inclui todas as configurações e funções globais
     file_put_contents('log.txt', "Requisição recebida: " . json_encode($_POST) . "\n", FILE_APPEND);
     if (isset($_COOKIE['filtro_daltonismo'])) {
@@ -23,17 +24,7 @@
     if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
         // Criar uma lista de IDs seguros
         $idsLivros = implode(',', array_map('intval', $_SESSION['carrinho']));
-
-        // Consulta SQL para buscar os livros
-        $stmt = $con->prepare("
-        SELECT livro.id_livro, livro.titulo, livro.autor, livro.preco, MIN(imagens.caminho) AS imagem_caminho
-        FROM livro
-        LEFT JOIN imagens ON imagens.livro_id = livro.id_livro
-        WHERE livro.id_livro IN ($idsLivros)
-        GROUP BY livro.id_livro
-    ");
-        $stmt->execute();
-        $livrosCarrinho = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $livrosCarrinho = BuscaLivro($idsLivros,FALSE);
     }
     ?>
 
@@ -53,15 +44,25 @@
         <main>
             <div class="loved_books">
                 <label style="text-align:initial">MEU CARRINHO</label>
+                
+                <?php
 
-                <?php if (!empty($livrosCarrinho)): ?>
+                if (!empty($livrosCarrinho)): ?>
                     <?php foreach ($livrosCarrinho as $livro): ?>
                         <div class="box_favorite" data-id="<?php echo $livro['id_livro']; ?>">
-                            <img src="<?php echo $livro['imagem_caminho']; ?>" alt="Capa do livro">
-                            <div class="livro-info">
-                                <h4><?php echo htmlspecialchars($livro['titulo']); ?> - <?php echo htmlspecialchars($livro['autor']); ?></h4>
-                                <p>R$ <?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
-                            </div>
+                        <?php
+                            if ($livro) {
+                                    echo '<div class="book_card">';
+                                    echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
+                                    echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
+                                    echo htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
+                                    echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
+                                    echo '</a>';
+                                    echo '</div>';
+                            } else {
+                                echo 'Nenhum livro encontrado para exibir.';
+                            }
+                            ?>
                             <div class="acoes">
                                 <button class="favorite-btn" onclick="toggleFavorite(this, <?php echo htmlspecialchars(json_encode($livro)); ?>)">
                                     <div class="icon-box"></div>
@@ -85,7 +86,7 @@
         </main>
 
         <?php 
-            include("modulos/footer.php");
+            include("../modulos/footer.php");
         ?>
 
 
@@ -119,7 +120,7 @@
 
                 // Inclui a imagem, informações e seletor de quantidade
                 bookContainer.innerHTML = `
-        <img src="${livro.imagem_caminho}" alt="Capa do livro" style="width: 50px; height: 75px;">
+        <img src="${livro.arquivos_path}" alt="Capa do livro" style="width: 50px; height: 75px;">
         <div class="livro-info">
             <h4>${livro.titulo} - ${livro.autor}</h4>
             <p>R$ ${Number(livro.preco).toFixed(2).replace('.', ',')}</p>

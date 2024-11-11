@@ -173,7 +173,7 @@ try {
                                 <form action="./funcoes/functions.php" method="post">
                                     <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($userId); ?>">
                                     <input type="hidden" name="id_livro" value="<?php echo htmlspecialchars($id_livro); ?>">
-                                    <button onclick="toggleFavorite()" id="favoritarBtn" name="favoritar" class="btn" type="submit">
+                                    <button onclick="toggleFavorite(<?php echo htmlspecialchars($id_livro); ?>)" id="favoritarBtn" name="favoritar" class="btn" type="button">
 
                                         <?php
                                         if (isset($_SESSION['cliente_id'])) {
@@ -182,7 +182,7 @@ try {
                                             if ($stmt->rowCount() > 0) {
                                                 $favoritado = $stmt->fetchColumn(); // Pega o valor do  (0 ou 1)
                                                 if ($favoritado) {
-                                                    echo "<i id='heartIcon' class='fas fa-heart' style='color:red;'></i>";
+                                                    echo "<i id='heartIcon-{$id_livro}' class='fas fa-heart' style='color:red;'></i>";
                                                 } else {
                                                     echo "<i id='heartIcon' class='fas fa-heart' style='color:grey;'></i>";
                                                 }
@@ -360,7 +360,7 @@ include("modulos/footer.php");
     function toggleFavorite(idLivro) {
         const userId = <?php echo json_encode($userId); ?>; // ID do usuário da sessão
 
-        fetch('./compra/carrinho.php', {
+        fetch('compra/carrinho.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -453,31 +453,30 @@ include("modulos/footer.php");
 
     // Função para adicionar item ao carrinho e armazenar no Local Storage
     function adicionarAoCarrinho(idLivro) {
-    console.log("Função adicionarAoCarrinho chamada com ID:", idLivro); // Verifica se a função está sendo chamada
-    fetch('./compra/carrinho.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            acao: 'adicionarCarrinho',
-            id_livro: idLivro
-        })
-    })
-    .then(response => {
-        console.log("Resposta recebida:", response); // Verifica se há resposta do servidor
-        return response.json();
-    })
-    .then(data => {
-        console.log("Dados recebidos:", data); // Verifica os dados recebidos
-        if (data.success) {
-            alert("Livro adicionado ao carrinho com sucesso!");
-        } else {
-            alert("Erro ao adicionar livro ao carrinho: " + data.error);
-        }
-    })
-    .catch(error => console.error('Erro:', error));
-}
+        console.log("Função adicionarAoCarrinho chamada com ID:", idLivro);
+        fetch('/bookersgalaxy/modulos/funcs.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    acao: 'adicionarCarrinho',
+                    id_livro: idLivro
+                })
+            })
+
+            .then(response => response.json())
+            .then(data => {
+                console.log('Resposta recebida:', data);
+                if (data.success) {
+                    alert("Livro adicionado ao carrinho com sucesso!");
+                } else {
+                    alert("Erro ao adicionar ao carrinho: " + (data.error || 'Erro desconhecido.'));
+                }
+            })
+            .catch(error => console.error('Erro na requisição:', error));
+    }
+
 
 
 
