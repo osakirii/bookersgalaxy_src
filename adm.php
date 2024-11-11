@@ -27,7 +27,7 @@
             <button><a href="uploadLivro.php">Excluir Editora</a></button><br>
 
             <h2>Site</h2>
-            <button><a href="Editora/uploadEditora.php">Adicionar </a></button><br>
+            <button><a href="upload.php">Adicionar e ver Imagens do site</a></button><br>
             <button><a href="uploadLivro.php">Ver Editoras</a></button><br>
             <button><a href="uploadLivro.php">Alterar Editora</a></button><br>
             <button><a href="uploadLivro.php">Excluir Editora</a></button><br>

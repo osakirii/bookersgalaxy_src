@@ -43,7 +43,7 @@
                     <a href="#">
                         <i class="fas fa-credit-card"></i><p>Cartões Cadastrados</p>
                         </a>
-                    <a href="#">
+                    <a href="pedidos.php">
                         <i class="fas fa-boxes-packing"></i><p>Pedidos</p>
                         </a>
                     <a href="#">
@@ -61,7 +61,7 @@
             if ($livros) {
                 foreach ($livros as $livro) {
                     echo '<div class="livro">';
-                    echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
+                    echo '<a href="../Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
                     echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
                     echo '</a>';
                     echo '<div class="livro-texto">';
