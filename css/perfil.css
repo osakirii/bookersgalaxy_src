@@ -111,6 +111,10 @@ img{
     margin: 5px;
 }
 
+#editarUsuario form span{
+    cursor: pointer;
+}
+
 #editarUsuario form .linha{
     width: 2px;
     height: 415px;

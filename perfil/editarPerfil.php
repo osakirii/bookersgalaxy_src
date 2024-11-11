@@ -71,7 +71,9 @@
                     CEP
                     <input type="text" placeholder="" maxlength="">
                     <br><br>
-                    <i class="fas fa-plus"></i>Adicionar mais endereços
+                    <span>
+                    <i class="fas fa-plus" style="font-size: 20px;"></i>Adicionar mais endereços
+                    </span>
                 </div>
                 <div class="linha"></div>
                 <div>
