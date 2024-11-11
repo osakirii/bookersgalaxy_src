@@ -4,20 +4,20 @@
     margin-bottom: 0;
 }
 
-#perfil img{
+img{
     width: 218px;
     height: 218px;
 }
 
 .perfilContainer{
     width: 320px;
-    height: auto;
+    height: 240px;
     font-family: "Josefin Sans", sans-serif;
     margin: 20px;
     margin-top: 0;
 }
 
-.perfilContainer span{
+.perfilContainer a{
     display: flex;
     align-items: center;
     transition: 0.3s;
@@ -27,7 +27,157 @@
         }
 }
 
-.perfilContainer span i{
+.perfilContainer a i{
     font-size: 20px;
     margin-right: 10px;
+}
+
+#editarPerfil{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#editarPerfil form{
+    display: flex;
+    flex-flow: column wrap;
+    margin-left: 50px;
+    position: relative;
+}
+
+#editarPerfil form input, #editarPerfil textarea{
+    width: 463px;
+    outline: none;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    font-family: "Josefin Sans", sans-serif;
+    box-shadow: 0 0 3px #7e7c7c;
+    border-radius: 6px;
+
+        &:focus{
+            outline: 1px solid black;
+        }
+}
+
+#editarPerfil i{
+    position: absolute;
+    right: 20px;
+    top: 32px;
+}
+
+#editarPerfil i#dois{
+    top: 158px;
+}
+
+#mudarEdit{
+    width: 381px;
+    height: 7vh;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #7e7c7c;
+    display: flex;
+    justify-content: space-evenly;
+    background: #FBC7C7;
+}
+
+#mudarEdit p{
+    cursor: pointer;
+}
+
+#mudarEdit p.active{
+    border-bottom: 2px solid #1D1E1D;
+    padding-bottom: 27px;
+}
+
+#editarUsuario{
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+#editarUsuario form{
+    display: none;
+    width: 92vw;
+}
+
+#editarUsuario form.active{
+    display: flex;
+    justify-content: space-between;
+}
+
+#editarUsuario form div{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 5px;
+}
+
+#editarUsuario form .linha{
+    width: 2px;
+    height: 415px;
+    background: red;
+    background: #D9D9D9;
+}
+
+#editarUsuario form input{
+    width: 463px;
+    outline: none;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    font-family: "Josefin Sans", sans-serif;
+    box-shadow: 0 0 3px #7e7c7c;
+    border-radius: 6px;
+
+        &:focus{
+            outline: 1px solid black;
+        }
+}
+
+#editarUsuario form select{
+    margin: 10px;
+    padding: 10px;
+    width: 264px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    font-family: "Josefin Sans", sans-serif;
+    box-shadow: 0 0 3px #7e7c7c;
+}
+
+#botoesEditar{
+    width: 52vw;
+    position: relative;
+}
+
+#botoesEditar button{
+    width: 180px;
+    height: 41px;
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-family: "Josefin Sans", sans-serif;
+    background: #A5DDB8;
+    box-shadow: 0 0 3px #7e7c7c;
+    transition: 0.3s;
+
+
+        &:active{
+            background: #9ac4a8;
+        }
+
+        &:hover{
+            background: #A5DDB8;
+        }
+}
+
+#botoesEditar button#cancelar{
+    right: 200px;
+    color: white;
+    background: #B80100;
+
+        &:active{
+            background: #8a1010;
+        }
 }
