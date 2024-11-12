@@ -6,6 +6,8 @@
     <meta name="viewport" content="width= , initial-scale=1.0">
     <link rel="stylesheet" href="../css/Login_NvConta.css">
     <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
     <title>Nova Conta</title>
 </head>
 
@@ -18,6 +20,7 @@
                     <p> Email<br><input name="txtEmail" type="text" size="20"></p>
                     <p> Senha<br><input name="txtSenha" type="password" size="20">
                     <p> Confirme sua Senha<br><input name="txtConfSenha" type="password" size="20"></p>
+                    <i class="fas fa-eye Eye B"></i>
                 </div>
                 <ul>
                     <a href="login_cad.php"><button class="BTazul"type="button">Voltar</button></a> 
