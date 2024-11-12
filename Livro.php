@@ -106,115 +106,55 @@ try {
 
     <!--PARTE DAS INFORMAÇÕES-->
     <div class="container_infos">
-        <?php if ($livros): ?>
-            <?php foreach ($livros as $livro): ?>
-                <div class="info-box">
-                    <h2 class="psombra">
-                        <?php echo htmlspecialchars($livro['Titulo']); ?>
-                    </h2>
-                    <h4 class="psombra">
-                        <?php echo htmlspecialchars($livro['Autor']) . " - " . htmlspecialchars($livro['Data_lancamento']); ?>
-                    </h4>
-                    <p class="psombra">
-                        Sinopse:
-                        <?php
-                        $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
-                        $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 1000, "..."); // Mostra 1000 caracteres
-                        ?>
-                        <span><?php echo $sinopseCurta; ?></span>
-                        <span class="sinopse-completa">
-                            <?php echo substr($sinopseCompleta, 1000); ?>
-                        </span>
+    <div class="info-box">
+        <h2 class="titulo"><?php echo htmlspecialchars($livro['Titulo']); ?></h2>
+        <h4 class="autor"><?php echo htmlspecialchars($livro['Autor']); ?> - <?php echo htmlspecialchars($livro['Data_lancamento']); ?></h4>
+    </div>
 
-                        <?php if (strlen($sinopseCompleta) > 1000): ?>
-                            <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
-                        <?php endif; ?>
-                    </p>
-                </div>
+    <!-- Sinopse -->
+    <div class="sinopse-container">
+        <p class="psombra">
+            <?php
+            $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
+            $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 280, "...");
+            ?>
+            <span><?php echo $sinopseCurta; ?></span>
+            <span class="sinopse-completa">
+                <?php echo mb_substr($sinopseCompleta, 180); ?>
+            </span>
+            <?php if (mb_strlen($sinopseCompleta) > 280): ?>
+                <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
+            <?php endif; ?>
+        </p>
+    </div>
 
+    <!-- Informações funcionais com ícones e botões -->
+    <div class="container_additions">
+        <!-- Ícones de informações à esquerda -->
+        <div class="info_column">
+            <div class="info_item"><i class="bi bi-book"></i> <span><?php echo htmlspecialchars($livro['QntPaginas']); ?> Páginas</span></div>
+            <div class="info_item"><i class="bi bi-pencil-square"></i> <span><?php echo htmlspecialchars($livro['NomeEditora']); ?></span></div>
+            <div class="info_item"><i class="material-symbols-outlined">theater_comedy</i> <span><?php echo htmlspecialchars($livro['Genero']); ?></span></div>
+            <div class="info_item"><i class="bi bi-box-seam"></i> <span><?php echo htmlspecialchars($livro['Estoque']); ?></span></div>
+            <div class="info_item"><i class="bi bi-star-fill"></i> <span><?php echo htmlspecialchars($livro['Avaliacao']); ?></span></div>
+        </div>
 
-
-                <!--PARTE DAS INFORMAÇÕES-->
-
-                <div class="container_additions">
-                    <div class="info_column">
-                        <div class="info_item">
-                            <i class="bi bi-book"></i> <span><?php echo htmlspecialchars($livro['QntPaginas']); ?> Páginas</span>
-                        </div>
-                        <div class="info_item">
-                            <i class="bi bi-pencil-square"></i>
-                            <span><?php echo htmlspecialchars($livro['NomeEditora']); ?></span>
-                        </div>
-                        <div class="info_item">
-
-                            <span class="material-symbols-outlined">theater_comedy</span>
-                            <span><?php echo htmlspecialchars($livro['Genero']); ?></span>
-                        </div>
-                        <div class="info_item">
-                            <i class="bi bi-box-seam"></i> <span><?php echo htmlspecialchars($livro['']); ?></span>
-                        </div>
-                        <div class="info_item">
-                            <i class="bi bi-star-fill"></i>
-                            <span><?php echo htmlspecialchars($livro['  ']); ?></span>
-                        </div>
-                    </div>
-
-                    <!--PARTE FUNCIONAL !-->
-                    <div class="functional_column">
-                        <span>R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
-                        <?php if (isset($_SESSION['cliente_id'])): ?>
-                            <button name="btn_comprar" type="submit">Comprar agora</button>
-                        <?php else: ?>
-                            <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
-                        <?php endif; ?>
-
-                        <div class="icon_sticks_container">
-                            <div class="btns">
-                                <form action="./funcoes/functions.php" method="post">
-                                    <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($userId); ?>">
-                                    <input type="hidden" name="id_livro" value="<?php echo htmlspecialchars($id_livro); ?>">
-                                    <button onclick="toggleFavorite()" id="favoritarBtn" name="favoritar" class="btn" type="submit">
-
-                                        <?php
-                                        if (isset($_SESSION['cliente_id'])) {
-                                            $stmt = $con->prepare("SELECT estado FROM favoritos WHERE id_usuario = ? AND id_livro = ?");
-                                            $stmt->execute([$userId, $id_livro]);
-                                            if ($stmt->rowCount() > 0) {
-                                                $favoritado = $stmt->fetchColumn(); // Pega o valor do  (0 ou 1)
-                                                if ($favoritado) {
-                                                    echo "<i id='heartIcon' class='fas fa-heart' style='color:red;'></i>";
-                                                } else {
-                                                    echo "<i id='heartIcon' class='fas fa-heart' style='color:grey;'></i>";
-                                                }
-                                            } else {
-                                                echo "<i id='heartIcon' class='fas fa-heart' style='color:grey;'></i>";
-                                            }
-                                        } else {
-                                            echo "<button onclick='alert('Faça login para favoritar este livro.')' class='btn' type='button'><i id='heartIcon' class='fas fa-heart' style='color:grey;'></i></button>";
-                                        }
-
-                                        ?>
-                                    </button>
-                                </form>
-                            </div>
-                            <button class="sticks" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
-                                <hr id="stick1">
-                                <hr id="stick2">
-                                <div class="add_cart_txt">
-                                    <p>Adicionar ao Carrinho</p>
-                                </div>
-                            </button>
-
-
-                        </div>
-                    </div>
-                    <!--PARTE FUNCIONAL !-->
-
-                </div>
+        <!-- Parte funcional à direita -->
+        <div class="functional_column">
+            <span class="preco">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
+            <?php if (isset($_SESSION['cliente_id'])): ?>
+                <button name="btn_comprar" type="submit">Comprar agora</button>
+            <?php else: ?>
+                <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
+            <?php endif; ?>
+            <button id="favoritarBtn" class="heart-icon"><i class="fas fa-heart"></i></button>
+            <button class="sticks">+</button>
+            <div class="add_cart_txt">Adicionar ao Carrinho</div>
+        </div>
     </div>
 </div>
-<?php endforeach; ?>
-<?php endif; ?>
+
+</div>
 
 
 <!--///////////////////////////////////!-->
@@ -243,61 +183,55 @@ try {
 <!--LIVROS SEMELHANTES!-->
 <!--///////////////////////////////////!-->
 <div class="second_content">
+    <!--///////////////////////////////////!-->
+
     <div class="form_container">
+        <!--
+
         <h2 style="font-weight:500;">AVALIAÇÃO DO LIVRO</h2>
-        <!-- Inicio do formulário -->
-        <form method="POST" action="processa.php">
+      <form method="POST" action="processa.php">
 
             <div class="estrelas">
 
-                <!-- Carrega o formulário definindo nenhuma estrela selecionada -->
                 <input type="radio" name="estrela" id="vazio" value="" checked>
 
-                <!-- Opção para selecionar 1 estrela -->
                 <label for="estrela_um"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_um" id="vazio" value="1">
 
-                <!-- Opção para selecionar 2 estrela -->
                 <label for="estrela_dois"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_dois" id="vazio" value="2">
 
-                <!-- Opção para selecionar 3 estrela -->
                 <label for="estrela_tres"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_tres" id="vazio" value="3">
 
-                <!-- Opção para selecionar 4 estrela -->
                 <label for="estrela_quatro"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_quatro" id="vazio" value="4">
 
-                <!-- Opção para selecionar 5 estrela -->
                 <label for="estrela_cinco"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_cinco" id="vazio" value="5"><br><br>
 
-                <!-- Campo para enviar a mensagem -->
                 <textarea name="mensagem" rows="4" cols="30" placeholder="Digite o seu comentário..."></textarea><br><br>
 
-                <!-- Botão para enviar os dados do formulário -->
                 <input type="submit" value="Cadastrar"><br><br>
 
             </div>
-
         </form>
-        <!-- Fim do formulário -->
+        -->
 
+        <form method="POST" enctype="multipart/form-data" onsubmit="return addComent(event, <?php echo htmlspecialchars($id_livro); ?>)">
+            <p style="width:75%;">X% dos clientes gostaram de ‘Drácula’.<br><br>
+                Qual foi a sua experiência durante a leitura desse livro? Faça também a sua avaliação!</p>
+            <div class="form_group">
+                <textarea id="texto_comentario" name="texto" rows="4" placeholder="Escreva seu comentario!" required></textarea>
+            </div>
 
-        <p style="width:75%;">X% dos clientes gostaram de ‘Drácula’.<br><br>
-            Qual foi a sua experiência durante a leitura desse livro? Faça também a sua avaliação!</p>
-        <div class="form_group">
-            <textarea id="texto_comentario" name="texto" rows="4" placeholder="Escreva seu comentario!" required></textarea>
-        </div>
-
-        <div class="form_group">
-            <label>Imagens (Máximo de 5)</label>
-            <input type="file" name="imagens[]" accept="image/*" multiple>
-        </div>
-        <div class="form_group">
-            <button type="submit">Enviar Comentário</button>
-        </div>
+            <div class="form_group">
+                <label>Imagens (Máximo de 5)</label>
+                <input type="file" name="imagens[]" accept="image/*" multiple>
+            </div>
+            <div class="form_group">
+                <button onclick="addComent(<?php echo htmlspecialchars($id_livro); ?>)">Enviar Comentário</button>
+            </div>
         </form>
     </div>
 
@@ -360,7 +294,7 @@ include("modulos/footer.php");
     function toggleFavorite(idLivro) {
         const userId = <?php echo json_encode($userId); ?>; // ID do usuário da sessão
 
-        fetch('./compra/carrinho.php', {
+        fetch('compra/carrinho.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -384,6 +318,31 @@ include("modulos/footer.php");
             })
             .catch(error => console.error('Erro:', error));
     }
+
+    function addComent(event, idLivro) {
+        event.preventDefault(); // Evita o recarregamento da página
+
+        const form = event.target; // O próprio formulário
+        const formData = new FormData(form); // Captura todos os dados do formulário
+        formData.append('acao', 'enviarComentario'); // Adiciona a ação específica
+        formData.append('id_livro', idLivro);
+
+        fetch('modulos/funcs.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Comentário enviado com sucesso!");
+                    // Aqui você pode atualizar o DOM, mostrar uma mensagem de sucesso, etc.
+                } else {
+                    alert("Erro ao enviar o comentário: " + data.error);
+                }
+            })
+            .catch(error => console.error('Erro:', error));
+    }
+
 
     const stars = document.querySelectorAll('.star-rating label');
     stars.forEach(star => {
@@ -453,31 +412,30 @@ include("modulos/footer.php");
 
     // Função para adicionar item ao carrinho e armazenar no Local Storage
     function adicionarAoCarrinho(idLivro) {
-    console.log("Função adicionarAoCarrinho chamada com ID:", idLivro); // Verifica se a função está sendo chamada
-    fetch('./compra/carrinho.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            acao: 'adicionarCarrinho',
-            id_livro: idLivro
-        })
-    })
-    .then(response => {
-        console.log("Resposta recebida:", response); // Verifica se há resposta do servidor
-        return response.json();
-    })
-    .then(data => {
-        console.log("Dados recebidos:", data); // Verifica os dados recebidos
-        if (data.success) {
-            alert("Livro adicionado ao carrinho com sucesso!");
-        } else {
-            alert("Erro ao adicionar livro ao carrinho: " + data.error);
-        }
-    })
-    .catch(error => console.error('Erro:', error));
-}
+        console.log("Função adicionarAoCarrinho chamada com ID:", idLivro);
+        fetch('/bookersgalaxy/modulos/funcs.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    acao: 'adicionarCarrinho',
+                    id_livro: idLivro
+                })
+            })
+
+            .then(response => response.json())
+            .then(data => {
+                console.log('Resposta recebida:', data);
+                if (data.success) {
+                    alert("Livro adicionado ao carrinho com sucesso!");
+                } else {
+                    alert("Erro ao adicionar ao carrinho: " + (data.error || 'Erro desconhecido.'));
+                }
+            })
+            .catch(error => console.error('Erro na requisição:', error));
+    }
+
 
 
 
@@ -510,22 +468,19 @@ include("modulos/footer.php");
     document.addEventListener('DOMContentLoaded', carregarCarrinho);
 
     function toggleSinopse(button) {
-        const sinopseCompleta = button.previousElementSibling;
+        const sinopseContainer = button.closest('.sinopse-container');
+        const sinopseCompleta = sinopseContainer.querySelector('.sinopse-completa');
 
-        if (sinopseCompleta.classList.contains("expandida")) {
+        if (sinopseContainer.classList.contains("expandido")) {
             // Recolhe a sinopse
+            sinopseContainer.classList.remove("expandido");
             sinopseCompleta.classList.remove("expandida");
             button.innerText = "Ler mais";
         } else {
             // Expande a sinopse
+            sinopseContainer.classList.add("expandido");
             sinopseCompleta.classList.add("expandida");
             button.innerText = "Ler menos";
-
-            // Garante que a rolagem leve o usuário suavemente para o início da sinopse completa
-            sinopseCompleta.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
         }
     }
 </script>
