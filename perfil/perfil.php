@@ -46,7 +46,7 @@
                     <a href="pedidos.php">
                         <i class="fas fa-boxes-packing"></i><p>Pedidos</p>
                         </a>
-                    <a href="#">
+                    <a href="favoritos.php">
                         <i class="far fa-heart"></i><p>Favoritos</p>
                         </a>
                 </div>
