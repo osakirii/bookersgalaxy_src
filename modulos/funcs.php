@@ -1,66 +1,75 @@
 <?php
 session_start();
-include("../connect.php");
 header('Content-Type: application/json');
 
-class CarrinhoFunc
-{
-    public function obterIdLivro()
-    {
-        return isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null;
+class CarrinhoFunc {
+    public function adicionarCarrinho($idLivro) {
+        if (!isset($idLivro) || !is_numeric($idLivro)) {
+            echo json_encode(['success' => false, 'error' => 'ID do livro inválido.']);
+            return;
+        }
+
+        // Inicializar a sessão do carrinho como array associativo se não existir
+        if (!isset($_SESSION['carrinho'])) {
+            $_SESSION['carrinho'] = [];
+        }
+
+        // Incrementa a quantidade do livro no carrinho
+        if (isset($_SESSION['carrinho'][$idLivro])) {
+            $_SESSION['carrinho'][$idLivro]++;
+        } else {
+            $_SESSION['carrinho'][$idLivro] = 1;
+        }
+
+        echo json_encode(['success' => true, 'carrinho' => $_SESSION['carrinho']]);
+
     }
 
-    public function adicionarCarrinho($idLivro)
-    {
-        if (isset($idLivro)) {
-            // Inicializa a sessão do carrinho, se ainda não existir
-            if (!isset($_SESSION['carrinho'])) {
-                $_SESSION['carrinho'] = [];
+    public function removerDoCarrinho($idLivro) {
+        if (isset($_SESSION['carrinho'][$idLivro])) {
+            // Reduz a quantidade ou remove se for 1
+            if ($_SESSION['carrinho'][$idLivro] > 1) {
+                $_SESSION['carrinho'][$idLivro]--;
+            } else {
+                unset($_SESSION['carrinho'][$idLivro]);
             }
-
-            // Verifica se o livro já está no carrinho para evitar duplicação
-            if (!in_array($idLivro, $_SESSION['carrinho'])) {
-                $_SESSION['carrinho'][] = $idLivro;
-            }
-
-            // Retornar sucesso e conteúdo do carrinho para debug
             echo json_encode(['success' => true, 'carrinho' => $_SESSION['carrinho']]);
         } else {
-            echo json_encode(['success' => false, 'error' => 'ID do livro não fornecido.']);
+            echo json_encode(['success' => false, 'error' => 'Livro não encontrado no carrinho.']);
         }
     }
 
-
-    public function toggleFavorite($idLivro, $idUsuario)
-    {
-        // Código para favoritar o livro (exemplo básico)
-        return json_encode(['success' => true, 'message' => 'Livro favoritado com sucesso!']);
+    public function listarCarrinho() {
+        if (!isset($_SESSION['carrinho']) || empty($_SESSION['carrinho'])) {
+            echo json_encode(['success' => true, 'carrinho' => []]);
+        } else {
+            echo json_encode(['success' => true, 'carrinho' => $_SESSION['carrinho']]);
+        }
     }
 }
 
-// Instancia a classe CarrinhoFunc
-$func = new CarrinhoFunc();
-
+// Verifica se a requisição é POST e processa a ação
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
+    $func = new CarrinhoFunc();
 
-    // Ação para adicionar ao carrinho
-    if (isset($data['acao']) && $data['acao'] === 'adicionarCarrinho') {
-        if (isset($data['id_livro'])) {
-            $func->adicionarCarrinho($data['id_livro']);
-        } else {
-            echo json_encode(['success' => false, 'error' => 'ID do livro não fornecido.']);
+    if (isset($data['acao'])) {
+        switch ($data['acao']) {
+            case 'adicionarCarrinho':
+                $func->adicionarCarrinho($data['id_livro']);
+                break;
+            case 'removerDoCarrinho':
+                $func->removerDoCarrinho($data['id_livro']);
+                break;
+            case 'listarCarrinho':
+                $func->listarCarrinho();
+                break;
+            default:
+                echo json_encode(['success' => false, 'error' => 'Ação inválida.']);
         }
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Ação não especificada.']);
     }
-    // Ação para favoritar
-    if (isset($data['acao']) && $data['acao'] === 'favoritar') {
-        if (isset($data['user_id']) && isset($data['id_livro'])) {
-            $idUsuario = $data['user_id'];
-            $idLivro = $data['id_livro'];
-            $resultado = $func->toggleFavorite($idLivro, $idUsuario);
-            echo $resultado;
-        } else {
-            echo json_encode(['success' => false, 'error' => 'ID do usuário ou do livro não fornecido.']);
-        }
-    }
+    exit;
 }
+?>

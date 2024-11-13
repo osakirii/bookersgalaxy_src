@@ -20,7 +20,6 @@
     function BuscaLivro($id_livro = null, $todasImagens = false){
         global $pdo;
         
-        // Define a consulta base, incluindo o nome da editora
         $sql = "
             SELECT 
                 arquivos.path,  

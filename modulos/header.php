@@ -1,4 +1,9 @@
 <?php
+if (isset($_SESSION['cliente_id'])) {
+    $userId = $_SESSION['cliente_id'];
+    $nomeUsuario = $_SESSION['nomeUsuario'];
+}
+
 if (!function_exists('Busca')) {
     include_once("callimg.php"); // Inclui `functions.php` se `Busca` não estiver definida
 }
@@ -16,11 +21,12 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/modulos.css">
-        <script src="https://kit.fontawesome.com/7162ac436f.js"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/modulos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=contrast" />
+        <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
     <script src="js/modulos.js"></script>
-</head>
 
 <body>
 
@@ -33,7 +39,16 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             <a href="#">Lançamentos</a>
             <a href="favoritos.php">Favoritos</a>
             <a href="/bookersgalaxy/compra/carrinho.php">Carrinho</a>
-            <a href="#">Meu perfil</a>
+            <a href="/bookersgalaxy/modulos/logout.php">Sair</a>
+            <?php 
+            if(isset($userId)){
+                echo "<a href='/bookersgalaxy/perfil/perfil.php'>Meu perfil</a>";
+            }
+            else{
+                echo "<a href='/bookersgalaxy/perfil/login_cad.php'>Meu perfil</a>";
+             }
+            
+            ?>
         </div>
         <div id="nav-rodape">
             <?php
@@ -69,7 +84,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 <button onclick="ajustarFonte(1)">A+</button>
                 <button onclick="resetarFonte()">Resetar Fonte</button>
                 <button onclick="ajustarFonte(-1)">A-</button>
-                <button onclick="toggleContraste()">Alto Contraste</button>
+                <button onclick="toggleContraste()">Contraste</button>
             </div>
         </div>
         <a href="/bookersgalaxy/categorias.php">Categorias</a>
@@ -78,8 +93,17 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
         </form>
         <div id="header-container">
             <a href="/bookersgalaxy/compra/carrinho.php"><i class="fas fa-cart-shopping"></i></a>
-            <a href="#"><i class="far fa-circle-user"></i></a>
+            <?php 
+            if(isset($userId)){
+                echo "<a href='/bookersgalaxy/perfil/perfil.php'><i class='far fa-circle-user'></i></a>";
+            }
+            else{
+                echo "<a href='/bookersgalaxy/perfil/login_cad.php'><i class='far fa-circle-user'></i></a>";
+             }
+            
+            ?>
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
+            
         </div>
     </header>
     <script>
