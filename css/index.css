@@ -26,13 +26,20 @@
     overflow-x: hidden;
     overflow-y: hidden;
     padding-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 #corpo .livro{
     flex: 0 0 141px;
     height: 250px;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 20px 0px 20px;
 }
+
+#corpo .livro img{
+    height: 216px;
+    width: auto;
+}
+
 #corpo .livro p{
     font-family: "Montaga", serif;
     overflow: hidden;
@@ -53,4 +60,9 @@
 #corpo .livro:hover p{
     line-clamp: 3;
     -webkit-line-clamp: 3;
+}
+
+#corpo #catalogo{
+    display: flex;
+    flex-flow: wrap;
 }

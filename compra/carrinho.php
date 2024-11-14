@@ -1,170 +1,179 @@
-    <?php
-    session_start();
-    include_once(__DIR__ . '/../config.php'); // Inclui todas as configurações e funções globais
-    file_put_contents('log.txt', "Requisição recebida: " . json_encode($_POST) . "\n", FILE_APPEND);
-    if (isset($_COOKIE['filtro_daltonismo'])) {
-    $filtroDaltonismo = $_COOKIE['filtro_daltonismo'];
-    echo '<body class="' . htmlspecialchars($filtroDaltonismo) . '">';
-} else {
-    echo '<body>';
+<?php
+session_start();
+include_once(__DIR__ . '/../config.php');
+
+// Verifique se a sessão do carrinho está configurada corretamente
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = [];
 }
 
-    // Verifica se a requisição para remover um livro foi enviada
-    if (isset($_POST['acao']) && $_POST['acao'] === 'removerDoCarrinho' && isset($_POST['id_livro'])) {
-        $idLivro = (int) $_POST['id_livro'];
+// Log da requisição para depuração
+file_put_contents('log.txt', "Requisição recebida: " . json_encode($_POST) . "\n", FILE_APPEND);
 
-        // Remove o ID do livro da sessão 'carrinho'
-        if (isset($_SESSION['carrinho'])) {
-            $_SESSION['carrinho'] = array_diff($_SESSION['carrinho'], [$idLivro]);
-        }
+if (isset($_POST['acao']) && $_POST['acao'] === 'removerDoCarrinho' && isset($_POST['id_livro'])) {
+    $idLivro = (int) $_POST['id_livro'];
 
-        echo json_encode(['success' => true]);
-        exit;
+    // Remova o ID do livro da sessão
+    if (isset($_SESSION['carrinho'][$idLivro])) {
+        unset($_SESSION['carrinho'][$idLivro]);
     }
-    if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
-        // Criar uma lista de IDs seguros
-        $idsLivros = implode(',', array_map('intval', $_SESSION['carrinho']));
-        $livrosCarrinho = BuscaLivro($idsLivros,FALSE);
+
+    echo json_encode(['success' => true]);
+    exit;
+}
+
+// Listar itens no carrinho com segurança
+if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
+    $idsLivros = implode(',', array_map('intval', array_keys($_SESSION['carrinho'])));
+
+    // Executar apenas se houver livros no carrinho
+    if ($idsLivros) {
+        $stmt = $con->prepare("
+            SELECT livros.id_livro, livros.titulo, livros.autor, livros.preco, MIN(arquivos.path) AS arquivo_path
+            FROM livros
+            LEFT JOIN arquivos ON arquivos.livro_id = livros.id_livro
+            WHERE livros.id_livro IN ($idsLivros)
+            GROUP BY livros.id_livro
+        ");
+        $stmt->execute();
+        $livrosCarrinho = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $livrosCarrinho = [];
     }
-    ?>
+}
+?>
 
-    <!DOCTYPE html>
-    <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Favoritos</title>
-        <link rel="stylesheet" href="../css/modulos.css">
-        <link rel="stylesheet" href="../css/carrinho.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    </head>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <body>
-        <main>
-            <div class="loved_books">
-                <label style="text-align:initial">MEU CARRINHO</label>
-                
-                <?php
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos</title>
+    <link rel="stylesheet" href="../css/modulos.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
 
-                if (!empty($livrosCarrinho)): ?>
-                    <?php foreach ($livrosCarrinho as $livro): ?>
-                        <div class="box_favorite" data-id="<?php echo $livro['id_livro']; ?>">
-                        <?php
-                            if ($livro) {
-                                    echo '<div class="book_card">';
-                                    echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
-                                    echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
-                                    echo htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
-                                    echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
-                                    echo '</a>';
-                                    echo '</div>';
-                            } else {
-                                echo 'Nenhum livro encontrado para exibir.';
-                            }
-                            ?>
-                            <div class="acoes">
-                                <button class="favorite-btn" onclick="toggleFavorite(this, <?php echo htmlspecialchars(json_encode($livro)); ?>)">
-                                    <div class="icon-box"></div>
-                                </button>
-                                <button class="remove-btn" onclick="removeFromCart(<?php echo $livro['id_livro']; ?>)"><span class="material-symbols-outlined">delete</span></button>
-                            </div>
+<body>
+    <main>
+        <!-- Área de livros no carrinho -->
+        <div class="loved_books">
+            <label style="text-align:initial">MEU CARRINHO</label>
+
+            <?php if (!empty($livrosCarrinho)): ?>
+                <?php foreach ($livrosCarrinho as $livro): ?>
+                    <div class="box_favorite" data-id="<?php echo $livro['id_livro']; ?>">
+                        <img src="<?php echo "../" . $livro['arquivo_path']; ?>" alt="Capa do livro">
+                        <div class="livro-info">
+                            <h4><?php echo htmlspecialchars($livro['titulo']); ?> - <?php echo htmlspecialchars($livro['autor']); ?></h4>
+                            <p>R$ <?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
                         </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="empty-cart">
-                        <p>Adicione livros ao seu carrinho!</p>
-                        <a href="../index.php" class="home-button">Voltar para a Home</a>
+                        <div class="acoes">
+                            <button class="favorite-btn" onclick="toggleFavorite(this, <?php echo htmlspecialchars(json_encode($livro)); ?>)">
+                                <div class="icon-box"></div>
+                            </button>
+                            <button class="remove-btn" onclick="removeFromCart(<?php echo $livro['id_livro']; ?>)">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
                     </div>
-                <?php endif; ?>
-            </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="empty-cart">
+                    <p>Adicione livros ao seu carrinho!</p>
+                    <a href="/bookersgalaxy/index.php" class="home-button">Voltar para a Home</a>
+                </div>
+            <?php endif; ?>
+        </div>
 
-            <div class="selected_books">
-                <label>SELECIONADOS</label>
-                <div id="selectedItems"></div>
-            </div>
-        </main>
+        <!-- Área de livros selecionados -->
+        <div class="selected_books">
+            <label>SELECIONADOS</label>
+            <div id="selectedItems"></div>
+        </div>
 
-        <?php 
-            include("../modulos/footer.php");
-        ?>
+        <!-- Formulário para envio dos livros selecionados -->
+        <form id="checkoutForm" action="finalizar.php" method="POST">
+            <input type="hidden" name="selected_books" id="selectedBooksInput">
+            <button type="submit">Prosseguir Compra</button>
+        </form>
+    </main>
 
+    <script>
+        const selectedBooks = {}; // Certifique-se de que o objeto é inicializado com a letra "S" maiúscula
 
-        <script>
-            function toggleFavorite(button, livro) {    
-                const iconBox = button.querySelector('.icon-box');
-                const isFavorited = iconBox.getAttribute('data-favorited') === 'true';
-                iconBox.setAttribute('data-favorited', !isFavorited);
+        function toggleFavorite(button, livro) {
+            const iconBox = button.querySelector('.icon-box');
+            const isFavorited = iconBox.getAttribute('data-favorited') === 'true';
+            iconBox.setAttribute('data-favorited', !isFavorited);
 
-                if (!isFavorited) {
-                    // Adiciona a box do livro no lado direito se ela não existir
-                    if (!document.getElementById(`selected-${livro.id_livro}`)) {
-                        addBookToSelected(livro);
-                    }
-                } else {
-                    // Remove a box de seleção do lado direito para o livro desmarcado
-                    removeBookFromSelected(livro.id_livro);
-                }
+            if (!isFavorited) {
+                addBookToSelected(livro);
+            } else {
+                removeBookFromSelected(livro.id_livro);
             }
 
-            function addBookToSelected(livro) {
+            updateSelectedBooksInput();
+        }
+
+        function addBookToSelected(livro) {
+            // Evita duplicação: se o livro já está selecionado, não o adiciona novamente
+            if (!selectedBooks[livro.id_livro]) {
+                selectedBooks[livro.id_livro] = {
+                    ...livro,
+                    quantidade: 1
+                }; // Adiciona livro com quantidade padrão 1
+            }
+
+            // Verifica se o livro já está exibido na área de selecionados
+            if (!document.getElementById(`selected-${livro.id_livro}`)) {
                 const selectedItems = document.getElementById('selectedItems');
 
-                // Evita duplicação de boxes para o mesmo livro
-                if (document.getElementById(`selected-${livro.id_livro}`)) return;
-
-                // Cria a estrutura da box do livro selecionado
+                // Cria o contêiner do livro selecionado
                 const bookContainer = document.createElement('div');
                 bookContainer.id = `selected-${livro.id_livro}`;
                 bookContainer.classList.add('selected-book');
 
-                // Inclui a imagem, informações e seletor de quantidade
+                // Define a estrutura HTML do livro selecionado
                 bookContainer.innerHTML = `
-        <img src="${livro.arquivos_path}" alt="Capa do livro" style="width: 50px; height: 75px;">
-        <div class="livro-info">
-            <h4>${livro.titulo} - ${livro.autor}</h4>
-            <p>R$ ${Number(livro.preco).toFixed(2).replace('.', ',')}</p>
-            <label>Quantidade:</label>
-            <input type="number" min="1" value="1" class="quantidade" data-id="${livro.id_livro}">
-        </div>
-    `;
+                    <img src="../${livro.arquivo_path}" alt="Capa do livro" style="width: 50px; height: 75px;">
+                    <div class="livro-info">
+                        <h4>${livro.titulo} - ${livro.autor}</h4>
+                        <p>R$ ${Number(livro.preco).toFixed(2).replace('.', ',')}</p>
+                        <label>Quantidade:</label>
+                        <input type="number" min="1" value="1" class="quantidade" data-id="${livro.id_livro}" onchange="updateQuantity(${livro.id_livro}, this.value)">
+                    </div>
+                `;
 
+                // Adiciona o contêiner do livro ao elemento de livros selecionados
                 selectedItems.appendChild(bookContainer);
             }
 
-            function removeBookFromSelected(livroId) {
-                const selectedBook = document.getElementById(`selected-${livroId}`);
-                if (selectedBook) {
-                    selectedBook.remove();
-                }
+            updateSelectedBooksInput(); // Atualiza o campo oculto do formulário com os dados dos livros selecionados
+        }
+
+        function removeBookFromSelected(livroId) {
+            delete selectedBooks[livroId];
+            const selectedBook = document.getElementById(`selected-${livroId}`);
+            if (selectedBook) {
+                selectedBook.remove(); // Remove o elemento do DOM
             }
+            updateSelectedBooksInput();
+        }
 
-            function removeFromCart(livroId) {
-                fetch('./carrinho.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: `acao=removerDoCarrinho&id_livro=${livroId}`
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            // Remove o livro da interface do carrinho
-                            const favoriteBook = document.querySelector(`.box_favorite[data-id="${livroId}"]`);
-                            if (favoriteBook) {
-                                favoriteBook.remove();
-                            }
-
-                            // Remove também a box no lado direito (selecionados)
-                            removeBookFromSelected(livroId);
-                        } else {
-                            alert("Erro ao remover o livro do carrinho.");
-                        }
-                    })
-                    .catch(error => console.error('Erro:', error));
+        function updateQuantity(livroId, quantidade) {
+            if (selectedBooks[livroId]) {
+                selectedBooks[livroId].quantidade = parseInt(quantidade);
+                updateSelectedBooksInput();
             }
-        </script>
-    </body>
+        }
 
-    </html>
+        function updateSelectedBooksInput() {
+            document.getElementById('selectedBooksInput').value = JSON.stringify(Object.values(selectedBooks));
+        }
+    </script>
+</body>
+
+</html>

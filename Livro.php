@@ -1,10 +1,7 @@
 <?php
 session_start();
 include_once(__DIR__ . '/config.php'); // Inclui todas as configurações e funções globais
-if (isset($_SESSION['cliente_id'])) {
-    $userId = $_SESSION['cliente_id'];
-    echo $userId;
-}
+
 
 // Obtém o ID do livro da URL
 $id_livro = isset($_GET['id_livro']) ? (int)$_GET['id_livro'] : null;
@@ -112,24 +109,29 @@ try {
                     <h2 class="psombra">
                         <?php echo htmlspecialchars($livro['Titulo']); ?>
                     </h2>
-                    <h4 class="psombra">
-                        <?php echo htmlspecialchars($livro['Autor']) . " - " . htmlspecialchars($livro['Data_lancamento']); ?>
-                    </h4>
-                    <p class="psombra">
-                        Sinopse:
-                        <?php
-                        $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
-                        $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 1000, "..."); // Mostra 1000 caracteres
-                        ?>
-                        <span><?php echo $sinopseCurta; ?></span>
-                        <span class="sinopse-completa">
-                            <?php echo substr($sinopseCompleta, 1000); ?>
-                        </span>
 
-                        <?php if (strlen($sinopseCompleta) > 1000): ?>
-                            <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
-                        <?php endif; ?>
-                    </p>
+                    <!-- Sinopse com container rolável -->
+                    <div class="sinopse-container">
+                        <p class="psombra">
+                            <?php
+                            $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
+                            $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 2180, "...");
+                            ?>
+                            <span><?php echo $sinopseCurta; ?></span>
+                            <span class="sinopse-completa">
+                                <?php echo mb_substr($sinopseCompleta, 180); ?> <!-- Usa mb_substr para pegar o restante -->
+                            </span>
+
+                            <?php if (mb_strlen($sinopseCompleta) > 20): ?>
+                                <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
+                            <?php endif; ?>
+                        </p>
+                    </div>
+
+                    <!-- Outros conteúdos e botões -->
+                    <div class="container_additions">
+                        <!-- Conteúdo adicional -->
+                    </div>
                 </div>
 
 
@@ -243,61 +245,55 @@ try {
 <!--LIVROS SEMELHANTES!-->
 <!--///////////////////////////////////!-->
 <div class="second_content">
+    <!--///////////////////////////////////!-->
+
     <div class="form_container">
+        <!--
+
         <h2 style="font-weight:500;">AVALIAÇÃO DO LIVRO</h2>
-        <!-- Inicio do formulário -->
-        <form method="POST" action="processa.php">
+      <form method="POST" action="processa.php">
 
             <div class="estrelas">
 
-                <!-- Carrega o formulário definindo nenhuma estrela selecionada -->
                 <input type="radio" name="estrela" id="vazio" value="" checked>
 
-                <!-- Opção para selecionar 1 estrela -->
                 <label for="estrela_um"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_um" id="vazio" value="1">
 
-                <!-- Opção para selecionar 2 estrela -->
                 <label for="estrela_dois"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_dois" id="vazio" value="2">
 
-                <!-- Opção para selecionar 3 estrela -->
                 <label for="estrela_tres"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_tres" id="vazio" value="3">
 
-                <!-- Opção para selecionar 4 estrela -->
                 <label for="estrela_quatro"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_quatro" id="vazio" value="4">
 
-                <!-- Opção para selecionar 5 estrela -->
                 <label for="estrela_cinco"><i class="opcao fa"></i></label>
                 <input type="radio" name="estrela" id="estrela_cinco" id="vazio" value="5"><br><br>
 
-                <!-- Campo para enviar a mensagem -->
                 <textarea name="mensagem" rows="4" cols="30" placeholder="Digite o seu comentário..."></textarea><br><br>
 
-                <!-- Botão para enviar os dados do formulário -->
                 <input type="submit" value="Cadastrar"><br><br>
 
             </div>
-
         </form>
-        <!-- Fim do formulário -->
+        -->
 
+        <form method="POST" enctype="multipart/form-data" onsubmit="return addComent(event, <?php echo htmlspecialchars($id_livro); ?>)">
+            <p style="width:75%;">X% dos clientes gostaram de ‘Drácula’.<br><br>
+                Qual foi a sua experiência durante a leitura desse livro? Faça também a sua avaliação!</p>
+            <div class="form_group">
+                <textarea id="texto_comentario" name="texto" rows="4" placeholder="Escreva seu comentario!" required></textarea>
+            </div>
 
-        <p style="width:75%;">X% dos clientes gostaram de ‘Drácula’.<br><br>
-            Qual foi a sua experiência durante a leitura desse livro? Faça também a sua avaliação!</p>
-        <div class="form_group">
-            <textarea id="texto_comentario" name="texto" rows="4" placeholder="Escreva seu comentario!" required></textarea>
-        </div>
-
-        <div class="form_group">
-            <label>Imagens (Máximo de 5)</label>
-            <input type="file" name="imagens[]" accept="image/*" multiple>
-        </div>
-        <div class="form_group">
-            <button type="submit">Enviar Comentário</button>
-        </div>
+            <div class="form_group">
+                <label>Imagens (Máximo de 5)</label>
+                <input type="file" name="imagens[]" accept="image/*" multiple>
+            </div>
+            <div class="form_group">
+                <button onclick="addComent(<?php echo htmlspecialchars($id_livro); ?>)">Enviar Comentário</button>
+            </div>
         </form>
     </div>
 
@@ -385,6 +381,31 @@ include("modulos/footer.php");
             .catch(error => console.error('Erro:', error));
     }
 
+    function addComent(event, idLivro) {
+        event.preventDefault(); // Evita o recarregamento da página
+
+        const form = event.target; // O próprio formulário
+        const formData = new FormData(form); // Captura todos os dados do formulário
+        formData.append('acao', 'enviarComentario'); // Adiciona a ação específica
+        formData.append('id_livro', idLivro);
+
+        fetch('modulos/funcs.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Comentário enviado com sucesso!");
+                    // Aqui você pode atualizar o DOM, mostrar uma mensagem de sucesso, etc.
+                } else {
+                    alert("Erro ao enviar o comentário: " + data.error);
+                }
+            })
+            .catch(error => console.error('Erro:', error));
+    }
+
+
     const stars = document.querySelectorAll('.star-rating label');
     stars.forEach(star => {
         star.addEventListener('mouseover', () => {
@@ -453,44 +474,83 @@ include("modulos/footer.php");
 
     // Função para adicionar item ao carrinho e armazenar no Local Storage
     function adicionarAoCarrinho(idLivro) {
-        console.log("Função adicionarAoCarrinho chamada com ID:", idLivro);
+        console.log("Adicionando ao carrinho:", idLivro);
         fetch('/bookersgalaxy/modulos/funcs.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     acao: 'adicionarCarrinho',
                     id_livro: idLivro
                 })
             })
-
             .then(response => response.json())
             .then(data => {
-                console.log('Resposta recebida:', data);
+                console.log('Resposta do servidor:', data);
                 if (data.success) {
                     alert("Livro adicionado ao carrinho com sucesso!");
+                    // Atualize o carrinho no localStorage, se necessário
                 } else {
-                    alert("Erro ao adicionar ao carrinho: " + (data.error || 'Erro desconhecido.'));
+                    alert("Erro: " + (data.error || 'Erro desconhecido.'));
                 }
             })
-            .catch(error => console.error('Erro na requisição:', error));
+            .catch(error => console.error('Erro ao adicionar ao carrinho:', error));
     }
 
 
 
 
     // Função para carregar o carrinho quando a página do carrinho é aberta
+    // Função para carregar o carrinho e exibir na página
     function carregarCarrinho() {
-        // Recupera o carrinho do Local Storage
-        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        fetch('../compra/carrinho.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'acao=listarCarrinho'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const carrinhoContainer = document.querySelector('.loved_books');
+                carrinhoContainer.innerHTML = ''; // Limpa o conteúdo anterior
 
-        // Exibe cada item na interface do carrinho
-        carrinho.forEach(item => {
-            // Função para criar o HTML do item na página
-            exibirItemCarrinho(item);
-        });
+                if (data.success && data.livros && data.livros.length > 0) {
+                    // Itera sobre os livros e exibe cada um na interface
+                    data.livros.forEach(livro => {
+                        const livroElement = document.createElement('div');
+                        livroElement.classList.add('box_favorite');
+                        livroElement.setAttribute('data-id', livro.id_livro);
+
+                        // Adiciona o HTML do livro com imagem, título, autor, preço e quantidade
+                        livroElement.innerHTML = `
+                    <img src="${livro.imagem_caminho}" alt="Capa do livro">
+                    <div class="livro-info">
+                        <h4>${livro.titulo} - ${livro.autor}</h4>
+                        <p>R$ ${Number(livro.preco).toFixed(2).replace('.', ',')}</p>
+                        <p>Quantidade: ${livro.quantidade}</p>
+                    </div>
+                    <div class="acoes">
+                        <button class="remove-btn" onclick="removerDoCarrinho(${livro.id_livro})"><span class="material-symbols-outlined">delete</span></button>
+                    </div>
+                `;
+
+                        // Adiciona o livro ao container do carrinho
+                        carrinhoContainer.appendChild(livroElement);
+                    });
+                } else {
+                    console.log("O carrinho está vazio.");
+                    carrinhoContainer.innerHTML = '<p>O carrinho está vazio.</p>';
+                }
+            })
+            .catch(error => console.error('Erro ao carregar o carrinho:', error));
     }
+
+    // Chama a função para carregar o carrinho quando a página termina de carregar
+    document.addEventListener('DOMContentLoaded', carregarCarrinho);
+
+
 
     // Exemplo de uso do Local Storage ao clicar no botão
     document.querySelectorAll('.sticks').forEach(botao => {
@@ -509,22 +569,19 @@ include("modulos/footer.php");
     document.addEventListener('DOMContentLoaded', carregarCarrinho);
 
     function toggleSinopse(button) {
-        const sinopseCompleta = button.previousElementSibling;
+        const sinopseContainer = button.closest('.sinopse-container');
+        const sinopseCompleta = sinopseContainer.querySelector('.sinopse-completa');
 
-        if (sinopseCompleta.classList.contains("expandida")) {
+        if (sinopseContainer.classList.contains("expandido")) {
             // Recolhe a sinopse
+            sinopseContainer.classList.remove("expandido");
             sinopseCompleta.classList.remove("expandida");
             button.innerText = "Ler mais";
         } else {
             // Expande a sinopse
+            sinopseContainer.classList.add("expandido");
             sinopseCompleta.classList.add("expandida");
             button.innerText = "Ler menos";
-
-            // Garante que a rolagem leve o usuário suavemente para o início da sinopse completa
-            sinopseCompleta.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
         }
     }
 </script>
