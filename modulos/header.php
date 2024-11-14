@@ -28,6 +28,54 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
         <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
     <script src="js/modulos.js"></script>
 
+    <style>
+        /* ajustando responsividade dos ícones e 
+        da barra de pesquisa */
+            .icones{
+                background: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            @media (max-width: 1120px){
+                #header #headerform.pesquisa{
+                    display: none;
+                }
+            }
+
+            @media(max-width: 1260px) {
+                .icones {
+                    display: none;
+                }
+            }
+
+            #header-bars{
+                margin: 0;
+                padding: 0;
+            }
+
+            @media(max-width: 690px) {
+                #header a.categ{
+                    display: none;
+                }
+            }
+
+            @media(max-width: 540px) {
+                #opcoes{
+                    display: none;
+                }
+            }
+
+            @media(max-width: 540px) {
+                #filtro-daltonismo{
+                    display: none;
+                }
+            }
+            
+    </style>
+</head>
+
 <body>
 
     <nav id="navbar">
@@ -69,9 +117,10 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <header id="header">
         <a href="/bookersgalaxy/index.php" style="margin: 0; padding : 0;"><img src="<?php echo Busca(1) ?>"></a>
         <div id="headerCookies">
-            <div>
-                <label for="filtro-daltonismo">Tenho Daltonismo:</label>
-                <select id="filtro-daltonismo">
+            <div div="alterarCores">
+                <label id="opcoes" for="filtro-daltonismo" style="font-size: 18px;
+                    padding:5px; color: #1D1E1D;">Alterar Cores:</label>
+                <select id="filtro-daltonismo" style="margin: 0 15px 10px 0">
                     <option value="">Padrão</option>
                     <option value="correcaopro-protanopia">Correção para Protanopia</option>
                     <option value="correcaopro-deuteranopia">Correção para Deuteranopia</option>
@@ -79,26 +128,22 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                     <option value="correcaopro-monocromacia">Correção para Monocromacia</option>
                 </select>
             </div>
-            <div>
-                <button onclick="ajustarFonte(1)">A+</button>
-                <button onclick="resetarFonte()">Resetar Fonte</button>
-                <button onclick="ajustarFonte(-1)">A-</button>
-                <button onclick="toggleContraste()">Contraste</button>
-            </div>
         </div>
-        <a href="/bookersgalaxy/categorias.php">Categorias</a>
-        <form id="headerform">
+        <a class="categ" href="/bookersgalaxy/categorias.php">Categorias</a>
+        <form class="pesquisa" id="headerform">
             <input size="40" id="searchbar" onfocus="pesquisafocus()" onblur="pesquisablur()"><button type="submit" onclick="openSearchBar()"><i class="fas fa-magnifying-glass"></i></button>
         </form>
         <div id="header-container">
-            <a href="/bookersgalaxy/compra/carrinho.php"><i class="fas fa-cart-shopping"></i></a>
-            <?php 
-            if(isset($userId)){
-                echo "<a href='/bookersgalaxy/perfil/perfil.php'><i class='far fa-circle-user'></i></a>";
-            }
-            else{
-                echo "<a href='/bookersgalaxy/perfil/login_cad.php'><i class='far fa-circle-user'></i></a>";
-             }
+            <button class="icones">
+                <a href="/bookersgalaxy/compra/carrinho.php"><i class="fas fa-cart-shopping"></i></a>
+                <?php 
+                if(isset($userId)){
+                    echo "<a href='/bookersgalaxy/perfil/perfil.php'><i class='far fa-circle-user'></i></a>";
+                }
+                else{
+                    echo "<a href='/bookersgalaxy/perfil/login_cad.php'><i class='far fa-circle-user'></i></a>";
+                 }
+            </button>
             
             ?>
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
