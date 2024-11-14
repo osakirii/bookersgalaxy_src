@@ -93,7 +93,8 @@ CREATE TABLE `arquivossite` (
 
 INSERT INTO `arquivossite` (`id`, `nome`, `path`, `data_upload`) VALUES
 (1, '66f6e502d3ae7.png', 'img/672eb8e5e9338.png', '2024-11-09 01:20:37'),
-(2, '66f6f50f58268.gif', 'img/672eb90b8c6b8.gif', '2024-11-09 01:21:15');
+(2, '66f6f50f58268.gif', 'img/672eb90b8c6b8.gif', '2024-11-09 01:21:15'),
+(7, 'carrossel.png', 'img/673651c8aabf5.png', '2024-11-14 16:38:48');
 
 -- --------------------------------------------------------
 
