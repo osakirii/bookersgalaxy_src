@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 
+=======
+/*base*/
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
 body
 {
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     height: 100dvh;
     background-image: linear-gradient(to bottom, #F3C3B2,#F3C3B2, #F5F5F5,#96B29D, #96B29D);
     
+=======
+    background-color:#F5F5F5;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
 }
 
 main
@@ -13,17 +21,28 @@ main
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     height: 90%;
+=======
+    height: 100vh;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
 }
 
 .Pai
 {
     display: flex;
+<<<<<<< HEAD
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 50%;
     height: 100%;
+=======
+    flex-flow: column wrap;
+    align-items: center;
+    width: 50%;
+    height: 96%;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
     background-image: linear-gradient(to bottom, #96B29D,#96B29D, #F5F5F5,#F3C3B2, #F3C3B2);
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
@@ -33,16 +52,28 @@ main
 
 .Pai1
 {
+<<<<<<< HEAD
     display: flex;
     justify-content: center;
     align-items: center;
     width: 60%;
     height: 100%;
     flex-direction: column;
+=======
+    margin-top: 2%;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 102%;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
     background-image: linear-gradient(to bottom, #96B29D,#96b29dde, #F5F5F5,#F3C3B2, #F3C3B2);
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
     font-family: Josefin Sans;
+<<<<<<< HEAD
+=======
+    text-align:center;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
 
         & img{
             width: 40px;
@@ -79,6 +110,10 @@ button
     height: 50px;
     width: 243px;
     border: none;
+<<<<<<< HEAD
+=======
+    box-shadow: 0 0 3px #7e7c7c;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
     cursor: pointer;
 }
 
@@ -87,6 +122,7 @@ h2 a
     color:#737373;
     font-size: 80%;
     letter-spacing: 1px;
+<<<<<<< HEAD
 }
 
 
@@ -137,6 +173,58 @@ input[name="checkbox"]
     background-color: #A5DDB8;
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
     word-spacing: 3px;
+=======
+    margin-right: 8%;
+}
+
+.Caixas /*Div caixas de texto*/
+{
+    margin-top: 13%;
+    margin-bottom: 5%;
+    padding-left: 80px;
+    position: relative;
+    width: 100%;
+}
+
+p /*posiciona as caixas de texto*/
+{
+    text-align: left;
+    margin-top: 5%;
+}
+
+input /*Dá forma para caixas de texto*/
+{
+    margin-top: 5px;
+    height: 40px;
+    width:450px;
+    border-radius: 7px;
+    padding-right: 50px;
+    box-shadow: 0 0 3px #afafaf;
+    border: none;
+}
+
+.BTazul /*Tanto Posiciona Quanto Edita o Botão*/
+{
+    background-color: #99CDD8;
+    font-size:130%;
+    margin-bottom: 10px;
+    word-spacing: 3px;
+    margin-right: 8%;
+    box-shadow: 0 0 3px #7e7c7c;
+    height:40px ;
+}
+
+.BTverde
+{
+    background-color: #A5DDB8;
+    font-size:130%;
+    margin-bottom: 10px;
+    word-spacing: 3px;
+    margin-right: 8%;
+    box-shadow: 0 0 3px #7e7c7c;
+    height:40px;
+    
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
 }
 
 
@@ -158,8 +246,13 @@ h1
 
 .botoes
 {
+<<<<<<< HEAD
     margin-bottom: 20%;
     margin-bottom: 20%;
+=======
+    margin-bottom: 10%;
+    margin-bottom: 30%;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
 }
 
 .subtitulo2
@@ -174,10 +267,17 @@ h1
 
 
 /*LOGIN*/
+<<<<<<< HEAD
 ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+=======
+ul h1
+{
+    margin-top: 10%;
+    margin-right: 8%;
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
 }
 
 .Icon /*Icone do Google*/
@@ -279,6 +379,7 @@ h4  a/*Edita o Hiperlink dos Termos Para ter essa cor e tamanho*/
     padding-left: 80px;
     position: relative;
     width: 100%;
+<<<<<<< HEAD
 }
 form {
     width: 80%;
@@ -295,3 +396,6 @@ form {
     padding: 20px;
     border: 1px solid #ccc;
   }
+=======
+}
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d

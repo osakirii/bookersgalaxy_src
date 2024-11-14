@@ -22,8 +22,11 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/modulos.css">
+<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=contrast" />
+=======
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
         <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
     <script src="js/modulos.js"></script>
@@ -92,6 +95,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
         </form>
         <div id="header-container">
             <a href="/bookersgalaxy/compra/carrinho.php"><i class="fas fa-cart-shopping"></i></a>
+<<<<<<< HEAD
             <?php 
             if(isset($userId)){
                 echo "<a href='/bookersgalaxy/perfil/perfil.php'><i class='far fa-circle-user'></i></a>";
@@ -101,6 +105,9 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
              }
             
             ?>
+=======
+            <a href="/bookersgalaxy/perfil/login_cad.php"><i class="far fa-circle-user"></i></a>
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
             
         </div>

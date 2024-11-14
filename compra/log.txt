@@ -10,6 +10,7 @@ Requisição recebida: []
 Requisição recebida: []
 Requisição recebida: []
 Requisição recebida: []
+<<<<<<< HEAD
 Requisição recebida: []
 Requisição recebida: []
 Requisição recebida: []
@@ -224,3 +225,5 @@ Requisição recebida: []
 Requisição recebida: []
 Requisição recebida: []
 Requisição recebida: []
+=======
+>>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d

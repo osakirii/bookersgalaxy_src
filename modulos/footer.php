@@ -15,7 +15,7 @@
             </div>
             <div id="footer-login">
                 <p>Não possui uma conta?</p>
-                <a href="#">Fazer login</a>
+                <a href="/bookersgalaxy/perfil/login_cad.php">Fazer login</a>
             </div>
        </footer>
     </body>
