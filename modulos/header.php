@@ -37,7 +37,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             <a href="#">Tenho Daltonismo</a>
             <a href="categorias.php">Categorias</a>
             <a href="#">Lançamentos</a>
-            <a href="favoritos.php">Favoritos</a>
+            <a href="/bookersgalaxy/perfil/favoritos.php">Favoritos</a>
             <a href="/bookersgalaxy/compra/carrinho.php">Carrinho</a>
             <a href="/bookersgalaxy/modulos/logout.php">Sair</a>
             <?php 

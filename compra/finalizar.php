@@ -2,11 +2,13 @@
 session_start();
 include_once(__DIR__ . '/../config.php');
 
-// Verifique se a sessão do carrinho está configurada corretamente
 if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = [];
 }
-
+if (isset($_SESSION['cliente_id'])) {
+    $userId = $_SESSION['cliente_id'];
+    $nomeUsuario = $_SESSION['nomeUsuario'];
+}
 if (isset($_POST['selected_books'])) {
     // Decodifica o JSON para um array associativo em PHP
     $selectedBooks = json_decode($_POST['selected_books'], true);
@@ -108,7 +110,7 @@ if (isset($_POST['selected_books'])) {
             <div class="finalizar_compra">
                 <div class="dados_cliente">
                     <p><strong>Seus dados:</strong></p>
-                    <p>Destinatário:<?php echo htmlspecialchars($nomeCliente);?>  </p>
+                    <p>Destinatário:<?php echo htmlspecialchars($nomeUsuario);?>  </p>
                     <p>Rua XXXXXXXXXX, XXX - XXXXX XXXXXXX</p>
                     <p>CEP: XXXXX-XXX &nbsp;&nbsp; CPF: XXX.XXX.XXX-XX</p>
                     <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> &nbsp;&nbsp; Telefone: 11 XXXXX-XXXX</p>
@@ -139,7 +141,7 @@ if (isset($_POST['selected_books'])) {
 
     function cancelarCompra() {
         if (confirm("Tem certeza de que deseja cancelar a compra?")) {
-            window.location.href = "/pagina_inicial";
+            window.location.href = "/bookersgalaxy/index.php";
         }
     }
 

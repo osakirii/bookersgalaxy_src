@@ -115,7 +115,7 @@ try {
                         <p class="psombra">
                             <?php
                             $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
-                            $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 2180, "...");
+                            $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 280, "...");
                             ?>
                             <span><?php echo $sinopseCurta; ?></span>
                             <span class="sinopse-completa">
@@ -172,8 +172,8 @@ try {
 
                         <div class="icon_sticks_container">
                             <div class="btns">
-                                <form action="./funcoes/functions.php" method="post">
-                                    <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($userId); ?>">
+                                <form action="./modulos/funcs.php" method="post">
+                                    <input type="hidden" name="cliente_id" value="<?php echo htmlspecialchars($userId); ?>">
                                     <input type="hidden" name="id_livro" value="<?php echo htmlspecialchars($id_livro); ?>">
                                     <button onclick="toggleFavorite(<?php echo htmlspecialchars($id_livro); ?>)" id="favoritarBtn" name="favoritar" class="btn" type="button">
 
@@ -583,6 +583,22 @@ include("modulos/footer.php");
             sinopseCompleta.classList.add("expandida");
             button.innerText = "Ler menos";
         }
+    }
+
+    function toggleFavorite(idLivro) {
+        const userId = <?php echo json_encode($userId); ?>; // Adapte isso para pegar o ID do usuário correto
+        const heartIcon = document.getElementById(`btnh1-${idLivro}`);
+
+        fetch('./funcoes/funcs.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `user_id=${userId}&id_livro=${idLivro}&favoritar=1`,
+            })
+            .then(response => response.text())
+
+            .catch(error => console.error('Error:', error));
     }
 </script>
 </body>

@@ -8,6 +8,8 @@ img{
     width: 218px;
     height: 218px;
     cursor: pointer;
+}
+#fotoPerfil {
     border-radius: 50%;
 }
 
