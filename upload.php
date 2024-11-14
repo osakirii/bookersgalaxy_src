@@ -86,7 +86,7 @@
             <br><br>
             <form method="post" enctype="multipart/form-data" action="">
                 <p><label for="">Selecione o arquivo:</label>
-                <input name="arquivo" type="file"></p>
+                <input name="arquivo" type="file" required></p>
                 <button name="upload" type="submit">Enviar arquivo</button> 
             </form>
             <br><br><br><br>

@@ -48,14 +48,14 @@ header h2 {
 }
 .main_content {
     display: flex;
-    height:70vh; /* Ocupa a altura total da tela */
+    height:100vh; /* Ocupa a altura total da tela */
     align-items: center;
     overflow-y: hidden;
 }
 
 
 aside {
-    width: 10%;
+    max-height: 100%;
     margin-left: 5%;
     margin-right: 5%;
     display: flex;
@@ -75,10 +75,11 @@ p {
     font-size:20px;
     font-family: "Josefin Sans", sans-serif;
 }
-.psombra
-{
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    
+.psombra {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 10px 0;
 }
 h1 {
     font-size: 3rem;
@@ -87,8 +88,8 @@ h1 {
     display: flex;
     justify-content: center; 
     align-items: center;
-    width: 100%; /* Ajusta a largura para 100% do contêiner */
-    height: auto; /* Ajusta a altura automaticamente */
+    width: 80%; 
+    height: auto; 
     overflow: hidden;
     border-radius: 5px;
 
@@ -112,12 +113,44 @@ aside img {
 }
 
 .container_infos {
-    width: 40%; 
+    width: 100%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    margin: auto;
     border-radius: 10px;
-    margin-left: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.info-box h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+.info-box h4 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin: 5px 0 15px 0;
+    color: #666;
+}
+.sinopse-container {
+    max-height: 100%; /* Altura inicial da área de sinopse */
+    overflow-y: hidden;
+    transition: max-height 0.5s ease-in-out; /* Expansão suave */
+}
+
+.sinopse-container.expandido {
+    max-height: 300px; /* Altura expandida da área de sinopse com rolagem */
+    overflow-y: auto;
+}
+
+.sinopse-completa {
+    display: none; /* Oculta a sinopse completa por padrão */
+}
+
+.sinopse-completa.expandida {
+    display: inline;
 }
 
 .info-column {
@@ -134,10 +167,16 @@ aside img {
     margin-top: 20px;
 
 }
-.infos-box {
-    margin-bottom: 20px;
+
+.info-box {
+    position: relative;
+    padding: 20px;
+    width: 100%;
 }
 
+.info-box.expandido {
+    max-height: 1000px; /* Ajuste esse valor de acordo com o necessário para acomodar o texto completo */
+}
 .infos-box h2 {
     font-size: 1.5rem;
     margin: 0 0 10px 0;
@@ -196,7 +235,7 @@ button.heart-icon img {
     cursor: pointer;
 }
 button[name="btn_comprar"] {
-    padding: 10px 40px;
+    padding: 2% 4%;
     background-color: #A5DDB8;
     font-size: 20px;
     box-shadow: 0px 10px 14px -8px rgba(0,0,0,0.75);
@@ -212,9 +251,10 @@ button[name="btn_comprar"]:hover {
 }
 hr{
     border: 1px solid black;
+    opacity: 1;
+    background-color: black;
     width: 30px;
     padding: 2px;
-    background-color: black;
     border-radius: 10px;
 }
 .icon_sticks_container {
@@ -243,11 +283,11 @@ button.sticks {
 #stick2
 {
     transition: ease-in-out 0.3s;
-    transform:translateY(-7px);
+    transform:translateY(-15px);
     
 }
 .sticks:hover #stick1{
-    transform: translateX(0px) rotate(-45deg); /* Movimento e rotação ao hover */
+    transform: translateY(10px) rotate(-45deg); /* Movimento e rotação ao hover */
 }
 .sticks:hover #stick2{
     transition: ease-in-out 0.5s;
@@ -261,22 +301,16 @@ button.sticks {
     transition: left 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
     padding: 5px;
     white-space: nowrap;
-    transform: translate(10px,0px);
+    transform: translate(-10%,0px);
     margin-left: 80px;
     margin-top: -50px;
 }
 .sticks:hover .add_cart_txt {
     left: 0;
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(10px);
  }
-.carrossel-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px; 
-    height: 100%;
-}
+
 
 .carrossel {
     display: flex;
@@ -284,15 +318,18 @@ button.sticks {
     overflow: hidden;
     height: 100%; 
     align-items: center;
+    scroll-behavior: smooth;
 }
 
 .carrossel-item {
-    width: 100%;
-    height: 130px;
+    max-height: 25%;
     object-fit: cover;
     transition: opacity 0.5s ease;
 }
+.carrossel-item img{
+    aspect-ratio:3/1;
 
+}
 button.prev, button.next {
     background-color:transparent;
 

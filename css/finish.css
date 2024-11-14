@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&family=Montaga&family=Squada+One&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        
+        }
+        body {
+            font-family: "Josefin Sans", sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .coluna {
+            flex: 1;
+            min-width: 300px; /* Largura mínima para manter a responsividade */
+            padding: 20px;
+        }
+        .livros_selecionados {
+            height: 50%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #form-checkout {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+          }
+        .item {
+            display: flex;
+            background-color: white;
+            flex-direction: row;
+            margin: 20px;
+            border-radius: 5px;
+            border:1px solid grey;
+            box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
+        }
+        .item img {
+            aspect-ratio: 3/4;
+            width: 10%;
+        }
+
+        .preco {
+            background-color: white;
+            overflow: hidden;
+            font-size: 24px;
+            border-radius: 5px;
+            height: 30%;
+            border:1px solid grey;
+            box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
+        }
+        .metodo_pagamento {
+            background-color: #f0f4ed;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            font-family: Arial, sans-serif;
+        }
+        
+        .metodo_pagamento p {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .select_metodo {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            font-size: 1em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .opcoes_pagamento {
+            margin-top: 10px;
+        }
+        
+        .opcoes_pagamento div {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .opcoes_pagamento div:last-child {
+            border-bottom: none;
+        }
+        
+        .opcoes_pagamento img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .opcoes_pagamento input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .adicionar_cartao a {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .adicionar_cartao a:hover {
+            text-decoration: underline;
+        }
+        
+        .pix label,
+        .boleto label {
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+        }
+        .finalizar_compra {
+            max-width:100%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+        
+        .dados_cliente {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .dados_cliente p {
+            margin: 8px 0;
+            font-size: 0.9em;
+            color: #333;
+        }
+        
+        .dados_cliente a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .dados_cliente a:hover {
+            text-decoration: underline;
+        }
+        
+        .alterar_btn {
+            background-color: #cde6e0;
+            border: none;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .alterar_btn:hover {
+            background-color: #b3d1c8;
+        }
+        
+        .acoes {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .cancelar_btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .cancelar_btn:hover {
+            background-color: #c9302c;
+        }
+        
+        .finalizar_btn {
+            background-color: #a5d6a7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .finalizar_btn:hover {
+            background-color: #81c784;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            animation: animate__animated animate__fadeIn;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+        @media (max-width: 768px) {
+            .coluna {
+                min-width: 100%; /* Largura total em telas pequenas */
+            }
+        }

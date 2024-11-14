@@ -5,7 +5,7 @@ $con = Connect::getInstance();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
 
-        //RECUPERANDO OS DADOS DO LIVRO
+        //RECUPERANDO OS DADOS DO LIVROz
         $titulo = $_POST['Titulo'];
         $autor = $_POST['Autor'];
         $data_lancamento = $_POST['Data_lancamento'];

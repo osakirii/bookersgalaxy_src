@@ -1,0 +1,297 @@
+
+body
+{
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    background-image: linear-gradient(to bottom, #F3C3B2,#F3C3B2, #F5F5F5,#96B29D, #96B29D);
+    
+}
+
+main
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+.Pai
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #96B29D,#96B29D, #F5F5F5,#F3C3B2, #F3C3B2);
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
+    font-family: Josefin Sans;
+    text-align: center;
+}
+
+.Pai1
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+    background-image: linear-gradient(to bottom, #96B29D,#96b29dde, #F5F5F5,#F3C3B2, #F3C3B2);
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
+    font-family: Josefin Sans;
+
+        & img{
+            width: 40px;
+            height: auto;
+        }
+}
+
+.Pai2
+{
+    margin-top: 2%;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 110%;
+    background-image: linear-gradient(to bottom, #96B29D,#96b29dde, #F5F5F5,#F3C3B2, #F3C3B2);
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
+    font-family: Josefin Sans;
+    text-align:center;
+
+        & img{
+            width: 40px;
+            height: auto;
+        }
+}
+
+
+button
+{
+    font-family: Josefin Sans;
+    Font-Size:20px;
+    margin-top: 5%;
+    border-radius: 10px;
+    height: 50px;
+    width: 243px;
+    border: none;
+    cursor: pointer;
+}
+
+h2 a
+{
+    color:#737373;
+    font-size: 80%;
+    letter-spacing: 1px;
+}
+
+
+
+
+input 
+{
+    margin-top: 5px;
+    height: 40px;
+    width:100%;
+    border-radius: 7px;
+    box-shadow: 0 0 3px #afafaf;
+    border: none;
+}
+input[name="checkbox"]
+{
+    margin-top: 0px;
+    height: 10px;
+    width:10px;
+    border: none;
+    box-shadow: 0px 0px 0px rgb(255, 255, 255);
+
+}
+.btns {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.BTazul /*Tanto Posiciona Quanto Edita o Botão*/
+{
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
+    background-color: #99CDD8;
+    margin-right: 10px;
+}
+.BTazul:hover {
+    transform: scale(1.05);
+}
+.BTverde:hover
+{
+    transform: scale(1.05);
+}
+.BTverde
+{
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    background-color: #A5DDB8;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
+    word-spacing: 3px;
+}
+
+
+
+
+
+/*BEM VINDO*/
+h1
+{
+    margin-bottom: 11%;
+    letter-spacing: 2px;
+}
+
+.subtitulo1
+{
+    font-size: 60%;
+    margin-bottom: 0%;
+}
+
+.botoes
+{
+    margin-bottom: 20%;
+    margin-bottom: 20%;
+}
+
+.subtitulo2
+{
+    font-size:130%;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    margin-right: 8%;
+}
+
+
+
+/*LOGIN*/
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Icon /*Icone do Google*/
+{
+    background-image: url('../img/LogoGoogle.png');
+    background-repeat: no-repeat;
+    background-position:left center;
+    background-position:50px;
+    text-indent: 40px;
+    background-size: 30px 30px;
+}
+
+.esqueci /*Posiciona a Pergunta no Local Certo*/
+{
+    position: absolute;
+    top: 70px;
+    right: 30%;
+    text-wrap: nowrap;
+}
+
+.Eye /*Tanto Posiciona Quanto Coloca a Imagem do Olho Dentro da Caixa de Texto*/
+{
+    position: absolute;
+    right: 32%;
+    top: 63%;
+    transform: translateY(142%);
+    padding: 0;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+
+    &.B{
+        top: 56%;
+        right: 24%;
+    }
+}
+
+/*NOVA CONTA*/
+h3
+{
+   font-size: 2em; /* Ajuste o valor conforme o tamanho do seu h1 */
+   font-weight: bold; 
+   margin-top: 50px;
+   font-weight: normal;
+}
+
+/*DADOS PARA ENTREGA*/
+.CPF
+{
+    height: 40px;
+    width:160px;
+    border-radius: 7px;
+    padding-right: 50px;
+    box-shadow: 0 0 3px #afafaf;
+    border: none;
+}
+
+.flex-group
+{
+    margin-left: 82px;
+    display: flex;
+    gap: 42px;
+    white-space: nowrap;
+}
+
+.flex-group2
+{
+    margin-left: 82px;
+    display: flex;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.check
+{
+    height: 20px;
+    width: 20px; 
+}
+
+h4 /*Edita o a mensagem dos termos Para ter essa cor e tamanho*/
+{
+    font-size: 1.5em; /* Ajuste conforme o tamanho do seu h2 */
+    font-weight: bold;
+    color:#1D1E1D;
+    font-size: 90%;
+}
+
+h4  a/*Edita o Hiperlink dos Termos Para ter essa cor e tamanho*/
+{
+    font-size: 1.5em; /* Ajuste conforme o tamanho do seu h2 */
+    font-weight: bold;
+    color:#1D1E1D;
+    font-size: 90%;
+}
+
+.Caixas2 /*Div caixas de texto dessa pagína pq deu um erro */
+{
+    margin-top: 9%;
+    padding-left: 80px;
+    position: relative;
+    width: 100%;
+}
+form {
+    width: 80%;
+}
+.grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de largura igual */
+    grid-gap: 10px; /* Espaçamento entre os itens */
+  }
+
+  .item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
