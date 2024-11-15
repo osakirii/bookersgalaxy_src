@@ -104,9 +104,6 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 echo '<a href="/bookersgalaxy/adm.php"><i class="fas fa-laptop-code"></i> Administração</a>';
             }
             ?>
-            <a href="#"><i class="fas fa-gear"></i> Configurações</a>
-            <a href="#"><i class="far fa-circle-question"></i> Ajuda</a>
-            <a href="#"><i class="far fa-comments"></i> Fale Conosco</a>
         </div>
     </nav>
 
