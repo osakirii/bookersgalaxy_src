@@ -4,8 +4,7 @@ body
     margin: 0;
     padding: 0;
     height: 100dvh;
-    background-image: linear-gradient(to bottom, #F3C3B2,#F3C3B2, #F5F5F5,#96B29D, #96B29D);
-    
+    background-color: whitesmoke;    
 }
 
 main
@@ -24,7 +23,6 @@ main
     justify-content: center;
     width: 50%;
     height: 100%;
-    background-image: linear-gradient(to bottom, #96B29D,#96B29D, #F5F5F5,#F3C3B2, #F3C3B2);
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
     font-family: Josefin Sans;
@@ -39,11 +37,12 @@ main
     width: 60%;
     height: 100%;
     flex-direction: column;
-    background-image: linear-gradient(to bottom, #96B29D,#96b29dde, #F5F5F5,#F3C3B2, #F3C3B2);
+        background-color:#A6C4B6;
+
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
     font-family: Josefin Sans;
-
+    
         & img{
             width: 40px;
             height: auto;
@@ -134,7 +133,7 @@ input[name="checkbox"]
 {
     margin-left: 10px;
     transition: 0.3s ease-in-out;
-    background-color: #A5DDB8;
+    background-color: #9CDBC8;
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
     word-spacing: 3px;
 }

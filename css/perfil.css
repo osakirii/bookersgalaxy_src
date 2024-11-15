@@ -1,3 +1,26 @@
+*{  
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    background: #F8F5FA;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+    color: #1D1E1D;
+}
+
+button{
+    cursor: pointer;
+}
+
 #perfil{
     display: flex;
     justify-content: center;

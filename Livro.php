@@ -1,7 +1,10 @@
 <?php
 session_start();
 include_once(__DIR__ . '/config.php'); // Inclui todas as configurações e funções globais
-
+if (isset($_SESSION['cliente_id'])) {
+    $userId = $_SESSION['cliente_id'];
+    echo $userId;
+}
 
 // Obtém o ID do livro da URL
 $id_livro = isset($_GET['id_livro']) ? (int)$_GET['id_livro'] : null;
@@ -103,120 +106,61 @@ try {
 
     <!--PARTE DAS INFORMAÇÕES-->
     <div class="container_infos">
-        <?php if ($livros): ?>
-            <?php foreach ($livros as $livro): ?>
-                <div class="info-box">
-                    <h2 class="psombra">
-                        <?php echo htmlspecialchars($livro['Titulo']); ?>
-                    </h2>
+        <div class="info-box">
+            <h2 class="titulo"><?php echo htmlspecialchars($livro['Titulo']); ?></h2>
+            <h4 class="autor"><?php echo htmlspecialchars($livro['Autor']); ?> - <?php echo htmlspecialchars($livro['Data_lancamento']); ?></h4>
+        </div>
 
-                    <!-- Sinopse com container rolável -->
-                    <div class="sinopse-container">
-                        <p class="psombra">
-                            <?php
-                            $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
-                            $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 280, "...");
-                            ?>
-                            <span><?php echo $sinopseCurta; ?></span>
-                            <span class="sinopse-completa">
-                                <?php echo mb_substr($sinopseCompleta, 180); ?> <!-- Usa mb_substr para pegar o restante -->
-                            </span>
+        <!-- Sinopse -->
+        <div class="sinopse-container">
+            <p class="psombra">
+                <?php
+                $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
+                $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 280, "...");
+                ?>
+                <span><?php echo $sinopseCurta; ?></span>
+                <span class="sinopse-completa">
+                    <?php echo mb_substr($sinopseCompleta, 180); ?>
+                </span>
+                <?php if (mb_strlen($sinopseCompleta) > 280): ?>
+                    <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
+                <?php endif; ?>
+            </p>
+        </div>
 
-                            <?php if (mb_strlen($sinopseCompleta) > 20): ?>
-                                <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
-                            <?php endif; ?>
-                        </p>
+        <!-- Informações funcionais com ícones e botões -->
+        <div class="container_additions">
+            <!-- Ícones de informações à esquerda -->
+            <div class="info_column">
+                <div class="info_item"><i class="bi bi-book"></i> <span><?php echo htmlspecialchars($livro['QntPaginas']); ?> Páginas</span></div>
+                <div class="info_item"><i class="bi bi-pencil-square"></i> <span><?php echo htmlspecialchars($livro['NomeEditora']); ?></span></div>
+                <div class="info_item"><i class="material-symbols-outlined">theater_comedy</i> <span><?php echo htmlspecialchars($livro['Genero']); ?></span></div>
+                <div class="info_item"><i class="bi bi-box-seam"></i> <span><?php echo htmlspecialchars($livro['Estoque']); ?></span></div>
+                <div class="info_item"><i class="bi bi-star-fill"></i> <span><?php echo htmlspecialchars($livro['Avaliacao']); ?></span></div>
+            </div>
+
+            <!-- Parte funcional à direita -->
+            <div class="functional_column">
+                <span class="preco">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
+                <?php if (isset($_SESSION['cliente_id'])): ?>
+                    <button name="btn_comprar" type="submit">Comprar agora</button>
+                <?php else: ?>
+                    <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
+                <?php endif; ?>
+                <button id="favoritarBtn" class="heart-icon"><i class="fas fa-heart"></i></button>
+                <button class="sticks" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
+                    <hr id="stick1">
+                    <hr id="stick2">
+                    <div class="add_cart_txt">
+                        <p>Adicionar ao Carrinho</p>
                     </div>
+                </button>
 
-                    <!-- Outros conteúdos e botões -->
-                    <div class="container_additions">
-                        <!-- Conteúdo adicional -->
-                    </div>
-                </div>
-
-
-
-                <!--PARTE DAS INFORMAÇÕES-->
-
-                <div class="container_additions">
-                    <div class="info_column">
-                        <div class="info_item">
-                            <i class="bi bi-book"></i> <span><?php echo htmlspecialchars($livro['QntPaginas']); ?> Páginas</span>
-                        </div>
-                        <div class="info_item">
-                            <i class="bi bi-pencil-square"></i>
-                            <span><?php echo htmlspecialchars($livro['NomeEditora']); ?></span>
-                        </div>
-                        <div class="info_item">
-
-                            <span class="material-symbols-outlined">theater_comedy</span>
-                            <span><?php echo htmlspecialchars($livro['Genero']); ?></span>
-                        </div>
-                        <div class="info_item">
-                            <i class="bi bi-box-seam"></i> <span><?php echo htmlspecialchars($livro['']); ?></span>
-                        </div>
-                        <div class="info_item">
-                            <i class="bi bi-star-fill"></i>
-                            <span><?php echo htmlspecialchars($livro['  ']); ?></span>
-                        </div>
-                    </div>
-
-                    <!--PARTE FUNCIONAL !-->
-                    <div class="functional_column">
-                        <span>R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
-                        <?php if (isset($_SESSION['cliente_id'])): ?>
-                            <button name="btn_comprar" type="submit">Comprar agora</button>
-                        <?php else: ?>
-                            <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
-                        <?php endif; ?>
-
-                        <div class="icon_sticks_container">
-                            <div class="btns">
-                                <form action="./modulos/funcs.php" method="post">
-                                    <input type="hidden" name="cliente_id" value="<?php echo htmlspecialchars($userId); ?>">
-                                    <input type="hidden" name="id_livro" value="<?php echo htmlspecialchars($id_livro); ?>">
-                                    <button onclick="toggleFavorite(<?php echo htmlspecialchars($id_livro); ?>)" id="favoritarBtn" name="favoritar" class="btn" type="button">
-
-                                        <?php
-                                        if (isset($_SESSION['cliente_id'])) {
-                                            $stmt = $con->prepare("SELECT estado FROM favoritos WHERE id_usuario = ? AND id_livro = ?");
-                                            $stmt->execute([$userId, $id_livro]);
-                                            if ($stmt->rowCount() > 0) {
-                                                $favoritado = $stmt->fetchColumn(); // Pega o valor do  (0 ou 1)
-                                                if ($favoritado) {
-                                                    echo "<i id='heartIcon-{$id_livro}' class='fas fa-heart' style='color:red;'></i>";
-                                                } else {
-                                                    echo "<i id='heartIcon' class='fas fa-heart' style='color:grey;'></i>";
-                                                }
-                                            } else {
-                                                echo "<i id='heartIcon' class='fas fa-heart' style='color:grey;'></i>";
-                                            }
-                                        } else {
-                                            echo "<button onclick='alert('Faça login para favoritar este livro.')' class='btn' type='button'><i id='heartIcon' class='fas fa-heart' style='color:grey;'></i></button>";
-                                        }
-
-                                        ?>
-                                    </button>
-                                </form>
-                            </div>
-                            <button class="sticks" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
-                                <hr id="stick1">
-                                <hr id="stick2">
-                                <div class="add_cart_txt">
-                                    <p>Adicionar ao Carrinho</p>
-                                </div>
-                            </button>
-
-
-                        </div>
-                    </div>
-                    <!--PARTE FUNCIONAL !-->
-
-                </div>
+            </div>
+        </div>
     </div>
+
 </div>
-<?php endforeach; ?>
-<?php endif; ?>
 
 
 <!--///////////////////////////////////!-->
@@ -474,83 +418,44 @@ include("modulos/footer.php");
 
     // Função para adicionar item ao carrinho e armazenar no Local Storage
     function adicionarAoCarrinho(idLivro) {
-        console.log("Adicionando ao carrinho:", idLivro);
+        console.log("Função adicionarAoCarrinho chamada com ID:", idLivro);
         fetch('/bookersgalaxy/modulos/funcs.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     acao: 'adicionarCarrinho',
                     id_livro: idLivro
                 })
             })
+
             .then(response => response.json())
             .then(data => {
-                console.log('Resposta do servidor:', data);
+                console.log('Resposta recebida:', data);
                 if (data.success) {
                     alert("Livro adicionado ao carrinho com sucesso!");
-                    // Atualize o carrinho no localStorage, se necessário
                 } else {
-                    alert("Erro: " + (data.error || 'Erro desconhecido.'));
+                    alert("Erro ao adicionar ao carrinho: " + (data.error || 'Erro desconhecido.'));
                 }
             })
-            .catch(error => console.error('Erro ao adicionar ao carrinho:', error));
+            .catch(error => console.error('Erro na requisição:', error));
     }
 
 
 
 
     // Função para carregar o carrinho quando a página do carrinho é aberta
-    // Função para carregar o carrinho e exibir na página
     function carregarCarrinho() {
-        fetch('../compra/carrinho.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'acao=listarCarrinho'
-            })
-            .then(response => response.json())
-            .then(data => {
-                const carrinhoContainer = document.querySelector('.loved_books');
-                carrinhoContainer.innerHTML = ''; // Limpa o conteúdo anterior
+        // Recupera o carrinho do Local Storage
+        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-                if (data.success && data.livros && data.livros.length > 0) {
-                    // Itera sobre os livros e exibe cada um na interface
-                    data.livros.forEach(livro => {
-                        const livroElement = document.createElement('div');
-                        livroElement.classList.add('box_favorite');
-                        livroElement.setAttribute('data-id', livro.id_livro);
-
-                        // Adiciona o HTML do livro com imagem, título, autor, preço e quantidade
-                        livroElement.innerHTML = `
-                    <img src="${livro.imagem_caminho}" alt="Capa do livro">
-                    <div class="livro-info">
-                        <h4>${livro.titulo} - ${livro.autor}</h4>
-                        <p>R$ ${Number(livro.preco).toFixed(2).replace('.', ',')}</p>
-                        <p>Quantidade: ${livro.quantidade}</p>
-                    </div>
-                    <div class="acoes">
-                        <button class="remove-btn" onclick="removerDoCarrinho(${livro.id_livro})"><span class="material-symbols-outlined">delete</span></button>
-                    </div>
-                `;
-
-                        // Adiciona o livro ao container do carrinho
-                        carrinhoContainer.appendChild(livroElement);
-                    });
-                } else {
-                    console.log("O carrinho está vazio.");
-                    carrinhoContainer.innerHTML = '<p>O carrinho está vazio.</p>';
-                }
-            })
-            .catch(error => console.error('Erro ao carregar o carrinho:', error));
+        // Exibe cada item na interface do carrinho
+        carrinho.forEach(item => {
+            // Função para criar o HTML do item na página
+            exibirItemCarrinho(item);
+        });
     }
-
-    // Chama a função para carregar o carrinho quando a página termina de carregar
-    document.addEventListener('DOMContentLoaded', carregarCarrinho);
-
-
 
     // Exemplo de uso do Local Storage ao clicar no botão
     document.querySelectorAll('.sticks').forEach(botao => {
@@ -583,22 +488,6 @@ include("modulos/footer.php");
             sinopseCompleta.classList.add("expandida");
             button.innerText = "Ler menos";
         }
-    }
-
-    function toggleFavorite(idLivro) {
-        const userId = <?php echo json_encode($userId); ?>; // Adapte isso para pegar o ID do usuário correto
-        const heartIcon = document.getElementById(`btnh1-${idLivro}`);
-
-        fetch('./funcoes/funcs.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `user_id=${userId}&id_livro=${idLivro}&favoritar=1`,
-            })
-            .then(response => response.text())
-
-            .catch(error => console.error('Error:', error));
     }
 </script>
 </body>
