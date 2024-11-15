@@ -1,0 +1,112 @@
+/* Formulário de pesquisa */
+form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+form button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Lista de livros */
+ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+li button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+li button:hover {
+    opacity: 0.8;
+}
+
+li button.alterar {
+    background-color: #007BFF;
+}
+
+li button.alterar:hover {
+    background-color: #0056b3;
+}
+
+li form button {
+    background-color: #FF4C4C;
+}
+
+li form button:hover {
+    background-color: #ff1a1a;
+}
+
+/* Mensagem de sucesso */
+.mensagem.sucesso {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Mensagem de nenhum livro encontrado */
+li:last-child {
+    text-align: center;
+    color: #888;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+
+    form input[type="text"] {
+        font-size: 0.9rem;
+    }
+
+    form button {
+        font-size: 0.9rem;
+    }
+}
