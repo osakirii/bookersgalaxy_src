@@ -4,7 +4,7 @@ $con = Connect::getInstance(); // Database connection instance
 include_once(__DIR__ . '/../modulos/callimg.php'); // Includes BuscaLivro and Busca functions
 
 // Define the book ID to fetch a specific book, or leave as null to fetch all books
-$id_livro = null; 
+$id_livro = null;
 $todasImagens = false; // true to show all images, false for only the cover
 
 // Fetch books based on criteria
@@ -25,20 +25,27 @@ $livros = BuscaLivro($id_livro, $todasImagens);
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             padding: 8px;
             border: 1px solid #ddd;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
         }
-        /* Scrollable synopsis */
-        .sinopse {
-            max-height: 60px !important;
-            overflow-y: auto;
-            font-size: 0.9em;
-            line-height: 1.2em;
+
+        textarea {
+            background-color: transparent;
+            border: 1px solid transparent;
+            color: #000;
+            width: 100%;
+            scrollbar-color: gray transparent;
+            scrollbar-width: thin;
+            resize: none;
+            height: 115px
         }
     </style>
 </head>
@@ -59,23 +66,21 @@ $livros = BuscaLivro($id_livro, $todasImagens);
                         <th>Sinopse</th>
                         <th>Preço</th>
                         <th>Gênero</th>
-                        <th>Editora</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($livros as $livro): ?>
                         <tr>
                             <td>
-                                <img src="<?php echo htmlspecialchars(Busca($livro['id_livro'])); ?>" alt="Capa do Livro" width="100" height="150">
+
                             </td>
                             <td><?php echo htmlspecialchars($livro['Titulo']); ?></td>
                             <td><?php echo htmlspecialchars($livro['Autor']); ?></td>
                             <td><?php echo htmlspecialchars($livro['Data_lancamento']); ?></td>
                             <td><?php echo htmlspecialchars($livro['QntPaginas']); ?></td>
-                            <td class="sinopse"><?php echo htmlspecialchars($livro['Sinopse']); ?></td>
+                            <td style="width: 400px;"><textarea id="sinopse" rows="10" readonly><?php echo htmlspecialchars($livro['Sinopse']); ?></textarea></td>
                             <td>R$ <?php echo number_format($livro['Preco'], 2, ',', '.'); ?></td>
                             <td><?php echo htmlspecialchars($livro['Genero']); ?></td>
-                            <td><?php echo htmlspecialchars($livro['NomeEditora']); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
