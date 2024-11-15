@@ -4,7 +4,7 @@ body
     margin: 0;
     padding: 0;
     height: 100dvh;
-    background-color: whitesmoke;    
+    background-image: linear-gradient(#96B29D, whitesmoke, #F3C3B2); 
 }
 
 main
