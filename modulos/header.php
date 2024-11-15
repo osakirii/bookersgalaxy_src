@@ -143,9 +143,8 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 else{
                     echo "<a href='/bookersgalaxy/perfil/login_cad.php'><i class='far fa-circle-user'></i></a>";
                  }
+                 ?>
             </button>
-            
-            ?>
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
             
         </div>
