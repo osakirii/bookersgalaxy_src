@@ -89,17 +89,20 @@ img{
 
 #editarPerfil i{
     position: absolute;
-    right: 20px;
-    top: 32px;
-}
+    right: 3%;
+    top: 15%;
 
-#editarPerfil i#dois{
-    top: 158px;
+        &#dois{
+            top: 48%;
+        }
 }
 
 #mudarEdit{
-    width: 381px;
-    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30vw;
+    height: 7%;
     border-radius: 10px;
     box-shadow: 0 0 3px #7e7c7c;
     display: flex;
@@ -109,11 +112,10 @@ img{
 
 #mudarEdit p{
     cursor: pointer;
-}
-
-#mudarEdit p.active{
-    border-bottom: 2px solid #1D1E1D;
-    padding-bottom: 27px;
+    
+    &.active{
+        border-bottom: 2px solid #1D1E1D;
+    }
 }
 
 #editarUsuario{
@@ -176,7 +178,7 @@ img{
 }
 
 #botoesEditar{
-    width: 52vw;
+    width: 60vw;
     position: relative;
 }
 

@@ -69,6 +69,7 @@
                         <!-- Formulário "Endereços" sem a classe active inicialmente -->
                         <form action="" class="form-enderecos">
                             <div>
+                                <h4>Endereço Principal</h4>
                                 <label>Endereço/Rua:</label>
                                 <input type="text" id="logradouro_principal" name="logradouro_principal">
                                 <label>N°:</label>
@@ -76,7 +77,6 @@
                                 Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal">
                                 CEP: <input type="text" id="cep_principal" name="cep_principal">
                                 <span>
-                                    <i class="fas fa-plus" style="font-size: 20px;"></i>Adicionar mais endereços
                                 </span>
                             </div>
                             <div class="linha"></div>
@@ -89,7 +89,6 @@
                                 Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal">
                                 CEP: <input type="text" id="cep_principal" name="cep_principal">
                                 <span>
-                                    <i class="fas fa-plus" style="font-size: 20px;"></i>Adicionar mais endereços
                                 </span>
                             </div>
                         </form>
