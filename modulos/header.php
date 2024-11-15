@@ -85,7 +85,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             <a href="#">Tenho Daltonismo</a>
             <a href="categorias.php">Categorias</a>
             <a href="#">Lançamentos</a>
-            <a href="favoritos.php">Favoritos</a>
+            <a href="/bookersgalaxy/perfil/favoritos.php">Favoritos</a>
             <a href="/bookersgalaxy/compra/carrinho.php">Carrinho</a>
             <a href="/bookersgalaxy/modulos/logout.php">Sair</a>
             <?php 
@@ -104,6 +104,9 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 echo '<a href="/bookersgalaxy/adm.php"><i class="fas fa-laptop-code"></i> Administração</a>';
             }
             ?>
+            <a href="#"><i class="fas fa-gear"></i> Configurações</a>
+            <a href="#"><i class="far fa-circle-question"></i> Ajuda</a>
+            <a href="#"><i class="far fa-comments"></i> Fale Conosco</a>
         </div>
     </nav>
 

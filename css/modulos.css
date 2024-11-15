@@ -38,8 +38,7 @@ a{
     text-decoration: none;
     color: #1D1E1D;
 }
-
-button{
+i.fa-plus, button{
     cursor: pointer;
 }
 

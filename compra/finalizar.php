@@ -108,7 +108,7 @@ if (isset($_POST['selected_books'])) {
             <div class="finalizar_compra">
                 <div class="dados_cliente">
                     <p><strong>Seus dados:</strong></p>
-                    <p>Destinatário:<?php echo htmlspecialchars($nomeCliente);?>  </p>
+                    <p>Destinatário:<?php echo htmlspecialchars($nomeUsuario);?>  </p>
                     <p>Rua XXXXXXXXXX, XXX - XXXXX XXXXXXX</p>
                     <p>CEP: XXXXX-XXX &nbsp;&nbsp; CPF: XXX.XXX.XXX-XX</p>
                     <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> &nbsp;&nbsp; Telefone: 11 XXXXX-XXXX</p>
@@ -139,7 +139,8 @@ if (isset($_POST['selected_books'])) {
 
     function cancelarCompra() {
         if (confirm("Tem certeza de que deseja cancelar a compra?")) {
-            window.location.href = "/pagina_inicial";
+            window.location.href = "/bookersgalaxy/index.php";
+
         }
     }
 
