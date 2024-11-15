@@ -108,7 +108,7 @@ try {
     <div class="container_infos">
     <div class="info-box">
         <h2 class="titulo"><?php echo htmlspecialchars($livro['Titulo']); ?></h2>
-        <h4 class="autor"><?php echo htmlspecialchars($livro['Autor']); ?> - <?php echo htmlspecialchars($livro['Data_lancamento']); ?></h4>
+        <h4 class="autor"><?php echo htmlspecialchars($livro['Autor']); ?> - <?php echo date("d/m/Y", strtotime(htmlspecialchars($livro['Data_lancamento']))); ?></h4>
     </div>
 
     <!-- Sinopse -->
