@@ -79,66 +79,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-<main>
-    <form id="formLivro" method="POST" enctype="multipart/form-data" action="alterarLivro.php">
+    <main>
+        <form id="formLivro" method="POST" enctype="multipart/form-data" action="alterarLivro.php">
+            <label>Insira as informações do livro:</label>
+            <input type="text" name="Titulo" value="<?= htmlspecialchars($livro['Titulo']) ?>" placeholder="Título do Livro" required>
+            <input type="text" name="Autor" value="<?= htmlspecialchars($livro['Autor']) ?>" placeholder="Autor do Livro" required>
+            <input type="date" name="Data_lancamento" value="<?= htmlspecialchars($livro['Data_lancamento']) ?>" required>
+            <input type="number" name="QtdPaginas" value="<?= htmlspecialchars($livro['QntPaginas']) ?>" placeholder="Quantidade de Páginas" required>
+            <select id="generoSelect" name="id_categoria" required>
+                <option value="">Selecione um Gênero</option>
+                <?php
+                // Carregar categorias
+                $stmt = $con->prepare("SELECT id_categoria, Genero FROM genero");
+                $stmt->execute();
+                $generos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($generos as $genero) {
+                    echo '<option value="' . htmlspecialchars($genero['id_categoria']) . '" ' . ($livro['id_categoria'] == $genero['id_categoria'] ? 'selected' : '') . '>' . htmlspecialchars($genero['Genero']) . '</option>';
+                }
+                ?>
+            </select>
+            <select id="editoraSelect" name="id_editora" required>
+                <option value="">Selecione uma Editora</option>
+                <?php
+                // Carregar editoras
+                $stmt = $con->prepare("SELECT id_editora, nome FROM editora");
+                $stmt->execute();
+                $editoras = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($editoras as $editora) {
+                    echo '<option value="' . htmlspecialchars($editora['id_editora']) . '" ' . ($livro['id_editora'] == $editora['id_editora'] ? 'selected' : '') . '>' . htmlspecialchars($editora['nome']) . '</option>';
+                }
+                ?>
+            </select>
+            <textarea name="Sinopse" placeholder="Sinopse" required rows="10"><?= htmlspecialchars($livro['Sinopse']) ?></textarea>
+            <input type="number" step="0.01" name="Preco" value="<?= htmlspecialchars($livro['Preco']) ?>" placeholder="Preço" required>
+            <input type="text" name="ISBN" id="isbn" value="<?= htmlspecialchars($livro['ISBN']) ?>" placeholder="ISBN" required maxlength="17">
 
-        <label>Insira as informações do livro:</label>
-        <input type="text" name="Titulo" value="<?= htmlspecialchars($livro['Titulo']) ?>" placeholder="Título do Livro" required>
-        <input type="text" name="Autor" value="<?= htmlspecialchars($livro['Autor']) ?>" placeholder="Autor do Livro" required>
-        <input type="date" name="Data_lancamento" value="<?= htmlspecialchars($livro['Data_lancamento']) ?>" required>
-        <input type="number" name="QtdPaginas" value="<?= htmlspecialchars($livro['QntPaginas']) ?>" placeholder="Quantidade de Páginas" required>
-        <select id="generoSelect" name="id_categoria" required>
-            <option value="">Selecione um Gênero</option>
-            <?php
-            // Carregar categorias
-            $stmt = $con->prepare("SELECT id_categoria, Genero FROM genero");
-            $stmt->execute();
-            $generos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($generos as $genero) {
-                echo '<option value="' . htmlspecialchars($genero['id_categoria']) . '" ' . ($livro['id_categoria'] == $genero['id_categoria'] ? 'selected' : '') . '>' . htmlspecialchars($genero['Genero']) . '</option>';
-            }
-            ?>
-        </select>
-        <select id="editoraSelect" name="id_editora" required>
-            <option value="">Selecione uma Editora</option>
-            <?php
-            // Carregar editoras
-            $stmt = $con->prepare("SELECT id_editora, nome FROM editora");
-            $stmt->execute();
-            $editoras = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($editoras as $editora) {
-                echo '<option value="' . htmlspecialchars($editora['id_editora']) . '" ' . ($livro['id_editora'] == $editora['id_editora'] ? 'selected' : '') . '>' . htmlspecialchars($editora['nome']) . '</option>';
-            }
-            ?>
-        </select>
-        <textarea name="Sinopse" placeholder="Sinopse" required rows="10"><?= htmlspecialchars($livro['Sinopse']) ?></textarea>
-        <input type="number" step="0.01" name="Preco" value="<?= htmlspecialchars($livro['Preco']) ?>" placeholder="Preço" required>
-        <input type="text" name="ISBN" id="isbn" value="<?= htmlspecialchars($livro['ISBN']) ?>" placeholder="ISBN" required maxlength="17">
+            <label>Selecione as imagens:</label>
+            <input type="file" name="arquivo[]" multiple required>
 
-        <label>Selecione as imagens:</label>
-        <input type="file" name="arquivo[]" multiple>
+            <!-- DROPDOWN PARA ESCOLHER A CAPA -->
+            <label for="capa">Escolha a capa:</label>
+            <select name="capa" required>
+                <option value="">Selecione uma imagem como capa</option>
+                <?php
+                // Carregar as imagens atuais do livro
+                $stmt = $con->prepare("SELECT id_arquivo, nome FROM arquivos WHERE livro_id = ?");
+                $stmt->execute([$livro['id_livro']]);
+                $arquivos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($arquivos as $arquivo) {
+                    echo '<option value="' . $arquivo['id_arquivo'] . '">' . $arquivo['nome'] . '</option>';
+                }
+                ?>
+            </select>
+            <center><button type="submit">Alterar Livro</button></center>
+        </form>
+        <a id="voltar" onclick="history.back()">Voltar</a></button>
+        </div>
+    </main>
 
-        <!-- DROPDOWN PARA ESCOLHER A CAPA -->
-        <label for="capa">Escolha a capa:</label>
-        <select name="capa" required>
-            <option value="">Selecione uma imagem como capa</option>
-            <?php
-            // Carregar as imagens atuais do livro
-            $stmt = $con->prepare("SELECT id_arquivo, nome FROM arquivos WHERE livro_id = ?");
-            $stmt->execute([$livro['id_livro']]);
-            $arquivos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($arquivos as $arquivo) {
-                echo '<option value="' . $arquivo['id_arquivo'] . '">' . $arquivo['nome'] . '</option>';
-            }
-            ?>
-        <center><button type="submit">Alterar Livro</button></center>
-        </select>
-
-    </form>
-    <a id="voltar" onclick="history.back()">Voltar</a>
-</main>
-
-<script>
+    <script>
         //JAVASCRIPT PARA PREENCHER O SELECT BASEADO NA QUANTIDADE DE IMAGENS
         const fileInput = document.querySelector('input[name="arquivo[]"]');
         const capaSelect = document.querySelector('select[name="capa"]');
