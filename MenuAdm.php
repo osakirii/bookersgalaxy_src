@@ -56,8 +56,8 @@
             <h1>Gerenciamento de Editora</h1>
             <div class="menu-crud">
                 <a href="Editora/uploadEditora.php">Adicionar Editora</a>
-                <a href="Editora/#">Buscar/Alterar Editora</a>
-                <a href="Editora/#">Ver Editora</a>
+                <a href="Editora/buscarEditora.php">Buscar/Alterar Editora</a>
+                <a href="Editora/verEditora.php">Ver Editora</a>
             </div>
         </main>
         
