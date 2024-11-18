@@ -16,7 +16,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
 
 ?>
 
-<html lang="pt-br">
+<html lang="pt-br"><!--PRATICAMENTE RESPONSIVO -->
 
 <head>
     <meta charset="UTF-8">
@@ -55,21 +55,22 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 padding: 0;
             }
 
-            @media(max-width: 690px) {
+            @media(max-width: 780px) {
                 #header a.categ{
                     display: none;
                 }
             }
 
-            @media(max-width: 540px) {
+            @media(max-width: 640x) {
                 #opcoes{
                     display: none;
                 }
             }
 
-            @media(max-width: 540px) {
+            @media(max-width: 640px) {
                 #filtro-daltonismo{
-                    display: none;
+                    width: 20vw;
+                    height: auto;
                 }
             }
             

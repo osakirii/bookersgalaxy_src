@@ -335,7 +335,7 @@ i.fa-plus, button{
     border: 4px solid rgb(212, 205, 205);
     border-radius: 20px;
     box-shadow: 1px -1px 3px rgb(214, 202, 202);
-    height: 284px;
+    height: 12em;
     width: auto;
     margin-left: 10px;
     margin-right: 10px;
@@ -393,7 +393,7 @@ i.fa-plus, button{
 }
 
 #footer-login a{
-    padding: 15px 80px 15px 80px;
+    padding: 10% 40%;
     background: white;
     box-shadow: 0 0 3px gray;
     border-radius: 10px;
@@ -403,7 +403,7 @@ i.fa-plus, button{
     color: #1D1E1D;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 485px) {
 
     #navbar #nav-content a{
         margin-bottom: 30px;
@@ -435,12 +435,8 @@ i.fa-plus, button{
     }
     #header #headerform{
         display: none;
-    }
-    #header #header-container #header-bars{
-        display: block;
-    }
-
-    #footer #footer-login a{
-        padding: 7px 50px 7px 50px;
+}
+    #header #header-bars{
+        display: flex;
     }
 }

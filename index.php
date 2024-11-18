@@ -8,7 +8,7 @@ if (isset($_SESSION['cliente_id'])) {
 }
 ?>
 
-<html lang="pt-br">
+<html lang="pt-br"><!-- RESPONSIVA QUASE -->
 
 <head>
     <meta charset="UTF-8">
@@ -57,7 +57,7 @@ if (isset($_SESSION['cliente_id'])) {
                 foreach ($livros as $livro) {
                     echo '<div class="book_card">';
                     echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
-                    echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
+                    echo '<img style="height: 20em;" src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
                     echo '</a>';
                     echo '</div>';
                 }

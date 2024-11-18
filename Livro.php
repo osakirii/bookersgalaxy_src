@@ -64,28 +64,22 @@ try {
     <aside>
         <div class="carrossel-container">
             <?php $imagens = BuscaLivro($id_livro, true); ?>
-            <div class="carrossel">
+            <div class="sandwich">
                 <?php if ($imagens): ?>
                     <?php foreach ($imagens as $imagem): ?>
                         <img src="<?php echo htmlspecialchars($imagem['path']); ?>"
-                            class="carrossel-item"
+                            class="sandwich-item"
                             alt="Imagem de <?php echo htmlspecialchars($livro['Titulo']); ?>">
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
 
             <button class="prev" onclick="plusSlides(-1)">
-                <div class="sticks_carosel">
-                    <hr class="stick_esq">
-                    <hr class="stick_dir">
-                </div>
+            <i class="fa-solid fa-chevron-up"></i>
             </button>
 
             <button class="next" onclick="plusSlides(1)">
-                <div class="sticks_carosel">
-                    <hr class="stick_esqB">
-                    <hr class="stick_dirB">
-                </div>
+            <i class="fa-solid fa-chevron-down"></i>
             </button>
         </div>
     </aside>

@@ -24,7 +24,7 @@
     </head>
 
     <body>
-        <main id="corpo">
+        <main id="corpo"> <!-- PRATICAMENTE RESPONSIVO -->
 
             <h1>GÊNEROS</h1>
             <section class="carrossel">
