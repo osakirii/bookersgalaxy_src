@@ -134,7 +134,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <center><button type="submit">Alterar Livro</button></center>
         </form>
         <a id="voltar" onclick="history.back()">Voltar</a></button>
-        </div>
     </main>
 
     <script>
