@@ -62,8 +62,8 @@
             <h1>Gerenciamento de Autor</h1>
             <div class="menu-crud">
                 <a href="Autor/uploadAutor.php">Adicionar Autor</a>
-                <a href="Editora/buscar.php">Buscar/Alterar Autor</a>
-                <a href="Editora/ver.php">Ver Autor</a>
+                <a href="Autor/buscarAutor.php">Buscar/Alterar Autor</a>
+                <a href="Autor/verAutor.php">Ver Autor</a>
             </div>
         </main>
         

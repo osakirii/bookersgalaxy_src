@@ -117,20 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Selecione as imagens:</label>
             <input type="file" name="arquivo[]" multiple required>
 
-            <!-- DROPDOWN PARA ESCOLHER A CAPA -->
-            <label for="capa">Escolha a capa:</label>
-            <select name="capa" required>
-                <option value="">Selecione uma imagem como capa</option>
-                <?php
-                // Carregar as imagens atuais do livro
-                $stmt = $con->prepare("SELECT id_arquivo, nome FROM arquivos WHERE livro_id = ?");
-                $stmt->execute([$livro['id_livro']]);
-                $arquivos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($arquivos as $arquivo) {
-                    echo '<option value="' . $arquivo['id_arquivo'] . '">' . $arquivo['nome'] . '</option>';
-                }
-                ?>
-            </select>
+            
             <center><button type="submit">Alterar Livro</button></center>
         </form>
         <a id="voltar" onclick="history.back()">Voltar</a></button>
