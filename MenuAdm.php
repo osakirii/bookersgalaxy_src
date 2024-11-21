@@ -59,6 +59,12 @@
                 <a href="Editora/buscarEditora.php">Buscar/Alterar Editora</a>
                 <a href="Editora/verEditora.php">Ver Editora</a>
             </div>
+            <h1>Gerenciamento de Autor</h1>
+            <div class="menu-crud">
+                <a href="Autor/uploadAutor.php">Adicionar Autor</a>
+                <a href="Editora/buscar.php">Buscar/Alterar Autor</a>
+                <a href="Editora/ver.php">Ver Autor</a>
+            </div>
         </main>
         
         <?php
