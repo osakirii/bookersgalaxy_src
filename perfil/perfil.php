@@ -26,8 +26,6 @@
                 <div class="perfilContainer">
 
                     <p>| <?php echo $nomeUsuario ?></p>
-                    <p>| Biografia: x x x x x xxxxx xxxxxxxxx xxx xxx xxxxx xx xxx xxxx x xx
-                         xxxxxx xx xx xxx xx xx xxxxxx x x x x x </p>
                     <a href="editarPerfil.php">
                         <i class="fas fa-pen-to-square"></i><p>Editar Perfil</p>
                 </a>

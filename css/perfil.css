@@ -25,6 +25,10 @@ button{
     display: flex;
     justify-content: center;
     margin-bottom: 0;
+
+        & p{
+            font-size: 20px;
+        }
 }
 
 img{
@@ -91,10 +95,6 @@ img{
     position: absolute;
     right: 3%;
     top: 15%;
-
-        &#dois{
-            top: 48%;
-        }
 }
 
 #mudarEdit{
