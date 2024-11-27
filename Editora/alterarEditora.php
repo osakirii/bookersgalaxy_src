@@ -1,67 +1,85 @@
 <?php
-include_once(__DIR__ . '/../config.php');
-
+include_once(__DIR__ . '/../config.php'); // Inclui configurações e funções globais
 $con = Connect::getInstance();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        // Recebendo e validando os dados
-        $id_editora = intval($_POST['id_editora']);
-        $nome = trim($_POST['nome']);
-        $pais = trim($_POST['pais']);
-        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-        $telefone = trim($_POST['telefone']);
-        $cnpj = trim($_POST['CNPJ']);
-        $tipo_imagem = $_POST['tipo_imagem'];
+// Variáveis para mensagens de erro ou sucesso
+$erro = false;
+$sucesso = false;
 
-        $cep = trim($_POST['cep']);
-        $rua = trim($_POST['rua']);
-        $numero = trim($_POST['numero']);
-        $bairro = trim($_POST['bairro']);
-        $estado = trim($_POST['estado']);
-        $cidade = trim($_POST['cidade']);
-        $tipo_endereco = $_POST['tipo_endereco'];
+// Verifica se o ID foi passado na URL
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id_editora = $_GET['id'];
 
-        if (!$id_editora || !$nome || !$pais || !$email || !$telefone || !$cnpj) {
-            throw new Exception("Preencha todos os campos obrigatórios.");
-        }
+    // Busca os dados da editora para preencher o formulário
+    $stmt = $con->prepare("SELECT id_editora, nome, pais, email, telefone, cnpj FROM editora WHERE id_editora = ?");
+    $stmt->execute([$id_editora]);
+    $editora = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Atualizando a editora
-        $stmt = $con->prepare("UPDATE editora SET nome = ?, pais = ?, email = ?, telefone = ?, cnpj = ? WHERE id_editora = ?");
-        $stmt->execute([$nome, $pais, $email, $telefone, $cnpj, $id_editora]);
+    // Busca os dados de endereço da editora
+    $stmt_endereco = $con->prepare("SELECT id_endereco, tipo_endereco, endereco_rua, endereco_numero, endereco_bairro, endereco_cep, estado, cidade FROM enderecos_editora WHERE id_editora = ?");
+    $stmt_endereco->execute([$id_editora]);
+    $enderecos = $stmt_endereco->fetchAll(PDO::FETCH_ASSOC);
 
-        // Atualizando o endereço
-        $stmtEndereco = $con->prepare("UPDATE enderecos_editora SET tipo_endereco = ?, endereco_rua = ?, endereco_numero = ?, endereco_bairro = ?, endereco_cep = ?, estado = ?, cidade = ? WHERE id_editora = ?");
-        $stmtEndereco->execute([$tipo_endereco, $rua, $numero, $bairro, $cep, $estado, $cidade, $id_editora]);
+    // Verifica se a editora existe
+    if (!$editora) {
+        die('Editora não encontrada!');
+    }
 
-        // Manipulação de imagens
-        if (isset($_FILES['arquivo']) && $_FILES['arquivo']['error'][0] === 0) {
-            foreach ($_FILES['arquivo']['tmp_name'] as $key => $tmp_name) {
-                $arquivo = $_FILES['arquivo'];
-                $folder = "../img/";
-                $archiveName = $arquivo['name'][$key];
-                $newArchiveName = uniqid();
-                $extension = strtolower(pathinfo($archiveName, PATHINFO_EXTENSION));
+    // Verifica se o formulário foi enviado
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+        $pais = filter_input(INPUT_POST, 'pais', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING);
+        $cnpj = filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_STRING);
 
-                if (!in_array($extension, ['jpg', 'png', 'jpeg', 'gif'])) {
-                    throw new Exception("Arquivo inválido: {$archiveName}.");
+        $tipo_endereco = filter_input(INPUT_POST, 'tipo_endereco', FILTER_SANITIZE_STRING);
+        $endereco_rua = filter_input(INPUT_POST, 'endereco_rua', FILTER_SANITIZE_STRING);
+        $endereco_numero = filter_input(INPUT_POST, 'endereco_numero', FILTER_SANITIZE_STRING);
+        $endereco_bairro = filter_input(INPUT_POST, 'endereco_bairro', FILTER_SANITIZE_STRING);
+        $endereco_cep = filter_input(INPUT_POST, 'endereco_cep', FILTER_SANITIZE_STRING);
+        $estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING);
+        $cidade = filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_STRING);
+
+        // Validação simples
+        if (empty($nome) || empty($pais) || empty($email) || empty($cnpj) || empty($tipo_endereco) || empty($endereco_rua)) {
+            $erro = "Por favor, preencha todos os campos.";
+        } else {
+            try {
+                // Inicia a transação
+                $con->beginTransaction();
+
+                // Atualiza os dados da editora
+                $stmt_editora = $con->prepare("UPDATE editora SET nome = ?, pais = ?, email = ?, telefone = ?, cnpj = ? WHERE id_editora = ?");
+                $stmt_editora->execute([$nome, $pais, $email, $telefone, $cnpj, $id_editora]);
+
+                // Atualiza os endereços da editora (considerando que é possível ter vários endereços)
+                foreach ($enderecos as $endereco) {
+                    $stmt_endereco_update = $con->prepare("UPDATE enderecos_editora SET tipo_endereco = ?, endereco_rua = ?, endereco_numero = ?, endereco_bairro = ?, endereco_cep = ?, estado = ?, cidade = ? WHERE id_endereco = ?");
+                    $stmt_endereco_update->execute([
+                        $tipo_endereco, 
+                        $endereco_rua, 
+                        $endereco_numero, 
+                        $endereco_bairro, 
+                        $endereco_cep, 
+                        $estado, 
+                        $cidade, 
+                        $endereco['id_endereco']
+                    ]);
                 }
 
-                $path = $folder . $newArchiveName . "." . $extension;
-
-                if (move_uploaded_file($tmp_name, $path)) {
-                    $stmtImagem = $con->prepare("INSERT INTO imagens_editoras (id_editora, path, tipo_imagem, data_upload) VALUES (?, ?, ?, NOW())");
-                    $stmtImagem->execute([$id_editora, $path, $tipo_imagem]);
-                } else {
-                    throw new Exception("Erro ao enviar o arquivo: {$archiveName}.");
-                }
+                // Comita a transação
+                $con->commit();
+                $sucesso = "Editora e endereços atualizados com sucesso!";
+            } catch (Exception $e) {
+                // Em caso de erro, faz o rollback da transação
+                $con->rollBack();
+                $erro = "Erro ao atualizar a editora e os endereços: " . $e->getMessage();
             }
         }
-
-        echo "Editora atualizada com sucesso!";
-    } catch (Exception $e) {
-        echo "<p>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
     }
+} else {
+    die('ID da editora não fornecido.');
 }
 ?>
 
@@ -70,96 +88,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/upload.css">
     <link rel="stylesheet" href="../css/modulos.css">
+    <link rel="stylesheet" href="../css/upload.css">
     <title>Alterar Editora</title>
 </head>
 <body>
     <main>
         <h1>Alterar Editora</h1>
-        <form id="formLivro" method="POST" enctype="multipart/form-data" action="alterarEditora.php">
-            <input type="hidden" name="id_editora" value="<?= htmlspecialchars($_GET['id'] ?? '') ?>">
 
-            <label>Nome:</label>
-            <input type="text" name="nome" placeholder="Nome da Editora" required>
+        <?php if ($erro): ?>
+            <div style="color: red;">
+                <p><?= htmlspecialchars($erro) ?></p>
+            </div>
+        <?php endif; ?>
 
-            <label>País:</label>
-            <input type="text" name="pais" placeholder="País" required>
+        <?php if ($sucesso): ?>
+            <div style="color: green;">
+                <p><?= htmlspecialchars($sucesso) ?></p>
+                <a href="buscarEditora.php">Voltar para a lista de editoras</a>
+            </div>
+        <?php else: ?>
+            <!-- Formulário de Alteração -->
+            <form id="formLivro" method="POST" action="alterarEditora.php?id=<?= $editora['id_editora'] ?>">
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($editora['nome']) ?>" required>
+                </div>
+                <div>
+                    <label for="pais">País:</label>
+                    <input type="text" id="pais" name="pais" value="<?= htmlspecialchars($editora['pais']) ?>" required>
+                </div>
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" value="<?= htmlspecialchars($editora['email']) ?>" required>
+                </div>
+                <div>
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" id="telefone" name="telefone" value="<?= htmlspecialchars($editora['telefone']) ?>">
+                </div>
+                <div>
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" value="<?= htmlspecialchars($editora['cnpj']) ?>" required>
+                </div>
 
-            <label>CNPJ:</label>
-            <input type="text" name="CNPJ" placeholder="CNPJ" required>
-
-            <label>Email:</label>
-            <input type="email" name="email" placeholder="E-mail" required>
-
-            <label>Telefone:</label>
-            <input type="text" name="telefone" placeholder="Telefone" required>
-
-            <label>CEP:</label>
-            <input type="text" name="cep" placeholder="CEP" onblur="buscarEndereco()" required>
-
-            <label>Rua:</label>
-            <input type="text" name="rua" placeholder="Rua" required>
-
-            <label>Número:</label>
-            <input type="text" name="numero" placeholder="Número" required>
-
-            <label>Bairro:</label>
-            <input type="text" name="bairro" placeholder="Bairro" required>
-
-            <label>Cidade:</label>
-            <input type="text" name="cidade" placeholder="Cidade" required>
-
-            <label>Estado:</label>
-            <input type="text" name="estado" placeholder="Estado" required>
-
-            <label>Tipo de Endereço:</label>
-            <select name="tipo_endereco" required>
-                <option value="">Selecione</option>
-                <option value="principal">Principal</option>
-                <option value="filial">Filial</option>
-                <option value="comercial">Comercial</option>
-                <option value="correspondência">Correspondência</option>
-            </select>
-
-            <label>Imagens:</label>
-            <input type="file" name="arquivo[]" multiple>
-
-            <label>Tipo de Imagem:</label>
-            <select name="tipo_imagem" required>
-                <option value="">Selecione</option>
-                <option value="logo">Logo</option>
-                <option value="banner">Banner</option>
-                <option value="promocao">Promoção</option>
-                <option value="outra">Outra</option>
-            </select>
-
-            <center><button type="submit">Salvar Alterações</button></center>
-        </form>
-        <a id="voltar" onclick="history.back()">Voltar</a>
+                <h2>Endereços</h2>
+                <?php foreach ($enderecos as $endereco): ?>
+                    <div>
+                        <input type="hidden" name="tipo_endereco" value="<?= htmlspecialchars($endereco['tipo_endereco']) ?>" required>
+                    </div>
+                    <div>
+                        <label for="endereco_rua">Rua:</label>
+                        <input type="text" name="endereco_rua" value="<?= htmlspecialchars($endereco['endereco_rua']) ?>" required>
+                    </div>
+                    <div>
+                        <label for="endereco_numero">Número:</label>
+                        <input type="text" name="endereco_numero" value="<?= htmlspecialchars($endereco['endereco_numero']) ?>">
+                    </div>
+                    <div>
+                        <label for="endereco_bairro">Bairro:</label>
+                        <input type="text" name="endereco_bairro" value="<?= htmlspecialchars($endereco['endereco_bairro']) ?>">
+                    </div>
+                    <div>
+                        <label for="endereco_cep">CEP:</label>
+                        <input type="text" name="endereco_cep" value="<?= htmlspecialchars($endereco['endereco_cep']) ?>">
+                    </div>
+                    <div>
+                        <label for="estado">Estado:</label>
+                        <input type="text" name="estado" value="<?= htmlspecialchars($endereco['estado']) ?>">
+                    </div>
+                    <div>
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" name="cidade" value="<?= htmlspecialchars($endereco['cidade']) ?>">
+                    </div>
+                <?php endforeach; ?>
+                <button type="submit">Alterar</button>
+            </form>
+        <?php endif; ?>
     </main>
-
-    <script>
-        function buscarEndereco() {
-            const cep = document.querySelector('input[name="cep"]').value.replace(/\D/g, '');
-            if (cep.length === 8) {
-                fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.erro) {
-                            document.querySelector('input[name="rua"]').value = data.logradouro;
-                            document.querySelector('input[name="bairro"]').value = data.bairro;
-                            document.querySelector('input[name="cidade"]').value = data.localidade;
-                            document.querySelector('input[name="estado"]').value = data.uf;
-                        } else {
-                            alert("CEP não encontrado.");
-                        }
-                    })
-                    .catch(() => alert("Erro ao buscar o CEP."));
-            } else {
-                alert("CEP inválido.");
-            }
-        }
-    </script>
 </body>
 </html>

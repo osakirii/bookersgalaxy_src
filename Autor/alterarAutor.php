@@ -95,5 +95,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             </form>
         <?php endif; ?>
     </main>
+    <?php var_dump($id_autor) ?>
 </body>
 </html>
