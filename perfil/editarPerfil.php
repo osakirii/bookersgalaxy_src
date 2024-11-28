@@ -25,8 +25,6 @@
                         <form action="salvar_perfil.php" method="post" enctype="multipart/form-data" id="formPerfil">
                             Nome: <i class="fas fa-pen"></i>
                             <input type="text" placeholder="<?php echo $nomeUsuario ?>" maxlength="100">
-                            Biografia (Opcional): <i class="fas fa-pen" id="dois"></i>
-                            <textarea placeholder="" rows="5"></textarea>
                         </form>
                     </section>
 

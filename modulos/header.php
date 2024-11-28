@@ -71,6 +71,9 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 #filtro-daltonismo{
                     width: 20vw;
                     height: auto;
+                        & option{
+                            font-size: 3vw;
+                        }
                 }
             }
             
@@ -105,8 +108,6 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 echo '<a href="/bookersgalaxy/adm.php"><i class="fas fa-laptop-code"></i> Administração</a>';
             }
             ?>
-            <a href="#"><i class="fas fa-gear"></i> Configurações</a>
-            <a href="#"><i class="far fa-circle-question"></i> Ajuda</a>
             <a href="#"><i class="far fa-comments"></i> Fale Conosco</a>
         </div>
     </nav>
@@ -118,7 +119,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <header id="header">
         <a href="/bookersgalaxy/index.php" style="margin: 0; padding : 0;"><img src="<?php echo Busca(1) ?>"></a>
         <div id="headerCookies">
-            <div div="alterarCores">
+            <div id="alterarCores">
                 <label id="opcoes" for="filtro-daltonismo" style="font-size: 18px;
                     padding:5px; color: #1D1E1D;">Alterar Cores:</label>
                 <select id="filtro-daltonismo" style="margin: 0 15px 10px 0">
@@ -132,7 +133,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
         </div>
         <a class="categ" href="/bookersgalaxy/categorias.php">Categorias</a>
         <form class="pesquisa" id="headerform">
-            <input size="40" id="searchbar" onfocus="pesquisafocus()" onblur="pesquisablur()"><button type="submit" onclick="openSearchBar()"><i class="fas fa-magnifying-glass"></i></button>
+            <input size="36" id="searchbar" onfocus="pesquisafocus()" onblur="pesquisablur()"><button type="submit" onclick="openSearchBar()"><i class="fas fa-magnifying-glass"></i></button>
         </form>
         <div id="header-container">
             <button class="icones">

@@ -22,12 +22,12 @@
             <h1>MEU PERFIL</h1>
 
             <section id="perfil">
-                <img src="../img/usuario/placeholder.png" alt="placeholder.png">
                 <div class="perfilContainer">
-
-                    <p>| <?php echo $nomeUsuario ?></p>
-                    <p>| Biografia: x x x x x xxxxx xxxxxxxxx xxx xxx xxxxx xx xxx xxxx x xx
-                         xxxxxx xx xx xxx xx xx xxxxxx x x x x x </p>
+                <p>| <?php echo $nomeUsuario ?></p>
+                <img src="../img/usuario/placeholder.png" alt="placeholder.png">
+                </div>
+                <div class="perfilContainer">
+                    <br><br>
                     <a href="editarPerfil.php">
                         <i class="fas fa-pen-to-square"></i><p>Editar Perfil</p>
                 </a>
@@ -40,10 +40,7 @@
                         <i class="fas fa-cart-shopping"></i><p>Carrinho</p>
                         </a>
                     <a href="#">
-                        <i class="fas fa-location-dot"></i><p>Endereços Cadastrados</p>
-                        </a>
-                    <a href="#">
-                        <i class="fas fa-credit-card"></i><p>Cartões Cadastrados</p>
+                        <i class="fas fa-location-dot"></i><p>Endereços</p>
                         </a>
                     <a href="pedidos.php">
                         <i class="fas fa-boxes-packing"></i><p>Pedidos</p>
@@ -63,7 +60,7 @@
             // Verifica se encontrou livros
             if ($livros) {
                 foreach ($livros as $livro) {
-                    echo '<div class="livro">';
+                    echo '<div class="livro style="flex-flow: row wrap;">';
                     echo '<a href="../Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
                     echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
                     echo '</a>';
