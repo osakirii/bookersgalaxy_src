@@ -60,7 +60,7 @@ try {
     <?php endif; ?>
 </header>
 
-<div class="main_content">
+<container class="containerPai">
     <aside>
         <div class="carrossel-container">
             <?php $imagens = BuscaLivro($id_livro, true); ?>
@@ -74,16 +74,9 @@ try {
                 <?php endif; ?>
             </div>
 
-            <button class="prev" onclick="plusSlides(-1)">
-            <i class="fa-solid fa-chevron-up"></i>
-            </button>
-
-            <button class="next" onclick="plusSlides(1)">
-            <i class="fa-solid fa-chevron-down"></i>
-            </button>
         </div>
     </aside>
-    <main>
+    <main> 
         <div id="imagemCentral">
             <?php
             if ($livros) {
@@ -97,9 +90,8 @@ try {
         </div>
 
     </main>
-
-    <!--PARTE DAS INFORMAÇÕES-->
-    <div class="container_infos">
+        <!--PARTE DAS INFORMAÇÕES-->
+        <div class="container_infos">
         <div class="info-box">
             <h2 class="titulo"><?php echo htmlspecialchars($livro['Titulo']); ?></h2>
             <h4 class="autor"><?php echo htmlspecialchars($livro['Autor']); ?> - <?php echo date("d/m/Y", strtotime(htmlspecialchars($livro['Data_lancamento']))); ?></h4>
@@ -135,7 +127,7 @@ try {
 
             <!-- Parte funcional à direita -->
             <div class="functional_column">
-                <span class="preco">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
+                <span id="precinho">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
                 <?php if (isset($_SESSION['cliente_id'])): ?>
                     <button name="btn_comprar" type="submit">Comprar agora</button>
                 <?php else: ?>
@@ -154,7 +146,10 @@ try {
         </div>
     </div>
 
-</div>
+    
+    </div>
+
+</container>
 
 
 <!--///////////////////////////////////!-->

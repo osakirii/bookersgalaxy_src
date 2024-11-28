@@ -23,11 +23,16 @@
 
             <section id="perfil">
                 <div class="perfilContainer">
+<<<<<<< HEAD
                 <p>| <?php echo $nomeUsuario ?></p>
                 <img src="../img/usuario/placeholder.png" alt="placeholder.png">
                 </div>
                 <div class="perfilContainer">
                     <br><br>
+=======
+
+                    <p>| <?php echo $nomeUsuario ?></p>
+>>>>>>> 6b116f2fe890f5f45a8b1bd3c9600cd424f204a5
                     <a href="editarPerfil.php">
                         <i class="fas fa-pen-to-square"></i><p>Editar Perfil</p>
                 </a>

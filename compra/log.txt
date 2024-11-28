@@ -96,3 +96,8 @@ Requisição recebida: []
 Requisição recebida: []
 Requisição recebida: []
 Requisição recebida: []
+<<<<<<< HEAD
+=======
+Requisição recebida: []
+Requisição recebida: []
+>>>>>>> 6b116f2fe890f5f45a8b1bd3c9600cd424f204a5

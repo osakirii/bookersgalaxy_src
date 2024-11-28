@@ -34,7 +34,7 @@ if (isset($_SESSION['cliente_id'])) {
                     <img class="d-block w-100" src="<?php echo Busca(7) ?>" alt="Primeiro Slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo Busca(7) ?>" alt="Segundo Slide">
+                    <img class="d-block w-100" src="<?php echo Busca(9) ?>" alt="Segundo Slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
