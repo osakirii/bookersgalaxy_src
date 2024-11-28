@@ -55,10 +55,9 @@ header h2 {
     margin-bottom: 5%;
     justify-content: center; /* Centraliza os itens horizontalmente */
     padding: 20px; /* Espaçamento interno do container */
+    margin: 0 ; /* Centraliza o container na página */
     width: 100%;
-    max-width: 1200px; /* Largura máxima do container */
-    margin: 0 auto; /* Centraliza o container na página */
-    gap: 60px;
+    gap: 50px;
 }
 
 aside {
@@ -70,15 +69,18 @@ aside {
     padding: 5% 10px;
     overflow: hidden;
     margin: 5% 10px;
+    justify-content: center;
+    align-items: center;
 }
 aside img {
-    width: 80%; /* Largura fixa */
+    width: 65%; /* Largura fixa */
     height: auto;  /* Altura fixa */
     object-fit: contain; 
     aspect-ratio: 1/1;
     margin: 5px 0;
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 @media(max-width: 990px){
@@ -94,8 +96,6 @@ aside img {
     height: 100%; 
     align-items: left;
     scroll-behavior: smooth;
-    left: 0;
-    top: 0;
 }
 
 .sandwich-item {
@@ -124,12 +124,12 @@ main {
     height: auto; 
     overflow: hidden;
     border-radius: 5px;
-
+    margin-top: 0;
 }
 
 #imagemCentral img {
-    width: 170px;
-    height: 70%;
+    width: 90%;
+    height: auto;
     /*SUPER IMPORTANTE, ARRUMA A PROPORÇÃO*/
     aspect-ratio: 3/4;
     object-fit: contain;
@@ -152,16 +152,15 @@ h1 {
 
 
 
-
 .container_infos {
     width: 100%;
-    max-width: 800px;
+    max-width: 750px;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    margin: auto;
+    margin: 0 20px 0 80px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    right: 0;
 }
 .info-box h2 {
     font-size: 1.8rem;
@@ -211,7 +210,7 @@ h1 {
 
 .info-box {
     position: relative;
-    padding: 20px;
+    padding-bottom: 20px;
     width: 100%;
 }
 

@@ -127,7 +127,7 @@ try {
 
             <!-- Parte funcional à direita -->
             <div class="functional_column">
-                <span class="preco">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
+                <span id="precinho">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
                 <?php if (isset($_SESSION['cliente_id'])): ?>
                     <button name="btn_comprar" type="submit">Comprar agora</button>
                 <?php else: ?>
