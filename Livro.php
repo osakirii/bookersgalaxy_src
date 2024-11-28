@@ -127,13 +127,13 @@ try {
 
             <!-- Parte funcional à direita -->
             <div class="functional_column">
-                <span id="precinho">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
+                <span id="precinho">R$<?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
                 <?php if (isset($_SESSION['cliente_id'])): ?>
                     <button name="btn_comprar" type="submit">Comprar agora</button>
                 <?php else: ?>
                     <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
                 <?php endif; ?>
-                <button id="favoritarBtn" class="heart-icon"><i class="fas fa-heart"></i></button>
+                <button id="favoritarBtn" class="heart-icon" style="height=100px"><i class="fas fa-heart"></i></button>
                 <button class="sticks" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
                     <hr id="stick1">
                     <hr id="stick2">

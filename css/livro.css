@@ -162,18 +162,24 @@ h1 {
     border-radius: 10px;
     right: 0;
 }
+
 .info-box h2 {
     font-size: 1.8rem;
     margin: 0;
     padding: 0;
     color: #333;
 }
+
 .info-box h4 {
     font-size: 1.2rem;
     font-weight: normal;
     margin: 5px 0 15px 0;
     color: #666;
 }
+span.precinho{
+    size: small;
+}
+
 .sinopse-container {
     max-height: 100%; /* Altura inicial da área de sinopse */
     overflow-y: hidden;
@@ -192,6 +198,10 @@ h1 {
 
 .sinopse-completa.expandida {
     display: inline;
+}
+
+button.heart-icon{
+    size: 100px;
 }
 
 .info-column {
@@ -252,8 +262,7 @@ button.heart-icon img {
 }
 .functional_column span {
     font-family: "Josefin Sans", sans-serif;
-    font-size: xx-large;
-    font-weight: 500;
+    font-size: 160%;
     text-shadow:0px 4px 4px rgba(0, 0, 0, 0.2)
 }
 .info_item {
@@ -385,7 +394,7 @@ button.next i{
     right: 5px;
 }
 
-/* .carrossel_down{
+.carrossel_down{
     display: flex;
     height: 180px;
     width: auto;
@@ -420,7 +429,7 @@ button.next i{
 }
  .carrossel_down a#ultimo{
     margin: 0;
-}*/
+}
 
 
 
