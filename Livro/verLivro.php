@@ -71,9 +71,7 @@ $livros = BuscaLivro($id_livro, $todasImagens);
                 <tbody>
                     <?php foreach ($livros as $livro): ?>
                         <tr>
-                            <td>
-
-                            </td>
+                        <td><img src="<?php echo htmlspecialchars("/bookersgalaxy/".$livro['path']);?>" style="width:50px;"></td>
                             <td><?php echo htmlspecialchars($livro['Titulo']); ?></td>
                             <td><?php echo htmlspecialchars($livro['Autor']); ?></td>
                             <td><?php echo htmlspecialchars($livro['Data_lancamento']); ?></td>
