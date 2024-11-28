@@ -44,7 +44,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 }
             }
 
-            @media(max-width: 1260px) {
+            @media(max-width: 1290px) {
                 .icones {
                     display: none;
                 }
@@ -123,10 +123,10 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                     padding:5px; color: #1D1E1D;">Alterar Cores:</label>
                 <select id="filtro-daltonismo" style="margin: 0 15px 10px 0">
                     <option value="">Padrão</option>
-                    <option value="correcaopro-protanopia">Correção para Protanopia</option>
-                    <option value="correcaopro-deuteranopia">Correção para Deuteranopia</option>
-                    <option value="correcaopro-tritanopia">Correção para Tritanopia</option>
-                    <option value="correcaopro-monocromacia">Correção para Monocromacia</option>
+                    <option value="correcaopro-protanopia">Protanopia</option><!--Manter SEM "correção para ..."-->
+                    <option value="correcaopro-deuteranopia">Deuteranopia</option>
+                    <option value="correcaopro-tritanopia">Tritanopia</option>
+                    <option value="correcaopro-monocromacia">Monocromacia</option>
                 </select>
             </div>
         </div>

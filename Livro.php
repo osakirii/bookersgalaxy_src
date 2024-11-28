@@ -60,7 +60,7 @@ try {
     <?php endif; ?>
 </header>
 
-<div class="main_content">
+<div class="containerPai">
     <aside>
         <div class="carrossel-container">
             <?php $imagens = BuscaLivro($id_livro, true); ?>
