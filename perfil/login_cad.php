@@ -12,6 +12,7 @@
 <body>
     <main>
     <div class="Pai">
+        <br><br>
             <h1>BEM-VINDO <br><span class="subtitulo1"> Qual é o tipo da sua Conta?</span></h1>
             <div class="botoes">
                 <a href="login.php"><button type="button">Cliente</button><br></a>
@@ -21,6 +22,7 @@
                 <b><span class="subtitulo2"> Ainda  não  tem  uma  conta?</span></b>
                 <h2><a href="cadastro.php">Criar uma nova Conta</a><h2>
             </div>
+            <br><br>
     </div>
     </main>
 </body>

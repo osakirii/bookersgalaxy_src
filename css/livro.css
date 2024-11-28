@@ -46,35 +46,96 @@
 header h2 {
     margin-left: 5%;
 }
-.main_content {
+
+.containerPai {
     display: flex;
     height:100vh; /* Ocupa a altura total da tela */
     align-items: center;
     overflow-y: hidden;
     margin-bottom: 5%;
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    padding: 20px; /* Espaçamento interno do container */
+    margin: 0 ; /* Centraliza o container na página */
+    width: 100%;
+    gap: 50px;
 }
-
 
 aside {
     position: relative;
     max-height: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 5% 10px;
     overflow: hidden;
+    margin: 5% 10px;
+    justify-content: center;
+    align-items: center;
 }
+aside img {
+    width: 65%; /* Largura fixa */
+    height: auto;  /* Altura fixa */
+    object-fit: contain; 
+    aspect-ratio: 1/1;
+    margin: 5px 0;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+@media(max-width: 990px){
+    aside{
+        display: none;
+    }
+}
+
+.sandwich {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%; 
+    align-items: left;
+    scroll-behavior: smooth;
+}
+
+.sandwich-item {
+    max-height: 25%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+.sandwich-item img{
+    aspect-ratio:3/1;
+
+}
+
+
 main {
     width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
+#imagemCentral {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: auto; 
+    height: auto; 
+    overflow: hidden;
+    border-radius: 5px;
+    margin-top: 0;
+}
+
+#imagemCentral img {
+    width: 90%;
+    height: auto;
+    /*SUPER IMPORTANTE, ARRUMA A PROPORÇÃO*/
+    aspect-ratio: 3/4;
+    object-fit: contain;
+}
+
+
 p {
     font-size:20px;
     font-family: "Josefin Sans", sans-serif;
@@ -88,60 +149,42 @@ p {
 h1 {
     font-size: 3rem;
 }
-#imagemCentral {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    width: 80%; 
-    height: auto; 
-    overflow: hidden;
-    border-radius: 5px;
 
-}
 
-#imagemCentral img {
-    width: 90%;
-    /*SUPER IMPORTANTE, ARRUMA A PROPORÇÃO*/
-    aspect-ratio: 3/4;
-    object-fit: contain;
-}
-
-aside img {
-    width: 100px; /* Largura fixa */
-    height: 130px; /* Altura fixa */
-    object-fit: contain; 
-    aspect-ratio: 1/1;
-    margin: 5px 0;
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 .container_infos {
     width: 100%;
-    max-width: 800px;
+    max-width: 750px;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    margin: auto;
+    margin: 0 20px 0 80px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    right: 0;
 }
+
 .info-box h2 {
     font-size: 1.8rem;
     margin: 0;
     padding: 0;
     color: #333;
 }
+
 .info-box h4 {
     font-size: 1.2rem;
     font-weight: normal;
     margin: 5px 0 15px 0;
     color: #666;
 }
+span.precinho{
+    size: small;
+}
+
 .sinopse-container {
     max-height: 100%; /* Altura inicial da área de sinopse */
     overflow-y: hidden;
     transition: max-height 0.5s ease-in-out; /* Expansão suave */
+    z-index: -1;
 }
 
 .sinopse-container.expandido {
@@ -155,6 +198,10 @@ aside img {
 
 .sinopse-completa.expandida {
     display: inline;
+}
+
+button.heart-icon{
+    size: 100px;
 }
 
 .info-column {
@@ -174,7 +221,7 @@ aside img {
 
 .info-box {
     position: relative;
-    padding: 20px;
+    padding-bottom: 20px;
     width: 100%;
 }
 
@@ -184,7 +231,7 @@ aside img {
 .infos-box h2 {
     font-size: 1.5rem;
     margin: 0 0 10px 0;
-}
+}/**/
 button.heart-icon {
     background-color: transparent;
     border: none;
@@ -215,8 +262,7 @@ button.heart-icon img {
 }
 .functional_column span {
     font-family: "Josefin Sans", sans-serif;
-    font-size: xx-large;
-    font-weight: 500;
+    font-size: 160%;
     text-shadow:0px 4px 4px rgba(0, 0, 0, 0.2)
 }
 .info_item {
@@ -316,24 +362,7 @@ button.sticks {
  }
 
 
-.sandwich {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: 100%; 
-    align-items: center;
-    scroll-behavior: smooth;
-}
 
-.sandwich-item {
-    max-height: 25%;
-    object-fit: cover;
-    transition: opacity 0.5s ease;
-}
-.sandwich-item img{
-    aspect-ratio:3/1;
-
-}
 button.prev, button.next {
     background-color:transparent;
     border: none;
@@ -365,7 +394,7 @@ button.next i{
     right: 5px;
 }
 
- .carrossel_down{
+.carrossel_down{
     display: flex;
     height: 180px;
     width: auto;
@@ -402,6 +431,14 @@ button.next i{
     margin: 0;
 }
 
+
+
+
+
+
+
+
+    
 .sticks_carosel {
     border-radius: 10px;
     width: 5px;

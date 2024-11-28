@@ -158,7 +158,8 @@ INSERT INTO `clientes` (`id_usuario`, `nome_completo`, `nome_usuario`, `email`, 
 (1, 'teste', 'teste', 'teste@gmail.com', '$2y$10$M5QXjNHRJCTvzAnjgEtFFuRo.EGPiF0GJONxCAizovBRK6YlD7rTK', '(12) 31231-3131', '123.123.131', '', ''),
 (8, 'Cleyton da Silva Rodrigues', 'fan_rodoviario', 'fanrodoviario7721@gmail.com', '$2y$10$MqxW9aAcwhXmFWJ/keGOy.prGyPmLFl2mdCYg.tZsZrHtlMuYyxZa', '(11) 98057-3422', '21312313123', '', ''),
 (9, 'João Pereira da Silva', 'joaosilva123', 'joao.pereira@example.com', '$2y$10$G8XKX5Iw7PdGMNA4V7W9RuiEKzgXpzn/HFypORUFou4ixHUHwdiRO', '(11) 98765-4321', '123.456.789', '', ''),
-(10, 'Maria Oliveira ', 'mariaoliveira456', ' maria.santos@example.com', '$2y$10$vxCvqz7tcNYzPe.lvbkEw.bnaIH.BicxXLSmQ2J3ZfUu6S2Uf7vzq', '(21) 99876-5432', '987.654.321', '', '');
+(10, 'Maria Oliveira ', 'mariaoliveira456', ' maria.santos@example.com', '$2y$10$vxCvqz7tcNYzPe.lvbkEw.bnaIH.BicxXLSmQ2J3ZfUu6S2Uf7vzq', '(21) 99876-5432', '987.654.321', '', ''),
+(11, 'Sakiri Moon', 'sakrimoon', 'sak.rimoon@gmail.com', '$2y$10$bMqPEqZJEOcGf4u8VzBz4OQt4snttsBq5I7GO16JSa1p6ZwLQewJ6', '(11) 94672-9768', '222.222.222', '', '');
 
 -- --------------------------------------------------------
 

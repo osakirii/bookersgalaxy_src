@@ -70,7 +70,7 @@ i.fa-plus, button{
     position: fixed;
     background-image: linear-gradient(#96B29D, white, #F3C3B2);
     width: 0;
-    height: 100%;
+    height: 100dvh;
     right: 0;
     z-index: 10;
     overflow-x: hidden;
@@ -180,10 +180,6 @@ i.fa-plus, button{
     text-decoration: none;
     color: #1D1E1D;
     transition: 0.3s;
-} #header a.daltonismo{
-    border-bottom: 2px solid #1D1E1D;
-} #header a.daltonismo:hover{
-    border-bottom: 2px solid white;
 }
 #header a.pag{
     color: white;
@@ -199,22 +195,6 @@ i.fa-plus, button{
     justify-content: space-around;
     align-items: center;
     margin-bottom: 5px;
-}
-
-#header #headerCookies button{
-    background: #99CDD8;
-    padding: 5px;
-    color: #1D1E1D;
-    border-radius: 6px;
-    font-family: "Josefin Sans", sans-serif;
-    box-shadow: 0 0 3px #585858;
-    outline: none;
-    border: none;
-    transition: 0.3s;
-
-        &:active{
-            background: #ddabab;
-        }
 }
 
 #header #headerCookies select{
@@ -406,41 +386,7 @@ i.fa-plus, button{
     color: #1D1E1D;
 }
 
-@media (max-width: 566x) {
-
-    #navbar #nav-content a{
-        margin-bottom: 30px;
-        padding: 0;
-        font-size: 18px;
-    }
-    #navbar #nav-content a:hover{
-        font-size: 20px;
-    }
-
-    #navbar #nav-rodape{
-        bottom: 10px;
-    }
-
-    #navbar #nav-rodape a{
-        margin-top: 10px;
-        font-size: 16px;
-    }
-    #navbar #nav-rodape a:hover{
-        font-size: 18px;
-    }
-
-    #navbar #nav-content #closebtn{
-        font-size: 32px;
-    }
-
-    #header a{
-        display: none;
-    }
-    
-    #header #header-container #header-bars{
-        display: block;
-    }
-
+    @media(max=width: 566px){
     #footer #footer-login a{
         padding: 7px 50px 7px 50px;
     }

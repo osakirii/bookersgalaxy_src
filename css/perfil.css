@@ -307,3 +307,11 @@ img{
     visibility: visible;
     position: relative;
 }
+
+
+@media(max-width: 1200px) {
+    img{
+        width: 20vw;
+        height: 20vw;
+    }
+}

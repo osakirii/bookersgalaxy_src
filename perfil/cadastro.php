@@ -28,7 +28,7 @@
             <div class="btns">
                 <button class="BTazul" onclick="window.history.back()">Voltar</button>
                 <button class="BTverde" onclick="realizarCadastro()">Finalizar Cadastro</button>
-            </div>
+            </div><br><br>
             <form></form>
         </div>
     </main>
