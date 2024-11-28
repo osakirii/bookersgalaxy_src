@@ -184,6 +184,7 @@ span.precinho{
     max-height: 100%; /* Altura inicial da área de sinopse */
     overflow-y: hidden;
     transition: max-height 0.5s ease-in-out; /* Expansão suave */
+    z-index: -1;
 }
 
 .sinopse-container.expandido {
@@ -433,7 +434,7 @@ button.next i{
 
 
 
-
+    
 .sticks_carosel {
     border-radius: 10px;
     width: 5px;

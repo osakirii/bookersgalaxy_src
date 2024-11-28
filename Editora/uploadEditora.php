@@ -56,7 +56,7 @@
 
                         $accepted = move_uploaded_file($tmp_name, $path);
                         if ($accepted) {
-                            $stmt = $con->prepare("INSERT INTO imagens_editora (id_editora, path, tipo_imagem, data_upload) VALUES (?, ?, ?, NOW())");
+                            $stmt = $con->prepare("INSERT INTO imagens_editoras (id_editora, path, tipo_imagem, data_upload) VALUES (?, ?, ?, NOW())");
                             $stmt->execute([$id_editora, $path, $tipo_imagem]);
                         } else {
                             echo "<p>Falha ao enviar arquivo." . $arquivo['name'][$key] . "</p>";

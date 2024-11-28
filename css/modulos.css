@@ -70,7 +70,7 @@ i.fa-plus, button{
     position: fixed;
     background-image: linear-gradient(#96B29D, white, #F3C3B2);
     width: 0;
-    height: 100%;
+    height: 100dvh;
     right: 0;
     z-index: 10;
     overflow-x: hidden;
@@ -180,10 +180,6 @@ i.fa-plus, button{
     text-decoration: none;
     color: #1D1E1D;
     transition: 0.3s;
-} #header a.daltonismo{
-    border-bottom: 2px solid #1D1E1D;
-} #header a.daltonismo:hover{
-    border-bottom: 2px solid white;
 }
 #header a.pag{
     color: white;
