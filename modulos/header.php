@@ -27,6 +27,8 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
         <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
     <script src="js/modulos.js"></script>
+    <link rel="icon" href="./img/iconebookers.ico" type="image/x-icon">
+
 
     <style>
         /* ajustando responsividade dos ícones e 
@@ -107,7 +109,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             ?>
             <a href="#"><i class="fas fa-gear"></i> Configurações</a>
             <a href="#"><i class="far fa-circle-question"></i> Ajuda</a>
-            <a href="#"><i class="far fa-comments"></i> Fale Conosco</a>
+            <a href="/bookersgalaxy/faleconosco.php"><i class="far fa-comments"></i> Fale Conosco</a>
         </div>
     </nav>
 
