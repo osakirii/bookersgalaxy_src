@@ -49,10 +49,11 @@ header h2 {
 
 .containerPai {
     display: flex;
-    height:100vh; /* Ocupa a altura total da tela */
+    height:130vh; /* Ocupa a altura total da tela */
     align-items: center;
     overflow-y: hidden;
     margin-bottom: 5%;
+    
     justify-content: center; /* Centraliza os itens horizontalmente */
     padding: 20px; /* Espaçamento interno do container */
     margin: 0 ; /* Centraliza o container na página */
@@ -61,7 +62,7 @@ header h2 {
 }
 
 aside {
-    position: relative;
+    position: inherit;
     max-height: 100%;
     height: 100%;
     display: flex;
@@ -86,6 +87,19 @@ aside img {
 @media(max-width: 990px){
     aside{
         display: none;
+    }
+}
+
+@media(max-width: 800px){
+    #imagemCentral img {
+        display: none;
+    }
+    .container_infos{
+        
+    }
+    .containerPai {
+        justify-content: flex-start; /* Centraliza os itens horizontalmente */
+        align-items: start;
     }
 }
 
@@ -154,14 +168,17 @@ h1 {
 
 .container_infos {
     width: 100%;
-    max-width: 750px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    margin: 0 20px 0 80px;
+    margin: 50px 20px 0 80px;
     border-radius: 10px;
     right: 0;
+    min-width: 400px;
+    float: inline-start;
 }
+
 
 .info-box h2 {
     font-size: 1.8rem;
@@ -472,7 +489,8 @@ button.next i{
 .similar_books{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 50;
 }
 .similar_books img {
     aspect-ratio: 2/3;

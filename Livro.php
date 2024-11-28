@@ -133,7 +133,7 @@ try {
                 <?php else: ?>
                     <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
                 <?php endif; ?>
-                <button id="favoritarBtn" class="heart-icon" style="height=100px"><i class="fas fa-heart"></i></button>
+                <button id="favoritarBtn" class="heart-icon" style="height: 100px"><i class="fas fa-heart"></i></button>
                 <button class="sticks" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
                     <hr id="stick1">
                     <hr id="stick2">
@@ -154,25 +154,25 @@ try {
 
 <!--///////////////////////////////////!-->
 <!--LIVROS SEMELHANTES!-->
+<h2 style="margin: 50px 50px 0 50px;">SEMELHANTES A ESSE LIVRO</h2>
+<div class="similar_books">
+    <?php
+        $livros = BuscaLivro(); // Chama a função BuscaLivro()
 
-<h2 style="font-weight:500;">SEMELHANTES A ESSE LIVRO</h2>
-<div class="similar_books"><?php
-                            $livros = BuscaLivro(); // Chama a função BuscaLivro()
-
-                            if ($livros) {
-                                foreach ($livros as $livro) {
-                                    echo '<div class="book_card">';
-                                    echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
-                                    echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
-                                    echo htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
-                                    echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
-                                    echo '</a>';
-                                    echo '</div>';
-                                }
-                            } else {
-                                echo 'Nenhum livro encontrado para exibir.';
-                            }
-                            ?>
+        if ($livros) {
+            foreach ($livros as $livro) {
+                echo '<div class="book_card">';
+                echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
+                echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
+                echo htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
+                echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
+                echo '</a>';
+                echo '</div>';
+            }
+        } else {
+            echo 'Nenhum livro encontrado para exibir.';
+        }
+    ?>
 </div>
 
 <!--LIVROS SEMELHANTES!-->
