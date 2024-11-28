@@ -130,7 +130,6 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             <a href="#">Lançamentos</a>
             <a href="/bookersgalaxy/perfil/favoritos.php">Favoritos</a>
             <a href="/bookersgalaxy/compra/carrinho.php">Carrinho</a>
-            <a href="/bookersgalaxy/modulos/logout.php">Sair</a>
             <?php 
             if(isset($userId)){
                 echo "<a href='/bookersgalaxy/perfil/perfil.php'>Meu perfil</a>";
@@ -148,7 +147,19 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             }
             ?>
             <a href="/bookersgalaxy/faleconosco.php"><i class="far fa-comments"></i> Fale Conosco</a>
-        </div>
+            <a onclick="AlertaSair()" id="Sair"><i class="fas fa-sign-out-alt"></i> Sair</a>
+
+            <div class="escuro" id="Escuro"></div>
+
+            <div class="alert-box" id="alertBox">
+                <h2>DESEJA MESMO SAIR??</h2>
+                <p>Sentimos muito por não cumprir com suas expectativas, mas foi bom enquanto durou. Até a próxima!!!</p>
+                <div id="alertBox-Button">
+                <button class="NAO" onclick="AlertaNo()">NÃO</button>
+                <button class="SIM" onclick="AlertaSi()">SIM</button>
+            </div>
+            </div>
+                    </div>
     </nav>
 
     <div id="escuro"></div>
