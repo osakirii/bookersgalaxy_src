@@ -76,7 +76,7 @@ try {
 
         </div>
     </aside>
-    <main>
+    <main> 
         <div id="imagemCentral">
             <?php
             if ($livros) {
