@@ -48,11 +48,12 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 .icones {
                     display: none;
                 }
-            }
 
-            #header-bars{
-                margin: 0;
-                padding: 0;
+                #header-bars{
+                    margin: 0;
+                    padding: 0;
+                    display: block;
+                }
             }
 
             @media(max-width: 780px) {
@@ -61,7 +62,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 }
             }
 
-            @media(max-width: 640x) {
+            @media(max-width: 640px) {
                 #opcoes{
                     display: none;
                 }
@@ -76,6 +77,42 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                         }
                 }
             }
+
+            @media(max-width: 566px) {
+
+                    #navbar #nav-content a{
+                        margin-bottom: 30px;
+                        padding: 0;
+                        font-size: 18px;
+                    }
+                    #navbar #nav-content a:hover{
+                        font-size: 20px;
+                    }
+
+                    #navbar #nav-rodape{
+                        bottom: 10px;
+                    }
+
+                    #navbar #nav-rodape a{
+                        margin-top: 10px;
+                        font-size: 16px;
+                    }
+                    #navbar #nav-rodape a:hover{
+                        font-size: 18px;
+                    }
+
+                    #navbar #nav-content #closebtn{
+                        font-size: 32px;
+                    }
+
+                    #header a{
+                        display: none;
+                    }
+
+                    #header #header-container #header-bars{
+                        display: flex;
+                    }
+                }
             
     </style>
 </head>
@@ -117,7 +154,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <div id="header-gradiente"></div>
 
     <header id="header">
-        <a href="/bookersgalaxy/index.php" style="margin: 0; padding : 0;"><img src="<?php echo Busca(1) ?>"></a>
+        <a href="/bookersgalaxy/index.php" style="margin: 0; padding : 0;"><img id="logoimg" src="<?php echo Busca(1) ?>"></a>
         <div id="headerCookies">
             <div id="alterarCores">
                 <label id="opcoes" for="filtro-daltonismo" style="font-size: 18px;
