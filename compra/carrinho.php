@@ -57,8 +57,9 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
 </head>
 
 <body>
-    <main>
-        <!-- Área de livros no carrinho -->
+    <main id="corpo">
+        <div id="main">
+            <!-- Área de livros no carrinho -->
         <div class="loved_books">
             <label style="text-align:initial">MEU CARRINHO</label>
 
@@ -87,20 +88,23 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
                 </div>
             <?php endif; ?>
         </div>
-
+        
+        <div id="selecionados">
         <!-- Área de livros selecionados -->
         <div class="selected_books">
             <label>SELECIONADOS</label>
             <div id="selectedItems"></div>
-        </div>
 
+        </div>
         <!-- Formulário para envio dos livros selecionados -->
         <form id="checkoutForm" action="finalizar.php" method="POST">
-            <input type="hidden" name="selected_books" id="selectedBooksInput">
-            <button type="submit">Prosseguir Compra</button>
-        </form>
+                <input type="hidden" name="selected_books" id="selectedBooksInput">
+                <button type="submit">Prosseguir Compra</button>
+            </form>
+    </div>
+</div>
+        
     </main>
-
     <script>
         const selectedBooks = {}; // Certifique-se de que o objeto é inicializado com a letra "S" maiúscula
 

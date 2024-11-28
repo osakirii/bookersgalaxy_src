@@ -1,9 +1,9 @@
-/*base*/
 body
 {
     margin: 0;
     padding: 0;
-    background-color:#F5F5F5;
+    height: 100vh;
+    background-image: linear-gradient(#96B29D, whitesmoke, #F3C3B2);
 }
 
 main
@@ -11,40 +11,39 @@ main
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90%;
 }
 
 .Pai
 {
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     align-items: center;
-    width: 50%;
-    height: 96%;
-    background-image: linear-gradient(to bottom, #96B29D,#96B29D, #F5F5F5,#F3C3B2, #F3C3B2);
+    justify-content: center;
+    background-color: #fdfdfd;
+    width: 30%;
+    height: auto;
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
     font-family: Josefin Sans;
     text-align: center;
+    position: relative;
 }
 
 .Pai1
 {
-    margin-top: 2%;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 102%;
-    background-image: linear-gradient(to bottom, #96B29D,#96b29dde, #F5F5F5,#F3C3B2, #F3C3B2);
+    flex-direction: column;
+    background-color: #fdfdfd;
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
-    font-family: Josefin Sans;
-    text-align:center;
-
-        & img{
-            width: 40px;
-            height: auto;
-        }
+    font-family: "Josefin Sans", sans-serif;
+    position: relative;
+    margin: 1vw;
+    padding: 1vw;
 }
 
 .Pai2
@@ -53,8 +52,7 @@ main
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 110%;
-    background-image: linear-gradient(to bottom, #96B29D,#96b29dde, #F5F5F5,#F3C3B2, #F3C3B2);
+    background-color: #fdfdfd;
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(28, 28, 28, 0.2);
     font-family: Josefin Sans;
@@ -76,65 +74,73 @@ button
     height: 50px;
     width: 243px;
     border: none;
-    box-shadow: 0 0 3px #7e7c7c;
     cursor: pointer;
+    background-color: #a3a3a359;
 }
 
 h2 a
 {
-    color:#737373;
-    font-size: 80%;
+    color:#4d4d4d;
+    font-size: 64%;
     letter-spacing: 1px;
-    margin-right: 8%;
+    padding-bottom: 120px;
 }
 
-.Caixas /*Div caixas de texto*/
-{
-    margin-top: 13%;
-    margin-bottom: 5%;
-    padding-left: 80px;
-    position: relative;
-    width: 100%;
-}
 
-p /*posiciona as caixas de texto*/
-{
-    text-align: left;
-    margin-top: 5%;
-}
 
-input /*Dá forma para caixas de texto*/
+
+input 
 {
     margin-top: 5px;
     height: 40px;
-    width:450px;
+    width:100%;
     border-radius: 7px;
-    padding-right: 50px;
     box-shadow: 0 0 3px #afafaf;
     border: none;
 }
 
-.BTazul /*Tanto Posiciona Quanto Edita o Botão*/
-{
-    background-color: #99CDD8;
-    font-size:130%;
-    margin-bottom: 10px;
-    word-spacing: 3px;
-    margin-right: 8%;
-    box-shadow: 0 0 3px #7e7c7c;
-    height:40px ;
+p#checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+input[name="checkbox"]
+{
+    margin-top: 0px;
+    height: 24px;
+    width: 24px;
+    border: none;
+    box-shadow: 0px 0px 0px rgb(255, 255, 255);
+
+}
+.btns {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.BTazul /*Tanto Posiciona Quanto Edita o Botão*/
+{
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
+    background-color: #99CDD8;
+    margin-right: 10px;
+}
+.BTazul:hover {
+    transform: scale(1.05);
+}
+.BTverde:hover
+{
+    transform: scale(1.05);
+}
 .BTverde
 {
-    background-color: #A5DDB8;
-    font-size:130%;
-    margin-bottom: 10px;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    background-color: #9CDBC8;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
     word-spacing: 3px;
-    margin-right: 8%;
-    box-shadow: 0 0 3px #7e7c7c;
-    height:40px;
-    
 }
 
 
@@ -156,8 +162,8 @@ h1
 
 .botoes
 {
-    margin-bottom: 10%;
-    margin-bottom: 30%;
+    margin-bottom: 20%;
+    margin-bottom: 20%;
 }
 
 .subtitulo2
@@ -172,10 +178,10 @@ h1
 
 
 /*LOGIN*/
-ul h1
-{
-    margin-top: 10%;
-    margin-right: 8%;
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Icon /*Icone do Google*/
@@ -191,17 +197,16 @@ ul h1
 .esqueci /*Posiciona a Pergunta no Local Certo*/
 {
     position: absolute;
-    top: 70px;
-    right: 30%;
+    top: 53%;
+    right: 12%;
     text-wrap: nowrap;
 }
 
 .Eye /*Tanto Posiciona Quanto Coloca a Imagem do Olho Dentro da Caixa de Texto*/
 {
     position: absolute;
-    right: 32%;
+    right: 12%;
     top: 63%;
-    transform: translateY(142%);
     padding: 0;
     font-size: 20px;
     border: none;
@@ -278,3 +283,18 @@ h4  a/*Edita o Hiperlink dos Termos Para ter essa cor e tamanho*/
     position: relative;
     width: 100%;
 }
+form {
+    width: 80%;
+}
+.grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de largura igual */
+    grid-gap: 10px; /* Espaçamento entre os itens */
+  }
+
+  .item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }

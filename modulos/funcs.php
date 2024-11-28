@@ -2,8 +2,10 @@
 session_start();
 header('Content-Type: application/json');
 
-class CarrinhoFunc {
-    public function adicionarCarrinho($idLivro) {
+class CarrinhoFunc
+{
+    public function adicionarCarrinho($idLivro)
+    {
         if (!isset($idLivro) || !is_numeric($idLivro)) {
             echo json_encode(['success' => false, 'error' => 'ID do livro inválido.']);
             return;
@@ -24,8 +26,37 @@ class CarrinhoFunc {
         echo json_encode(['success' => true, 'carrinho' => $_SESSION['carrinho']]);
 
     }
+    public function toggleFavorite($idLivro, $idUsuario)
+    {
+        $idUsuario = $_SESSION['user_id'];
+        $idLivro = $_POST['id_livro'];
 
-    public function removerDoCarrinho($idLivro) {
+        $sql = "SELECT * FROM favoritos WHERE id_usuario = ? AND id_livro = ?";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute([$idUsuario, $idLivro]);
+
+        if ($stmt->rowCount() > 0) {
+            // O livro já está favoritado, vamos removê-lo
+            $sql = "DELETE FROM favoritos WHERE id_usuario = :idUsuario AND id_livro = :idLivro";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':idLivro', $idLivro, PDO::PARAM_INT);
+            $stmt->execute();
+            return "removido";
+        } else {
+            // O livro não está favoritado, vamos adicioná-lo
+            $dataAdicao = date('Y-m-d H:i:s');
+            $sql = "INSERT INTO favoritos (id_usuario, id_livro, data_adicao, estado) VALUES (:idUsuario, :idLivro, :dataAdicao, 1)";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':idLivro', $idLivro, PDO::PARAM_INT);
+            $stmt->bindParam(':dataAdicao', $dataAdicao);
+            $stmt->execute();
+            return "favoritado";
+        }
+    }
+    public function removerDoCarrinho($idLivro)
+    {
         if (isset($_SESSION['carrinho'][$idLivro])) {
             // Reduz a quantidade ou remove se for 1
             if ($_SESSION['carrinho'][$idLivro] > 1) {
@@ -39,7 +70,8 @@ class CarrinhoFunc {
         }
     }
 
-    public function listarCarrinho() {
+    public function listarCarrinho()
+    {
         if (!isset($_SESSION['carrinho']) || empty($_SESSION['carrinho'])) {
             echo json_encode(['success' => true, 'carrinho' => []]);
         } else {
@@ -64,12 +96,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'listarCarrinho':
                 $func->listarCarrinho();
                 break;
+                case 'favoritar':
+                    if (isset($data['user_id']) && isset($data['id_livro'])) {
+                        $idUsuario = $data['cliente_id'];
+                        $idLivro = $data['id_livro'];
+                        $resultado = $func->toggleFavorite($idLivro, $idUsuario);
+                        echo $resultado;
+                    } else {
+                        echo json_encode(['success' => false, 'error' => 'ID do usuário ou do livro não fornecido.']);
+                    }
+                    break;
             default:
                 echo json_encode(['success' => false, 'error' => 'Ação inválida.']);
         }
     } else {
         echo json_encode(['success' => false, 'error' => 'Ação não especificada.']);
     }
+
     exit;
 }
 ?>

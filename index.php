@@ -8,7 +8,7 @@ if (isset($_SESSION['cliente_id'])) {
 }
 ?>
 
-<html lang="pt-br">
+<html lang="pt-br"><!-- RESPONSIVA QUASE -->
 
 <head>
     <meta charset="UTF-8">
@@ -27,14 +27,14 @@ if (isset($_SESSION['cliente_id'])) {
 
 <body>
     <main id="corpo">
-        <!--CARROSSEL DE BANNERS-->
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <!--CARROSSEL DE BANNERS-->
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="<?php echo Busca(7) ?>" alt="Primeiro Slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo Busca(7) ?>" alt="Segundo Slide">
+                    <img class="d-block w-100" src="<?php echo Busca(9) ?>" alt="Segundo Slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -46,6 +46,7 @@ if (isset($_SESSION['cliente_id'])) {
                 <span class="sr-only">Próximo</span>
             </a>
         </div>
+
         <h1>TOP 10 DO MÊS</h1>
         <section class="carrossel">
             <?php
@@ -56,7 +57,7 @@ if (isset($_SESSION['cliente_id'])) {
                 foreach ($livros as $livro) {
                     echo '<div class="book_card">';
                     echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
-                    echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
+                    echo '<img style="height: 20em;" src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
                     echo '</a>';
                     echo '</div>';
                 }

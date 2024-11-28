@@ -1,4 +1,4 @@
-<html lang="pt-br">
+<html lang="pt-br"> <!-- PRATICAMENTE RESPONSIVO -->
     <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,11 @@
 
             </div>
             <div id="footer-login">
-                <p>Não possui uma conta?</p>
-                <a href="/bookersgalaxy/perfil/login_cad.php">Fazer login</a>
+                <?php
+                    if(!isset($userId)) {
+                        echo '<p>Não possui uma conta?</p><a href="/bookersgalaxy/perfil/login_cad.php">Fazer login</a>';
+                    }
+                ?>
             </div>
        </footer>
     </body>

@@ -29,7 +29,8 @@
                 </p>
                 <div class="btns">
                     <button class="BTazul" type="button" onclick="window.history.back()">Voltar</button>
-                    <button class="BTverde" type="submit">Finalizar Cadastro</button>
+                    <button class="BTverde" type="submit">LOGIN</button>
+
                 </div>
             </form>
             

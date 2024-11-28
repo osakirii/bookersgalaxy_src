@@ -2,18 +2,20 @@
 body {
     height: 100vh;
     }
-main {
-    width: 100%;
+    
+#main {
+    width: 92%;
     height:100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 100px;
+    gap: 5%;
 }
+
 .loved_books {
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    max-width: 32vw;
     align-items: center;
     height:90%;
     overflow-y: auto;
@@ -60,21 +62,39 @@ button.carrinho {
     border: none;
     cursor: pointer;
     padding: 0;
+    position: absolute;
+    top: 20%;
+}
+
+div.acoes{
+    width: 20%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+        & button{
+            margin: 5px;
+            position: absolute;
+            right: 0;
+        }
 }
 
 .icon-box {
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: grey; /* Estado inicial cinza */
-    transition: background-color 0.3s;
+    transition: background 0.3s;
 }
 
 .icon-box[data-favorited="true"] {
-    background-color: blue; /* Estado selecionado azul */
+    background: blue; /* Estado selecionado azul */
     color: white;
 }
 
@@ -84,12 +104,17 @@ button.carrinho {
     font-size: 18px;
     font-weight: bold;
 }
+
+#selectedItems{
+    height: 20%;
+}
+
 .selected-book {
     display: flex;
     align-items: center;
     min-width: 100%;
     gap: 10px;
-    height: 90%;
+    width: 40vw;
     background-color: white;
     box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.5);
     margin-bottom: 10px;
@@ -99,10 +124,7 @@ button.carrinho {
     box-sizing: border-box; /* Inclui padding e border na largura total */
     overflow-y: auto;
 }
-#selectedItems{
-    max-width:100%;
-    height: 20%;
-}
+
 .selected-book img {
     border-radius: 4px;
     aspect-ratio: 3/4;
@@ -118,6 +140,20 @@ button.carrinho {
     gap: 5px;
 }
 
+#selecionados{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+        & button{
+            padding: 10px 20px;
+            background-color: #A5DDB8;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 3px #7e7c7c;
+        }
+}
+
 .empty-cart {
     text-align: center;
     margin-top: 20px;
@@ -125,17 +161,22 @@ button.carrinho {
 }
 
 .empty-cart p {
-    color: #666;
+    color: #000000;
 }
 
 .home-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
+    background-color: #99CDD8;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #7e7c7c;
+    color: black;
+    font-family: "Josefin Sans", sans-serif;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: 10px;
+    transition: 0.3s;
 }
 
 .home-button:hover {

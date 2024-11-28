@@ -1,13 +1,42 @@
+*{  
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    background: #F8F5FA;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+    color: #1D1E1D;
+}
+
+button{
+    cursor: pointer;
+}
+
 #perfil{
     display: flex;
     justify-content: center;
     margin-bottom: 0;
+
+        & p{
+            font-size: 20px;
+        }
 }
 
 img{
     width: 218px;
     height: 218px;
     cursor: pointer;
+}
+#fotoPerfil {
     border-radius: 50%;
 }
 
@@ -64,17 +93,16 @@ img{
 
 #editarPerfil i{
     position: absolute;
-    right: 20px;
-    top: 32px;
-}
-
-#editarPerfil i#dois{
-    top: 158px;
+    right: 3%;
+    top: 15%;
 }
 
 #mudarEdit{
-    width: 381px;
-    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30vw;
+    height: 7%;
     border-radius: 10px;
     box-shadow: 0 0 3px #7e7c7c;
     display: flex;
@@ -84,11 +112,10 @@ img{
 
 #mudarEdit p{
     cursor: pointer;
-}
-
-#mudarEdit p.active{
-    border-bottom: 2px solid #1D1E1D;
-    padding-bottom: 27px;
+    
+    &.active{
+        border-bottom: 2px solid #1D1E1D;
+    }
 }
 
 #editarUsuario{
@@ -151,7 +178,7 @@ img{
 }
 
 #botoesEditar{
-    width: 52vw;
+    width: 60vw;
     position: relative;
 }
 

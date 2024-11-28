@@ -60,36 +60,23 @@ try {
     <?php endif; ?>
 </header>
 
-<div class="main_content">
+<container class="containerPai">
     <aside>
         <div class="carrossel-container">
             <?php $imagens = BuscaLivro($id_livro, true); ?>
-            <div class="carrossel">
+            <div class="sandwich">
                 <?php if ($imagens): ?>
                     <?php foreach ($imagens as $imagem): ?>
                         <img src="<?php echo htmlspecialchars($imagem['path']); ?>"
-                            class="carrossel-item"
+                            class="sandwich-item"
                             alt="Imagem de <?php echo htmlspecialchars($livro['Titulo']); ?>">
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
 
-            <button class="prev" onclick="plusSlides(-1)">
-                <div class="sticks_carosel">
-                    <hr class="stick_esq">
-                    <hr class="stick_dir">
-                </div>
-            </button>
-
-            <button class="next" onclick="plusSlides(1)">
-                <div class="sticks_carosel">
-                    <hr class="stick_esqB">
-                    <hr class="stick_dirB">
-                </div>
-            </button>
         </div>
     </aside>
-    <main>
+    <main> 
         <div id="imagemCentral">
             <?php
             if ($livros) {
@@ -103,58 +90,66 @@ try {
         </div>
 
     </main>
-
-    <!--PARTE DAS INFORMAÇÕES-->
-    <div class="container_infos">
-    <div class="info-box">
-        <h2 class="titulo"><?php echo htmlspecialchars($livro['Titulo']); ?></h2>
-        <h4 class="autor"><?php echo htmlspecialchars($livro['Autor']); ?> - <?php echo htmlspecialchars($livro['Data_lancamento']); ?></h4>
-    </div>
-
-    <!-- Sinopse -->
-    <div class="sinopse-container">
-        <p class="psombra">
-            <?php
-            $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
-            $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 280, "...");
-            ?>
-            <span><?php echo $sinopseCurta; ?></span>
-            <span class="sinopse-completa">
-                <?php echo mb_substr($sinopseCompleta, 180); ?>
-            </span>
-            <?php if (mb_strlen($sinopseCompleta) > 280): ?>
-                <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
-            <?php endif; ?>
-        </p>
-    </div>
-
-    <!-- Informações funcionais com ícones e botões -->
-    <div class="container_additions">
-        <!-- Ícones de informações à esquerda -->
-        <div class="info_column">
-            <div class="info_item"><i class="bi bi-book"></i> <span><?php echo htmlspecialchars($livro['QntPaginas']); ?> Páginas</span></div>
-            <div class="info_item"><i class="bi bi-pencil-square"></i> <span><?php echo htmlspecialchars($livro['NomeEditora']); ?></span></div>
-            <div class="info_item"><i class="material-symbols-outlined">theater_comedy</i> <span><?php echo htmlspecialchars($livro['Genero']); ?></span></div>
-            <div class="info_item"><i class="bi bi-box-seam"></i> <span><?php echo htmlspecialchars($livro['Estoque']); ?></span></div>
-            <div class="info_item"><i class="bi bi-star-fill"></i> <span><?php echo htmlspecialchars($livro['Avaliacao']); ?></span></div>
+        <!--PARTE DAS INFORMAÇÕES-->
+        <div class="container_infos">
+        <div class="info-box">
+            <h2 class="titulo"><?php echo htmlspecialchars($livro['Titulo']); ?></h2>
+            <h4 class="autor"><?php echo htmlspecialchars($livro['Autor']); ?> - <?php echo date("d/m/Y", strtotime(htmlspecialchars($livro['Data_lancamento']))); ?></h4>
         </div>
 
-        <!-- Parte funcional à direita -->
-        <div class="functional_column">
-            <span class="preco">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
-            <?php if (isset($_SESSION['cliente_id'])): ?>
-                <button name="btn_comprar" type="submit">Comprar agora</button>
-            <?php else: ?>
-                <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
-            <?php endif; ?>
-            <button id="favoritarBtn" class="heart-icon"><i class="fas fa-heart"></i></button>
-            <button class="sticks">+</button>
-            <div class="add_cart_txt">Adicionar ao Carrinho</div>
+        <!-- Sinopse -->
+        <div class="sinopse-container">
+            <p class="psombra">
+                <?php
+                $sinopseCompleta = htmlspecialchars($livro['Sinopse']);
+                $sinopseCurta = mb_strimwidth($sinopseCompleta, 0, 280, "...");
+                ?>
+                <span><?php echo $sinopseCurta; ?></span>
+                <span class="sinopse-completa">
+                    <?php echo mb_substr($sinopseCompleta, 180); ?>
+                </span>
+                <?php if (mb_strlen($sinopseCompleta) > 280): ?>
+                    <button class="mostrar_mais" onclick="toggleSinopse(this)">Ler mais</button>
+                <?php endif; ?>
+            </p>
+        </div>
+
+        <!-- Informações funcionais com ícones e botões -->
+        <div class="container_additions">
+            <!-- Ícones de informações à esquerda -->
+            <div class="info_column">
+                <div class="info_item"><i class="bi bi-book"></i> <span><?php echo htmlspecialchars($livro['QntPaginas']); ?> Páginas</span></div>
+                <div class="info_item"><i class="bi bi-pencil-square"></i> <span><?php echo htmlspecialchars($livro['NomeEditora']); ?></span></div>
+                <div class="info_item"><i class="material-symbols-outlined">theater_comedy</i> <span><?php echo htmlspecialchars($livro['Genero']); ?></span></div>
+                <div class="info_item"><i class="bi bi-box-seam"></i> <span><?php echo htmlspecialchars($livro['Estoque']); ?></span></div>
+                <div class="info_item"><i class="bi bi-star-fill"></i> <span><?php echo htmlspecialchars($livro['Avaliacao']); ?></span></div>
+            </div>
+
+            <!-- Parte funcional à direita -->
+            <div class="functional_column">
+                <span id="precinho">R$ <?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
+                <?php if (isset($_SESSION['cliente_id'])): ?>
+                    <button name="btn_comprar" type="submit">Comprar agora</button>
+                <?php else: ?>
+                    <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
+                <?php endif; ?>
+                <button id="favoritarBtn" class="heart-icon"><i class="fas fa-heart"></i></button>
+                <button class="sticks" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
+                    <hr id="stick1">
+                    <hr id="stick2">
+                    <div class="add_cart_txt">
+                        <p>Adicionar ao Carrinho</p>
+                    </div>
+                </button>
+
+            </div>
         </div>
     </div>
-</div>
 
-</div>
+    
+    </div>
+
+</container>
 
 
 <!--///////////////////////////////////!-->

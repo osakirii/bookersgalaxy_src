@@ -19,7 +19,7 @@
 }
 
 #corpo .estante{
-    height: 360px;
+    height: 370px;
     border-radius: 5px;
     scroll-behavior: smooth;
     display: flex;
@@ -31,7 +31,7 @@
 
 #corpo .livro{
     flex: 0 0 141px;
-    height: 250px;
+    height: 370px;
     margin: 0px 20px 0px 20px;
 }
 
@@ -64,5 +64,6 @@
 
 #corpo #catalogo{
     display: flex;
-    flex-flow: wrap;
+    justify-content: center;
+    flex-wrap: wrap;
 }

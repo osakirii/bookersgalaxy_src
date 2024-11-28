@@ -16,8 +16,6 @@
     <div class="Pai1">
                     <h3>NOVA CONTA</h3>
                 <div class="grid-container">
-                    <p> Telefone<br><input id="name" name="txtUsuario" type="text" size="20"></p>
-                    <p> CPF<br><input id="email" name="txtEmail" type="text" size="20"></p>
                     <p> Foto<br><input name="txtSenha" type="password" size="20">
                     <p> <br><input id="senha" name="txtConfSenha" type="password" size="20"></p>
                 </div>

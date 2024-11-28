@@ -8,7 +8,7 @@ if (isset($_SESSION['cliente_id'])) {
 }
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- PRATICAMENTE RESPONSIVO -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

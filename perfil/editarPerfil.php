@@ -9,7 +9,6 @@
             ?>
             <html lang="pt-br">
 
-<<<<<<< HEAD
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +25,6 @@
                         <form action="salvar_perfil.php" method="post" enctype="multipart/form-data" id="formPerfil">
                             Nome: <i class="fas fa-pen"></i>
                             <input type="text" placeholder="<?php echo $nomeUsuario ?>" maxlength="100">
-                            Biografia (Opcional): <i class="fas fa-pen" id="dois"></i>
-                            <textarea placeholder="" rows="5"></textarea>
                         </form>
                     </section>
 
@@ -70,6 +67,7 @@
                         <!-- Formulário "Endereços" sem a classe active inicialmente -->
                         <form action="" class="form-enderecos">
                             <div>
+                                <h4>Endereço Principal</h4>
                                 <label>Endereço/Rua:</label>
                                 <input type="text" id="logradouro_principal" name="logradouro_principal">
                                 <label>N°:</label>
@@ -77,7 +75,6 @@
                                 Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal">
                                 CEP: <input type="text" id="cep_principal" name="cep_principal">
                                 <span>
-                                    <i class="fas fa-plus" style="font-size: 20px;"></i>Adicionar mais endereços
                                 </span>
                             </div>
                             <div class="linha"></div>
@@ -90,7 +87,6 @@
                                 Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal">
                                 CEP: <input type="text" id="cep_principal" name="cep_principal">
                                 <span>
-                                    <i class="fas fa-plus" style="font-size: 20px;"></i>Adicionar mais endereços
                                 </span>
                             </div>
                         </form>
@@ -235,73 +231,3 @@ document.querySelector('#botoesEditar button[type="button"]').addEventListener('
             </body>
 
             </html>
-=======
-        <div id="mudarEdit">
-            <p class="active">Meu Perfil</p>
-            <p>Endereços</p>
-        </div>
-        <section id="editarUsuario">
-            <form action="" class="active">
-                <div>
-                    Email
-                    <input type="text" placeholder="" maxlength="100">
-                    Sexo
-                    <select name="" id="">
-                        <option value="">Prefiro não informar</option>
-                        <option value="">Feminino</option>
-                        <option value="">Masculino</option>
-                        <option value="">Outro</option>
-                    </select>
-                    Telefone
-                    <input type="text" placeholder="" maxlength="15">
-                    Tem daltonismo?
-                    <select name="" id="">
-                        <option value="">Não tenho daltonismo</option>
-                        <option value="">Tenho Protanopia</option>
-                        <option value="">Tenho Deuteranopia</option>
-                        <option value="">Tenho Tritanopia</option>
-                        <option value="">Tenho Monocromacia</option>
-                    </select>
-                </div>
-                <div class="linha"></div>
-                <div>
-                    Senha
-                    <input type="password" maxlength="255">
-                    Confirmar Senha
-                    <input type="password" maxlength="255">
-                </div>
-            </form>
-            <form action="" class="active">
-                <div>
-                    Endereço Principal
-                    <input type="text" maxlength="">
-                    Cidade e Estado
-                    <input type="text">
-                    CEP
-                    <input type="text" placeholder="" maxlength="">
-                    <br><br>
-                    <span>
-                    <i class="fas fa-plus" style="font-size: 20px;"></i>Adicionar mais endereços
-                    </span>
-                </div>
-                <div class="linha"></div>
-                <div>
-                    Endereço Secundário (Opcional)
-                    <input type="text" maxlength="">
-                    Cidade e Estado
-                    <input type="text">
-                    CEP
-                    <input type="text" placeholder="" maxlength="">
-                    <br><br>
-                </div>
-            </form>
-            </div>
-        </section>
-        <div id="botoesEditar">
-        <a href="perfil.php"><button id="cancelar">Voltar ao Perfil</button></a>
-            <button type="submit">Salvar Alterações</button>
-        </div>
-    </main>
-</body>
-</html>
->>>>>>> cabb59bb21f68cc7b09712ce87a86e773f15180d
