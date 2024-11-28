@@ -46,27 +46,65 @@
 header h2 {
     margin-left: 5%;
 }
-.main_content {
+
+.containerPai {
     display: flex;
     height:100vh; /* Ocupa a altura total da tela */
     align-items: center;
     overflow-y: hidden;
     margin-bottom: 5%;
+
+    flex-wrap: wrap; /* Permite que os itens "quebrem" para a próxima linha se necessário */
+    gap: 20px; /* Espaçamento entre os itens */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    padding: 20px; /* Espaçamento interno do container */
+    width: 100%;
+    max-width: 1200px; /* Largura máxima do container */
+    margin: 0 auto; /* Centraliza o container na página */
 }
 
-
 aside {
-    position: relative;
+    position: static;
     max-height: 100%;
     margin-left: 5%;
     margin-right: 5%;
     height: 80%;
-    display: flex;
+    display: left;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     padding: 5% 10px;
     overflow: hidden;
 }
+aside img {
+    width: 70%; /* Largura fixa */
+    height: ; /* Altura fixa */
+    object-fit: contain; 
+    aspect-ratio: 1/1;
+    margin: 5px 0;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sandwich {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%; 
+    align-items: left;
+    scroll-behavior: smooth;
+}
+
+.sandwich-item {
+    max-height: 25%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+.sandwich-item img{
+    aspect-ratio:3/1;
+
+}
+
+
 main {
     width: 30%;
     display: flex;
@@ -74,19 +112,6 @@ main {
     justify-content: center;
     align-items: center;
     
-}
-p {
-    font-size:20px;
-    font-family: "Josefin Sans", sans-serif;
-}
-.psombra {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    padding: 10px 0;
-}
-h1 {
-    font-size: 3rem;
 }
 #imagemCentral {
     display: flex;
@@ -101,20 +126,28 @@ h1 {
 
 #imagemCentral img {
     width: 90%;
-    /*SUPER IMPORTANTE, ARRUMA A PROPORÇÃO*/
+    /*SUPER IMPORTANTE, ARRUMA A PROPORÇÃO
     aspect-ratio: 3/4;
     object-fit: contain;
 }
 
-aside img {
-    width: 100px; /* Largura fixa */
-    height: 130px; /* Altura fixa */
-    object-fit: contain; 
-    aspect-ratio: 1/1;
-    margin: 5px 0;
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+/*
+p {
+    font-size:20px;
+    font-family: "Josefin Sans", sans-serif;
 }
+.psombra {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 10px 0;
+}
+h1 {
+    font-size: 3rem;
+}
+
+
+
 
 .container_infos {
     width: 100%;
@@ -139,18 +172,18 @@ aside img {
     color: #666;
 }
 .sinopse-container {
-    max-height: 100%; /* Altura inicial da área de sinopse */
+    max-height: 100%; /* Altura inicial da área de sinopse 
     overflow-y: hidden;
-    transition: max-height 0.5s ease-in-out; /* Expansão suave */
+    transition: max-height 0.5s ease-in-out; /* Expansão suave 
 }
 
 .sinopse-container.expandido {
-    max-height: 300px; /* Altura expandida da área de sinopse com rolagem */
+    max-height: 300px; /* Altura expandida da área de sinopse com rolagem 
     overflow-y: auto;
 }
 
 .sinopse-completa {
-    display: none; /* Oculta a sinopse completa por padrão */
+    display: none; /* Oculta a sinopse completa por padrão 
 }
 
 .sinopse-completa.expandida {
@@ -179,12 +212,12 @@ aside img {
 }
 
 .info-box.expandido {
-    max-height: 1000px; /* Ajuste esse valor de acordo com o necessário para acomodar o texto completo */
+    max-height: 1000px; /* Ajuste esse valor de acordo com o necessário para acomodar o texto completo 
 }
 .infos-box h2 {
     font-size: 1.5rem;
     margin: 0 0 10px 0;
-}
+}*/
 button.heart-icon {
     background-color: transparent;
     border: none;
@@ -316,24 +349,7 @@ button.sticks {
  }
 
 
-.sandwich {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: 100%; 
-    align-items: center;
-    scroll-behavior: smooth;
-}
 
-.sandwich-item {
-    max-height: 25%;
-    object-fit: cover;
-    transition: opacity 0.5s ease;
-}
-.sandwich-item img{
-    aspect-ratio:3/1;
-
-}
 button.prev, button.next {
     background-color:transparent;
     border: none;
@@ -365,7 +381,7 @@ button.next i{
     right: 5px;
 }
 
- .carrossel_down{
+/* .carrossel_down{
     display: flex;
     height: 180px;
     width: auto;
@@ -400,7 +416,15 @@ button.next i{
 }
  .carrossel_down a#ultimo{
     margin: 0;
-}
+}*/
+
+
+
+
+
+
+
+
 
 .sticks_carosel {
     border-radius: 10px;
