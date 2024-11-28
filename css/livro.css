@@ -200,6 +200,10 @@ span.precinho{
     display: inline;
 }
 
+i.fas.fa-heart{
+    size: 100px;
+}
+
 .info-column {
     display: flex;
     flex-direction: column;

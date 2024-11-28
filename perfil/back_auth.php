@@ -92,7 +92,8 @@
             } else {
                 // Exibe mensagem de erro
                 echo "<br><br><br><br><center><div class=Pai1>
-                <i> Email e/ou senha incorreto(s).
+                <i> Email e/ou senha incorreto(s).</i>
+                <a href='login.php'>Voltar</a>
                 </div>";
             }
         } else {
