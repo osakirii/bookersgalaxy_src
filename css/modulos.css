@@ -146,6 +146,78 @@ i.fa-plus, button{
     z-index: 9;
 }
 
+.escuro{
+    position: fixed;
+    top: 0;
+    width: 100%; 
+    height: 0;
+    background: black;
+    opacity: 0.4;
+    transition: 0.2s;
+    z-index: 9;
+}
+
+/*LOGOUT*/
+.alert-box {
+    display: none;
+    position: fixed;
+    height: 300px;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(#96B29D, whitesmoke);
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    text-align: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    align-items: center;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .alert-box h2 {
+    color:#000000;
+    letter-spacing: 1px;
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+
+  .alert-box p {
+    color:#000000;
+    margin: 10px 0;
+  }
+
+  .alert-box button.NAO  {
+    background-color: #A5DDB8;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .alert-box button.SIM  {
+    background-color: #B80100;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .alert-box button.NAO:hover {
+    background-color: #5e8f6e;
+  }
+  .alert-box button.SIM:hover {
+    background-color: #680808;
+  }
+
 #header-gradiente{
     position: absolute;
     background-image: linear-gradient(#96B29D 30%, #F8F5FA);
@@ -386,7 +458,7 @@ i.fa-plus, button{
     color: #1D1E1D;
 }
 
-    @media(max=width: 566px){
+    @media(max-width: 566px){
     #footer #footer-login a{
         padding: 7px 50px 7px 50px;
     }

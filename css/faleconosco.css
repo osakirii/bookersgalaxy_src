@@ -1,0 +1,40 @@
+
+.container-chefe {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form {
+    height: 50%;
+}
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas para a primeira linha */
+    grid-template-rows: auto auto auto; /* Três linhas flexíveis */
+    grid-gap: 10px; /* Espaço entre os inputs */
+    width: 600px; /* Largura total da grade */
+    height: 2rem;
+    flex-grow: 0; /* Evita que os inputs cresçam */
+
+}
+
+.input-grid input,
+.input-grid textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-grid textarea {
+    resize: none; /* Evita redimensionamento da área de texto */
+    height: 150px; /* Altura maior para a área de texto */
+    grid-column: span 2; /* Faz o textarea ocupar toda a largura (2 colunas) */
+}
+
+.input-grid input:nth-child(3) {
+    grid-column: span 2; /* Faz o terceiro input ocupar toda a largura (2 colunas) */
+}
