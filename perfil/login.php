@@ -14,16 +14,16 @@
     <main>
         <div class="Pai1">
             <ul>
-                <h1>FAZER LOGIN COM </h1>
-                <button class="Icon" type="button"> Google</button><br>
+                <h1>FAZER LOGIN</h1>
             </ul>
             <form method="POST" action="/bookersgalaxy/perfil/back_auth.php">
                 <input type="hidden" name="action" value="login">
 
                 <p> Email<br><input name="txtEmail" type="text" size="20"></p>
-                <div class="esqueci">
+<!--                <div class="esqueci">
                     <h2><a href="./OUTRAS PARTES/WhatsApp Image 2024-03-25 at 16.49.43.jpeg">Esqueceu a Senha?</a></h2>
                 </div>
+-->
                 <p> Senha<br><input name="txtSenha" type="password" size="20" placeholder=""><br>
                     <i class="fas fa-eye Eye"></i>
                 </p>

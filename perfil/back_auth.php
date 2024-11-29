@@ -104,5 +104,7 @@
         echo "Método de requisição inválido.";
         exit();
     }
+    
+    
     ?>
 </html>
