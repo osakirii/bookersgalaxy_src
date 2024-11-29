@@ -60,18 +60,73 @@ $livros = BuscaLivroPorTitulo($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
     <title>Catálogo de Livros</title>
+    <style>
+        /* Estilo para o catálogo */
+        #catalogo {
+            display: flex; /* Flexbox para alinhar os itens */
+            flex-wrap: wrap; /* Permite quebra de linha */
+            gap: 16px; /* Espaçamento entre os livros */
+            justify-content: center; /* Centraliza os itens */
+            margin-top: 20px;
+        }
+
+        /* Estilo para cada livro */
+        .livro {
+            display: flex;
+            flex-direction: column; /* Organiza conteúdo verticalmente */
+            align-items: center; /* Centraliza conteúdo no eixo horizontal */
+            background-color: #f8f8f8; /* Fundo claro */
+            border: 1px solid #ddd; /* Borda leve */
+            border-radius: 8px; /* Bordas arredondadas */
+            padding: 10px;
+            width: 200px; /* Largura fixa */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+            text-align: center; /* Centraliza texto */
+            transition: transform 0.2s; /* Efeito de hover */
+        }
+
+        .livro:hover {
+            transform: scale(1.05); /* Aumenta levemente no hover */
+        }
+
+        /* Estilo para a imagem do livro */
+        .livro img {
+            width: 100%; /* Imagem ocupa toda a largura do container */
+            height: auto; /* Mantém proporção */
+            border-radius: 4px; /* Bordas arredondadas */
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para o texto do livro */
+        .livro-texto p {
+            margin: 5px 0; /* Espaçamento entre linhas */
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Estilo para o autor */
+        .nomeAutor {
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* Estilo para o preço */
+        .valor {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e63946; /* Cor destacada */
+        }
+    </style>
 </head>
 <body>
     <main id="corpo">
         <h1>CATÁLOGO DE LIVROS</h1>
+        <?php if (!empty($query)) {
+            echo '<h2>Resultados para: "' . htmlspecialchars($query) . '"</h2>';
+        } ?>
         <div id="catalogo">
         <?php
-        if (!empty($query)) {
-            echo '<h2>Resultados para: "' . htmlspecialchars($query) . '"</h2>';
-        }
-
         // Verifica se encontrou livros
         if ($livros) {
             foreach ($livros as $livro) {
