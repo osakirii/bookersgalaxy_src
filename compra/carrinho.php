@@ -56,12 +56,12 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
-<body>
+<body> 
     <main id="corpo">
         <div id="main">
             <!-- Área de livros no carrinho -->
         <div class="loved_books">
-            <label style="text-align:initial">MEU CARRINHO</label>
+            <label style="text-align:initial"><h2>CARRINHO</h2></label>
 
             <?php if (!empty($livrosCarrinho)): ?>
                 <?php foreach ($livrosCarrinho as $livro): ?>

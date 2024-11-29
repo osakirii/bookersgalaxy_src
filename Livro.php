@@ -3,7 +3,6 @@ session_start();
 include_once(__DIR__ . '/config.php'); // Inclui todas as configurações e funções globais
 if (isset($_SESSION['cliente_id'])) {
     $userId = $_SESSION['cliente_id'];
-    echo $userId;
 }
 
 // Obtém o ID do livro da URL
