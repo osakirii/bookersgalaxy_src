@@ -146,5 +146,8 @@ $livros = BuscaLivroPorTitulo($query);
         ?>
         </div>
     </main>
+    <?php
+    include_once("modulos/footer.php");
+    ?>
 </body>
 </html>
