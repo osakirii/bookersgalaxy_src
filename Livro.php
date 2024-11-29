@@ -133,14 +133,13 @@ try {
                 <?php else: ?>
                     <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
                 <?php endif; ?>
-                <button id="favoritarBtn" class="heart-icon" title="Adicionar aos favoritos" style="height: 100px"><i class="fas fa-heart"></i></button>
-                <button class="sticks" title="Adicionar ao carrinho" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
+                <button id="favoritarBtn" class="heart-icon" style="height: 100px"><i class="fas fa-heart"></i></button>
+                <button class="sticks" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
                     <hr id="stick1">
                     <hr id="stick2">
-
-                    <!--<div class="add_cart_txt">
+                    <div class="add_cart_txt">
                         <p>Adicionar ao Carrinho</p>
-                    </div>-->
+                    </div>
                 </button>
 
             </div>
@@ -156,26 +155,53 @@ try {
 <!--///////////////////////////////////!-->
 <!--LIVROS SEMELHANTES!-->
 <h2 style="margin: 50px 50px 0 50px;">SEMELHANTES A ESSE LIVRO</h2>
-<div class="similar_books">
-    <?php
-        $livros = BuscaLivro(); // Chama a função BuscaLivro()
+<div class="carousel-container">
+    <button class="carousel-btn left-btn">&lt;</button>
+    <div class="similar_books">
+        <?php
+            $livros = BuscaLivro(); // Chama a função BuscaLivro()
 
-        if ($livros) {
-            foreach ($livros as $livro) {
-                echo '<div class="book_card">';
-                echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
-                echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
-                echo htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
-                echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
-                echo '</a>';
-                echo '</div>';
+            if ($livros) {
+                foreach ($livros as $livro) {
+                    echo '<div class="book_card">';
+                    echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
+                    echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
+                    echo '<br>' .htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
+                    echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
+                    echo '</a>';
+                    echo '</div>';
+                }
+            } else {
+                echo 'Nenhum livro encontrado para exibir.';
             }
-        } else {
-            echo 'Nenhum livro encontrado para exibir.';
-        }
-    ?>
+        ?>
+    </div>
+    <button class="carousel-btn right-btn">&gt;</button>
 </div>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.similar_books');
+    const leftBtn = document.querySelector('.left-btn');
+    const rightBtn = document.querySelector('.right-btn');
+
+    leftBtn.addEventListener('click', () => {
+        container.scrollBy({
+            left: -300, // Ajuste a distância de rolagem
+            behavior: 'smooth',
+        });
+    });
+
+    rightBtn.addEventListener('click', () => {
+        container.scrollBy({
+            left: 300, // Ajuste a distância de rolagem
+            behavior: 'smooth',
+        });
+    });
+});
+
+</script>
 <!--LIVROS SEMELHANTES!-->
 <!--///////////////////////////////////!-->
 <div class="second_content">
