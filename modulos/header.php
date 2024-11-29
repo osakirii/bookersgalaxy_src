@@ -2,6 +2,14 @@
 if (isset($_SESSION['cliente_id'])) {
     $userId = $_SESSION['cliente_id'];
     $nomeUsuario = $_SESSION['nomeUsuario'];
+    $query = $con->prepare("SELECT is_adm FROM clientes WHERE id_usuario = :id");
+    $query->bindParam(':id', $userId, PDO::PARAM_INT);
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    if ($result) {
+        $_SESSION['is_adm'] = $result['is_adm']; 
+    }
 }
 
 if (!function_exists('Busca')) {
@@ -135,8 +143,8 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
         </div>
         <div id="nav-rodape">
             <?php
-            if (isset($_SESSION['Nivel_acesso']) && $_SESSION['Nivel_acesso'] == 1) {
-                echo '<a href="/bookersgalaxy/adm.php"><i class="fas fa-laptop-code"></i> Administração</a>';
+            if (isset($_SESSION['is_adm']) && $_SESSION['is_adm'] == 1) {
+                echo '<a href="/bookersgalaxy/MenuAdm.php"><i class="fas fa-laptop-code"></i> Administração</a>';
             }
             ?>
             <a href="/bookersgalaxy/faleconosco.php"><i class="far fa-comments"></i> Fale Conosco</a>

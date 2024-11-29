@@ -1,6 +1,6 @@
 
 .container-chefe {
-    height: 50%;
+    height: 30rem;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -9,6 +9,16 @@
 form {
     height: 50%;
 }
+button {
+        padding: 2% 4%;
+        background-color: #A5DDB8;
+        font-size: 20px;
+        box-shadow: 0px 10px 14px -8px rgba(0,0,0,0.75);
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+ }
 .input-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Duas colunas para a primeira linha */

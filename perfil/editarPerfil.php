@@ -70,6 +70,8 @@ if (isset($_SESSION['cliente_id'])) {
                                 Senha: <input type="password" name="senha" maxlength="255">
                                 Confirmar Senha: <input type="password" name="confirmarSenha" maxlength="255">
                             </div>
+                <button type="submit">Salvar Alterações</button>
+
                         </form>
 
                         <!-- Formulário "Endereços" sem a classe active inicialmente -->
@@ -100,52 +102,7 @@ if (isset($_SESSION['cliente_id'])) {
                         </form>
                     </section>
 
-        <section id="editarUsuario">
-            <!-- Formulário "Meu Perfil" com a classe active por padrão -->
-            <form action="salvarperfil.php" method="post" enctype="multipart/form-data" class="form-perfil active">
-                <div>
-                    Nome: <input type="text" name="nome" maxlength="100">
-                    Sexo:
-                    <select name="sexo">
-                        <option value="">Prefiro não informar</option>
-                        <option value="Feminino">Feminino</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Outro">Outro</option>
-                    </select>
-                    Telefone: <input type="text" name="telefone" maxlength="15">
-                    Senha: <input type="password" name="senha" maxlength="255">
-                    Confirmar Senha: <input type="password" name="confirmarSenha" maxlength="255">
-                </div>
-                <button type="submit">Salvar Alterações</button>
-            </form>
-
-            <!-- Formulário "Endereços" -->
-            <form action="salvarperfil.php" method="post" class="form-enderecos">
-                <div>
-                    <h4>Endereço Principal</h4>
-                    <label>Endereço/Rua:</label>
-                    <input type="text" name="logradouro_principal">
-                    <label>N°:</label>
-                    <input type="number" name="numero_casa">
-                    Cidade: <input type="text" name="cidade_estado_principal" placeholder="<?= htmlspecialchars($enderecoData['Cidade_Cli'] ?? '') ?>">
-                    Estado: <input type="text" name="estado" placeholder="<?= htmlspecialchars($enderecoData['Estado'] ?? '') ?>">
-                    Bairro: <input type="text" name="bairro" placeholder="<?= htmlspecialchars($enderecoData['Bairrro'] ?? '') ?>">
-                    CEP: <input type="text" name="cep_principal" placeholder="<?= htmlspecialchars($enderecoData['CEP'] ?? '') ?>">
-                    Complemento: <input type="text" name="complemento" placeholder="<?= htmlspecialchars($enderecoData['Complemento'] ?? '') ?>">
-                </div>
-                <div class="linha"></div>
-                <div>
-                    <h4>Endereço Secundário (Opcional)</h4>
-                    <label>Endereço/Rua:</label>
-                    <input type="text" name="logradouro_secundario">
-                    <label>N°:</label>
-                    <input type="number" name="numero_casa_secundario">
-                    Cidade e Estado: <input type="text" name="cidade_estado_secundario">
-                    CEP: <input type="text" name="cep_secundario">
-                </div>
-                <button type="submit">Salvar Endereços</button>
-            </form>
-        </section>
+        
     </main>
     <script>
         //--------------------------------------------------------------//
