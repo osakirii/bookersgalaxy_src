@@ -1,8 +1,33 @@
-start;
+/*start;
     gap: 20px;
     margin-top: 20px;
 
-}
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .info-box {
     position: relative;
@@ -326,4 +351,11 @@ input[type="radio"]:checked + .star {
 
 .star:hover,
 .star:hover ~ .star {
-    color: #000; /* Cor ao passar o
+    color: #000; /* Cor ao passar o*/}
+
+.container{
+    width: 90%;
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    width: 10%;
+}
