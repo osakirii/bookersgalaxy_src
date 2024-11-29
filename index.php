@@ -27,14 +27,18 @@ if (isset($_SESSION['cliente_id'])) {
 
 <body>
     <main id="corpo">
-                <!--CARROSSEL DE BANNERS-->
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <!--CARROSSEL DE BANNERS-->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?php echo Busca(7) ?>" alt="Primeiro Slide">
+                    <a href="Livro.php?id_livro=92">
+                        <img class="d-block w-100" src="<?php echo Busca(7) ?>" alt="Primeiro Slide">
+                    </a>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo Busca(9) ?>" alt="Segundo Slide">
+                    <a href="Livro.php?id_livro=93">
+                        <img class="d-block w-100" src="<?php echo Busca(9) ?>" alt="Segundo Slide">
+                    </a>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -49,22 +53,58 @@ if (isset($_SESSION['cliente_id'])) {
 
         <h1>TOP 10 DO MÊS</h1>
         <section class="carrossel">
-            <?php
-            $livros = BuscaLivro(); // Chama a função BuscaLivro()
+            <div class="book_card">
+                <a href="Livro.php?id_livro=80">
+                    <img style="height: 20em;" src="<?php echo Busca(10) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=82">
+                    <img style="height: 20em;" src="<?php echo Busca(11) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=83">
+                    <img style="height: 20em;" src="<?php echo Busca(12) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=84">
+                    <img style="height: 20em;" src="<?php echo Busca(13) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=85">
+                    <img style="height: 20em;" src="<?php echo Busca(14) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=86">
+                    <img style="height: 20em;" src="<?php echo Busca(15) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=87">
+                    <img style="height: 20em;" src="<?php echo Busca(16) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=88">
+                    <img style="height: 20em;" src="<?php echo Busca(17) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=89">
+                    <img style="height: 20em;" src="<?php echo Busca(19) ?>">
+                </a>
+            </div>
+            <div class="book_card">
+                <a href="Livro.php?id_livro=89">
+                    <img style="height: 20em;" src="<?php echo Busca(20) ?>">
+                </a>
+            </div>
 
-            // Verifica se encontrou livros
-            if ($livros) {
-                foreach ($livros as $livro) {
-                    echo '<div class="book_card">';
-                    echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
-                    echo '<img style="height: 20em;" src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
-                    echo '</a>';
-                    echo '</div>';
-                }
-            } else {
-                echo 'Nenhum livro encontrado para exibir.';
-            }
-            ?>
+
             <button class="slide slide-esquerda" onclick="slidee()" type="button"><i class="fas fa-arrow-left"></i></button>
             <button class="slide slide-direita" onclick="slided()" type="button"> <i class="fas fa-arrow-right"></i></button>
         </section>
@@ -72,7 +112,7 @@ if (isset($_SESSION['cliente_id'])) {
         <h1>DESTAQUES DE 2023</h1>
 
         <section class="carrossel1">
-        <?php
+            <?php
             $livros = BuscaLivro(); // Chama a função BuscaLivro()
 
             // Verifica se encontrou livros

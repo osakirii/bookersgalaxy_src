@@ -1,32 +1,78 @@
-a cheia */{}
-
-
-.star:hover,
-.star:hover ~ .star {
-    color: #f39c12; /* Cor ao passar o mouse (cheia) */
+#corpo .estante {
+    height: 370px;
+    border-radius: 5px;
+    scroll-behavior: smooth;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 60px;
+    margin-bottom: 60px;
 }
 
-.half:hover, .half:hover ~ .star {
-    color: #f39c12; /* Cor da meia estrela ao passar o mouse */
+#corpo .livro {
+    flex: 0 0 141px;
+    height: 370px;
+    margin: 0px 20px 0px 20px;
+}
+
+#corpo .livro img {
+    height: 216px;
+    width: auto;
+}
+
+#corpo button.ir-direita {
+    right: 5px;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-top: 80px;
+}
+
+#corpo button.ir-esquerda {
+    left: 5px;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-top: 80px;
+}
+
+.star:hover,
+.star:hover~.star {
+    color: #f39c12;
+    /* Cor ao passar o mouse (cheia) */
+}
+
+.half:hover,
+.half:hover~.star {
+    color: #f39c12;
+    /* Cor da meia estrela ao passar o mouse */
 }
 
 
 .comments {
     display: flex;
     flex-direction: column;
- }
+}
+
 .comment_box {
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Garante três itens por linha */
+    grid-template-columns: repeat(3, 1fr);
+    /* Garante três itens por linha */
     gap: 10px;
     width: 60%;
     font-size: 20px;
 }
+
 .profile_pic {
-    width: 100%; /* Ajustado para se adaptar à grid */
+    width: 100%;
+    /* Ajustado para se adaptar à grid */
     grid-column: span 1;
     display: flex;
     justify-content: center;
@@ -34,8 +80,10 @@ a cheia */{}
 
 .profile_pic img {
     border-radius: 100%;
-    width: 50%; /* Ajuste da imagem para se adaptar melhor */
+    width: 50%;
+    /* Ajuste da imagem para se adaptar melhor */
 }
+
 .username {
     font-weight: bold;
     font-size: 1.1em;
@@ -51,12 +99,13 @@ a cheia */{}
 }
 
 .rating {
-    color: #FFD700; 
+    color: #FFD700;
     font-size: 1.2em;
     grid-column: span 1;
     margin-top: 5px;
 }
 
 .comment_text {
-    grid-column: 1 / span 3; /* Texto completo ocupa três colunas */
+    grid-column: 1 / span 3;
+    /* Texto completo ocupa três colunas */
 }

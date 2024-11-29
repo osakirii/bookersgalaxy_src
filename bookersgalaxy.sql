@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/11/2024 às 16:28
+-- Tempo de geração: 14/11/2024 às 14:44
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,10 +20,10 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bookersgalaxy`
 --
-
--- --------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS `bookersgalaxy` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `bookersgalaxy`;
+-- --------------------------------------------------------
+
 --
 -- Estrutura para tabela `arquivos`
 --
@@ -93,7 +93,9 @@ CREATE TABLE `arquivossite` (
 
 INSERT INTO `arquivossite` (`id`, `nome`, `path`, `data_upload`) VALUES
 (1, '66f6e502d3ae7.png', 'img/672eb8e5e9338.png', '2024-11-09 01:20:37'),
-(2, '66f6f50f58268.gif', 'img/672eb90b8c6b8.gif', '2024-11-09 01:21:15');
+(2, '66f6f50f58268.gif', 'img/672eb90b8c6b8.gif', '2024-11-09 01:21:15'),
+(7, 'carrossel.png', 'img/673651c8aabf5.png', '2024-11-14 16:38:48'),
+(9, 'carrossel2.png', 'img/67366f12d3d31.png', '2024-11-14 18:43:46');
 
 -- --------------------------------------------------------
 
@@ -129,6 +131,35 @@ CREATE TABLE `avaliacoes` (
   `id_usuario` int(11) NOT NULL,
   `id_livro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id_usuario` int(11) NOT NULL,
+  `nome_completo` varchar(255) DEFAULT NULL,
+  `nome_usuario` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `CPF` varchar(11) DEFAULT NULL,
+  `biografia` text NOT NULL,
+  `fotoPerfil` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id_usuario`, `nome_completo`, `nome_usuario`, `email`, `senha`, `telefone`, `CPF`, `biografia`, `fotoPerfil`) VALUES
+(1, 'teste', 'teste', 'teste@gmail.com', '$2y$10$M5QXjNHRJCTvzAnjgEtFFuRo.EGPiF0GJONxCAizovBRK6YlD7rTK', '(12) 31231-3131', '123.123.131', '', ''),
+(8, 'Cleyton da Silva Rodrigues', 'fan_rodoviario', 'fanrodoviario7721@gmail.com', '$2y$10$MqxW9aAcwhXmFWJ/keGOy.prGyPmLFl2mdCYg.tZsZrHtlMuYyxZa', '(11) 98057-3422', '21312313123', '', ''),
+(9, 'João Pereira da Silva', 'joaosilva123', 'joao.pereira@example.com', '$2y$10$G8XKX5Iw7PdGMNA4V7W9RuiEKzgXpzn/HFypORUFou4ixHUHwdiRO', '(11) 98765-4321', '123.456.789', '', ''),
+(10, 'Maria Oliveira ', 'mariaoliveira456', ' maria.santos@example.com', '$2y$10$vxCvqz7tcNYzPe.lvbkEw.bnaIH.BicxXLSmQ2J3ZfUu6S2Uf7vzq', '(21) 99876-5432', '987.654.321', '', ''),
+(11, 'Sakiri Moon', 'sakrimoon', 'sak.rimoon@gmail.com', '$2y$10$bMqPEqZJEOcGf4u8VzBz4OQt4snttsBq5I7GO16JSa1p6ZwLQewJ6', '(11) 94672-9768', '222.222.222', '', '');
 
 -- --------------------------------------------------------
 
@@ -287,21 +318,13 @@ INSERT INTO `livros` (`ID_livro`, `Titulo`, `Autor`, `Data_lancamento`, `QntPagi
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura para tabela `roles`
 --
 
-CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
-  `nome_completo` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `senha` varchar(255) NOT NULL,
-  `telefone` varchar(15) NOT NULL,
-  `CPF` varchar(14) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `RG` varchar(255) NOT NULL,
-  `is_adm` int(1) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `roles` (
+  `id_role` int(11) NOT NULL,
+  `nome_role` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tabelas despejadas
@@ -331,6 +354,13 @@ ALTER TABLE `autor`
 --
 ALTER TABLE `avaliacoes`
   ADD PRIMARY KEY (`id_avaliacao`);
+
+--
+-- Índices de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Índices de tabela `editora`
@@ -374,10 +404,10 @@ ALTER TABLE `livros`
   ADD KEY `fk_editora` (`id_editora`);
 
 --
--- Índices de tabela `usuario`
+-- Índices de tabela `roles`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id_role`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -406,6 +436,12 @@ ALTER TABLE `autor`
 --
 ALTER TABLE `avaliacoes`
   MODIFY `id_avaliacao` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `editora`
@@ -438,10 +474,10 @@ ALTER TABLE `livros`
   MODIFY `ID_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
--- AUTO_INCREMENT de tabela `usuario`
+-- AUTO_INCREMENT de tabela `roles`
 --
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `roles`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
