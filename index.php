@@ -71,7 +71,7 @@ if (isset($_SESSION['cliente_id'])) {
 
         <h1>DESTAQUES DE 2023</h1>
 
-        <section class="estante">
+        <section class="carrossel1">
         <?php
             $livros = BuscaLivro(); // Chama a função BuscaLivro()
 
@@ -92,9 +92,8 @@ if (isset($_SESSION['cliente_id'])) {
                 echo 'Nenhum livro encontrado para exibir.';
             }
             ?>
-
-            <button class="ir-esquerda" type="button" onclick="esquerda(0)"><i class="fas fa-arrow-left"></i></button>
-            <button class="ir-direita" type="button" onclick="direita(0)"><i class="fas fa-arrow-right"></i></button>
+            <button class="ir-esquerda slide1" type="button" onclick="esquerda(0)"><i class="fas fa-arrow-left"></i></button>
+            <button class="ir-direita slide1" type="button" onclick="direita(0)"><i class="fas fa-arrow-right"></i></button>
         </section>
     </main>
 
@@ -111,11 +110,11 @@ if (isset($_SESSION['cliente_id'])) {
         }
 
         function direita(i) {
-            document.getElementsByClassName('estante')[i].scrollLeft += 400;
+            document.getElementsByClassName('carrossel1')[i].scrollLeft += 400;
         }
 
         function esquerda(i) {
-            document.getElementsByClassName('estante')[i].scrollLeft -= 400;
+            document.getElementsByClassName('carrossel1')[i].scrollLeft -= 400;
         }
     </script>
 
