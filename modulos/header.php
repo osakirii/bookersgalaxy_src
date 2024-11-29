@@ -130,7 +130,6 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             <a href="#">Tenho Daltonismo</a>
             <a href="categorias.php">Categorias</a>
             <a href="#">Lançamentos</a>
-            <a href="/bookersgalaxy/perfil/favoritos.php">Favoritos</a>
             <a href="/bookersgalaxy/compra/carrinho.php">Carrinho</a>
             <?php
             if (isset($userId)) {

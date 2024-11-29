@@ -177,6 +177,7 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
         function updateSelectedBooksInput() {
             document.getElementById('selectedBooksInput').value = JSON.stringify(Object.values(selectedBooks));
         }
+
     </script>
 </body>
 

@@ -4,7 +4,6 @@
     $con = Connect::getInstance();
     if (isset($_SESSION['cliente_id'])) {
         $userId = $_SESSION['cliente_id'];
-        echo $userId;
     }
 ?>
 
