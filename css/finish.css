@@ -194,8 +194,8 @@ button.finalizar_btn:hover{
   }
 
   .alert-End button.NAO  {
-    background-color: #A5DDB8;
-    color: rgb(0, 0, 0);
+    background-color: #B80100;
+    color: rgb(255, 255, 255);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -204,8 +204,8 @@ button.finalizar_btn:hover{
   }
 
   .alert-End button.SIM  {
-    background-color: #B80100;
-    color: white;
+    background-color: #A5DDB8;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
