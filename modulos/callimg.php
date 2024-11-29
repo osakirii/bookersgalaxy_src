@@ -29,6 +29,8 @@
                 livros.QntPaginas,
                 livros.Sinopse,
                 livros.Preco, 
+                livros.Estoque, 
+                livros.Avaliacao, 
                 livros.id_livro,
                 genero.Genero AS Genero,
                 editora.nome AS NomeEditora
