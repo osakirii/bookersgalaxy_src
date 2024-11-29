@@ -24,8 +24,8 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <link rel="stylesheet" href="../css/modulos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=contrast" />
-        <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7162ac436f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6aeb91bd3f.js" crossorigin="anonymous"></script>
     <script src="js/modulos.js"></script>
     <link rel="icon" href="./img/iconebookers.ico" type="image/x-icon">
 
@@ -33,39 +33,39 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <style>
         /* ajustando responsividade dos ícones e 
         da barra de pesquisa */
-            .icones{
-                background: none;
-                border: none;
-                padding: 0;
-                margin: 0;
+        .icones {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        @media (max-width: 1120px) {
+            #header #headerform.pesquisa {
+                display: none;
+            }
+        }
+
+        @media(max-width: 1290px) {
+            .icones {
+                display: none;
             }
 
-            @media (max-width: 1120px){
-                #header #headerform.pesquisa{
-                    display: none;
-                }
+        }
+
+        @media(max-width: 780px) {
+            #header a.categ {
+                display: none;
             }
+        }
 
-            @media(max-width: 1290px) {
-                .icones {
-                    display: none;
-                }
-
+        @media(max-width: 600px) {
+            img#logoimg {
+                display: none;
             }
+        }
 
-            @media(max-width: 780px) {
-                #header a.categ{
-                    display: none;
-                }
-            }
-
-            @media(max-width: 600px) {
-                img#logoimg {
-                    display: none;
-                }
-            }
-
-            /*@media(max-width: 640px) {
+        /*@media(max-width: 640px) {
                 #opcoes, #filtro-daltonismo{
                     display: none;
                 }
@@ -81,34 +81,35 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 }
             }*/
 
-            @media(max-width: 566px) {
-                #navbar #nav-content a{
-                    margin-bottom: 30px;
-                    padding: 0;
-                    font-size: 18px;
-                }
-                #navbar #nav-content a:hover{
-                    font-size: 20px;
-                }
-
-                #navbar #nav-rodape{
-                    bottom: 10px;
-                }
-
-                #navbar #nav-rodape a{
-                    margin-top: 10px;
-                    font-size: 16px;
-                }
-                #navbar #nav-rodape a:hover{
-                    font-size: 18px;
-                }
-
-                #navbar #nav-content #closebtn{
-                    font-size: 32px;
-                }
-
+        @media(max-width: 566px) {
+            #navbar #nav-content a {
+                margin-bottom: 30px;
+                padding: 0;
+                font-size: 18px;
             }
-            
+
+            #navbar #nav-content a:hover {
+                font-size: 20px;
+            }
+
+            #navbar #nav-rodape {
+                bottom: 10px;
+            }
+
+            #navbar #nav-rodape a {
+                margin-top: 10px;
+                font-size: 16px;
+            }
+
+            #navbar #nav-rodape a:hover {
+                font-size: 18px;
+            }
+
+            #navbar #nav-content #closebtn {
+                font-size: 32px;
+            }
+
+        }
     </style>
 </head>
 
@@ -117,20 +118,19 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <nav id="navbar">
         <div id="nav-content">
             <a href="javascript:void(0)" id="closebtn" onclick="closeNav()"><i class="fas fa-xmark"></i></a>
-            <a  href="/bookersgalaxy/index.php"><img class="logo" src="<?php echo Busca(1) ?>"></a>
+            <a href="/bookersgalaxy/index.php"><img class="logo" src="<?php echo Busca(1) ?>"></a>
             <a href="#">Tenho Daltonismo</a>
             <a href="categorias.php">Categorias</a>
             <a href="#">Lançamentos</a>
             <a href="/bookersgalaxy/perfil/favoritos.php">Favoritos</a>
             <a href="/bookersgalaxy/compra/carrinho.php">Carrinho</a>
-            <?php 
-            if(isset($userId)){
+            <?php
+            if (isset($userId)) {
                 echo "<a href='/bookersgalaxy/perfil/perfil.php'>Meu perfil</a>";
-            }
-            else{
+            } else {
                 echo "<a href='/bookersgalaxy/perfil/login_cad.php'>Meu perfil</a>";
-             }
-            
+            }
+
             ?>
         </div>
         <div id="nav-rodape">
@@ -148,11 +148,11 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 <h2>DESEJA MESMO SAIR??</h2>
                 <p>Sentimos muito por não cumprir com suas expectativas, mas foi bom enquanto durou. Até a próxima!!!</p>
                 <div id="alertBox-Button">
-                <button class="NAO" onclick="AlertaNo()">NÃO</button>
-                <button class="SIM" onclick="AlertaSi()">SIM</button>
+                    <button class="NAO" onclick="AlertaNo()">NÃO</button>
+                    <button class="SIM" onclick="AlertaSi()">SIM</button>
+                </div>
             </div>
-            </div>
-                    </div>
+        </div>
     </nav>
 
     <div id="escuro"></div>
@@ -175,24 +175,25 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             </div>
         </div>
         <a class="categ" href="/bookersgalaxy/categorias.php">Categorias</a>
-        <form class="pesquisa" id="headerform">
-            <input size="36" id="searchbar" onfocus="pesquisafocus()" onblur="pesquisablur()"><button type="submit" onclick="openSearchBar()"><i class="fas fa-magnifying-glass"></i></button>
+        <form class="pesquisa" id="headerform" method="GET" action="catalogo.php">
+            <input size="36" id="searchbar" name="q" onfocus="pesquisafocus()" onblur="pesquisablur()" placeholder="Pesquise um livro pelo título">
+            <button type="submit"><i class="fas fa-magnifying-glass"></i></button>
         </form>
+
         <div id="header-container">
             <button class="icones">
                 <a href="/bookersgalaxy/compra/carrinho.php"><i class="fas fa-cart-shopping"></i></a>
-                <?php 
-                if(isset($userId)){
+                <?php
+                if (isset($userId)) {
                     echo "<a href='/bookersgalaxy/perfil/perfil.php'><i class='far fa-circle-user'></i></a>";
-                }
-                else{
+                } else {
                     echo "<a href='/bookersgalaxy/perfil/login_cad.php'><i class='far fa-circle-user'></i></a>";
-                 }          
-            ?>
+                }
+                ?>
             </button>
 
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
-            
+
         </div>
     </header>
     <script>
@@ -228,38 +229,40 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
             document.cookie = name + "=" + (value || "") + expires + "; path=/";
         }
         const body = document.querySelector('body');
-    const tamanhoPadrao = 20; // Tamanho base da fonte
-    
-    function ajustarFonte(direcao) {
-        let tamanhoAtual = parseFloat(window.getComputedStyle(body).fontSize);
-        let novoTamanho = tamanhoAtual + direcao;
-        body.style.fontSize = novoTamanho + 'px';
-        localStorage.setItem('fonteTamanho', novoTamanho); // Armazena o ajuste no localStorage
-    }
+        const tamanhoPadrao = 20; // Tamanho base da fonte
 
-    // Aplica tamanho armazenado ao recarregar
-    window.addEventListener('load', () => {
-        let fonteSalva = localStorage.getItem('fonteTamanho');
-        if (fonteSalva) {
-            body.style.fontSize = fonteSalva + 'px';
+        function ajustarFonte(direcao) {
+            let tamanhoAtual = parseFloat(window.getComputedStyle(body).fontSize);
+            let novoTamanho = tamanhoAtual + direcao;
+            body.style.fontSize = novoTamanho + 'px';
+            localStorage.setItem('fonteTamanho', novoTamanho); // Armazena o ajuste no localStorage
         }
-    });
-    function toggleContraste() {
-        document.body.classList.toggle('alto-contraste');
-        localStorage.setItem('contrasteAtivo', document.body.classList.contains('alto-contraste'));
-    }
 
-    // Aplica o contraste armazenado ao recarregar
-    window.addEventListener('load', () => {
-        if (localStorage.getItem('contrasteAtivo') === 'true') {
-            document.body.classList.add('alto-contraste');
+        // Aplica tamanho armazenado ao recarregar
+        window.addEventListener('load', () => {
+            let fonteSalva = localStorage.getItem('fonteTamanho');
+            if (fonteSalva) {
+                body.style.fontSize = fonteSalva + 'px';
+            }
+        });
+
+        function toggleContraste() {
+            document.body.classList.toggle('alto-contraste');
+            localStorage.setItem('contrasteAtivo', document.body.classList.contains('alto-contraste'));
         }
-    });
-    function resetarFonte() {
-    body.style.fontSize = '16px';  // Define o tamanho da fonte para o padrão
-    localStorage.removeItem('fonteTamanho'); // Remove o ajuste de tamanho salvo
-    setCookie('filtro_daltonismo', "", -1); // Opcional: se desejar também limpar o cookie
-}
+
+        // Aplica o contraste armazenado ao recarregar
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('contrasteAtivo') === 'true') {
+                document.body.classList.add('alto-contraste');
+            }
+        });
+
+        function resetarFonte() {
+            body.style.fontSize = '16px'; // Define o tamanho da fonte para o padrão
+            localStorage.removeItem('fonteTamanho'); // Remove o ajuste de tamanho salvo
+            setCookie('filtro_daltonismo', "", -1); // Opcional: se desejar também limpar o cookie
+        }
     </script>
 </body>
 
