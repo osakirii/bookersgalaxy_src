@@ -201,68 +201,6 @@ try {
 });
 
 </script>
-<!--LIVROS SEMELHANTES!-->
-<!--///////////////////////////////////!-->
-<div class="second_content">
-    <!--///////////////////////////////////!-->
-
-    <div class="form_container">
-        <!--
-
-        
-      <form method="POST" action="processa.php">
-
-            <div class="estrelas">
-
-                <input type="radio" name="estrela" id="vazio" value="" checked>
-
-                <label for="estrela_um"><i class="opcao fa"></i></label>
-                <input type="radio" name="estrela" id="estrela_um" id="vazio" value="1">
-
-                <label for="estrela_dois"><i class="opcao fa"></i></label>
-                <input type="radio" name="estrela" id="estrela_dois" id="vazio" value="2">
-
-                <label for="estrela_tres"><i class="opcao fa"></i></label>
-                <input type="radio" name="estrela" id="estrela_tres" id="vazio" value="3">
-
-                <label for="estrela_quatro"><i class="opcao fa"></i></label>
-                <input type="radio" name="estrela" id="estrela_quatro" id="vazio" value="4">
-
-                <label for="estrela_cinco"><i class="opcao fa"></i></label>
-                <input type="radio" name="estrela" id="estrela_cinco" id="vazio" value="5"><br><br>
-
-                <textarea name="mensagem" rows="4" cols="30" placeholder="Digite o seu comentário..."></textarea><br><br>
-
-                <input type="submit" value="Cadastrar"><br><br>
-
-            </div>
-        </form>
-        -->
-        <br><br>
-        <h2 style="font-weight:500;">AVALIAÇÃO DO LIVRO</h2>
-        <form method="POST" enctype="multipart/form-data" onsubmit="return addComent(event, <?php echo htmlspecialchars($id_livro); ?>)">
-            <!--<p style="width:75%;">X% dos clientes gostaram de ‘<?php echo htmlspecialchars($livro['Titulo'])?>’.<br><br>-->
-                Qual foi a sua experiência durante a leitura desse livro? Faça a sua avaliação!</p>
-            <div class="form_group">
-                <textarea id="texto_comentario" name="texto" rows="4" placeholder="Escreva seu comentario!" required></textarea>
-            </div>
-            <br>
-            <div class="form_group">
-                <label>Imagens (Máximo de 5)</label>
-                <input type="file" name="imagens[]" accept="image/*" multiple>
-            </div>
-            <div class="form_group">
-                <button onclick="addComent(<?php echo htmlspecialchars($id_livro); ?>)">Enviar Comentário</button>
-            </div>
-        </form>
-    </div>
-    
-    <div class="image_container">
-    <br><br>
-        <h2>Imagens do Livro</h2>
-        <img src="imagem_do_livro_1.jpg" alt="Imagem do Livro 1" class="book_image">
-        <img src="imagem_do_livro_2.jpg" alt="Imagem do Livro 2" class="book_image">
-    </div>
 </div><!--
 <p></p>COMENTÁRIOS RELEVANTES</p>
 <div class="comments">
