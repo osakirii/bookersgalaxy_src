@@ -27,7 +27,7 @@ if (isset($_POST['selected_books'])) {
 </head>
 
 <body>
-    <div class="container">
+    <div class="containerPai">
         <div class="coluna">
             <!-- Conteúdo da primeira coluna -->
             <p>SELECIONADOS</p>
@@ -35,18 +35,17 @@ if (isset($_POST['selected_books'])) {
                 <?php
                 $totalPreco = 0;
                 foreach ($selectedBooks as $livro) {
-                    echo "<div class='item'>";
-                    echo "<img src='../" . htmlspecialchars($livro['arquivo_path']) . "'><br>";
-                    echo "Título: " . htmlspecialchars($livro['titulo']) . "<br>";
+                    echo "<div class='item'><div class='livroImg'>";
+                    echo "<img src='../" . htmlspecialchars($livro['arquivo_path']) . "'><br></div>";
+                    echo "<div class='infosLivro'>Título: " . htmlspecialchars($livro['titulo']) . "<br>";
                     echo "Autor: " . htmlspecialchars($livro['autor']) . "<br>";
                     echo "Preço: R$ " . number_format($livro['preco'], 2, ',', '.') . "<br>";
                     echo "Quantidade: " . htmlspecialchars($livro['quantidade']) . "<br>";
-                    echo "</div>";
+                    echo "</div></div>";
                     $totalPreco += $livro['preco'] * $livro['quantidade'];
                 }
                 ?>
             </div>
-            <hr>
             <div class="preco">
                 <?php
                 echo "Subtotal:&nbsp;&nbsp;&nbsp;&nbsp;R$" . $totalPreco;
@@ -56,7 +55,6 @@ if (isset($_POST['selected_books'])) {
                 ?>
             </div>
         </div>
-        <hr>
         <div class="coluna">
             <!-- Conteúdo da segunda coluna -->
             <p>MÉTODO DE PAGAMENTO:</p>
@@ -84,7 +82,7 @@ if (isset($_POST['selected_books'])) {
                     <div class="adicionar_cartao">
                         <a href="#">+ adicionar cartão...</a>
                     </div>
-                    <hr>
+                    
                     <div class="pix">
                         <input type="radio" name="metodo_pagamento" id="pix">
                         <label for="pix">
@@ -104,7 +102,7 @@ if (isset($_POST['selected_books'])) {
 
 
             <!--PARTE DO MERCADO PAGO, NÃO MEXER PELO AMOR DE CRISTO-->
-            <hr>
+            
             <div class="finalizar_compra">
                 <div class="dados_cliente">
                     <p><strong>Seus dados:</strong></p>
