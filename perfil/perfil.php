@@ -51,9 +51,9 @@
                 </div>
         </section>
 
-        <h1>VISTOS POR ÚLTIMO POR <?php echo $nomeUsuario?></h1>
+        <h1>VISTOS POR ÚLTIMO POR <?php echo $nomeUsuario?></h1><br>
 
-            <section class="estante">
+            <section class="carrossel1">
         <?php
             $livros = BuscaLivro(); // Chama a função BuscaLivro()
 
