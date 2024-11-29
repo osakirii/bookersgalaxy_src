@@ -426,9 +426,7 @@ i.fa-plus, button{
     padding-left: 7px;
     max-height: 50px;
     overflow: hidden;
-}
-#corpo .carrossel1 p:hover{
-    overflow: scroll;
+    position: unset;
 }
 
 div.livro-texto{

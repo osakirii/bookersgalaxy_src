@@ -27,7 +27,7 @@ if (isset($_POST['selected_books'])) {
 </head>
 
 <body>
-    <div class="container">
+    <div class="containerPai">
         <div class="coluna">
             <!-- Conteúdo da primeira coluna -->
             <p>SELECIONADOS</p>
@@ -35,13 +35,13 @@ if (isset($_POST['selected_books'])) {
                 <?php
                 $totalPreco = 0;
                 foreach ($selectedBooks as $livro) {
-                    echo "<div class='item'>";
-                    echo "<img src='../" . htmlspecialchars($livro['arquivo_path']) . "'><br>";
-                    echo "Título: " . htmlspecialchars($livro['titulo']) . "<br>";
+                    echo "<div class='item'><div class='livroImg'>";
+                    echo "<img src='../" . htmlspecialchars($livro['arquivo_path']) . "'><br></div>";
+                    echo "<div class='infosLivro'>Título: " . htmlspecialchars($livro['titulo']) . "<br>";
                     echo "Autor: " . htmlspecialchars($livro['autor']) . "<br>";
                     echo "Preço: R$ " . number_format($livro['preco'], 2, ',', '.') . "<br>";
                     echo "Quantidade: " . htmlspecialchars($livro['quantidade']) . "<br>";
-                    echo "</div>";
+                    echo "</div></div>";
                     $totalPreco += $livro['preco'] * $livro['quantidade'];
                 }
                 ?>
@@ -55,14 +55,20 @@ if (isset($_POST['selected_books'])) {
                 echo "<br>Total:&nbsp;&nbsp;&nbsp;&nbsp;R$" . $valorAleatorio + $totalPreco;
                 ?>
             </div>
+            <div class="cupom">
+                <select name="cupomzin" id="cupomm">
+                    <option>Escolha seu cupom</option>
+                    <option>Primeira Compra</option>
+                    <option>Black Friday</option>
+                    <option>Frete Grátis</option>
+                </select>
+            </div>
         </div>
-        <hr>
         <div class="coluna">
             <!-- Conteúdo da segunda coluna -->
             <p>MÉTODO DE PAGAMENTO:</p>
             <!--PARTE DO MERCADO PAGO, NÃO MEXER PELO AMOR DE CRISTO-->
             <div class="metodo_pagamento">
-                <p>MÉTODO DE PAGAMENTO:</p>
                 <div class="select_metodo" onclick="toggleOpcoesPagamento()">
                     Escolha o método
                 </div>
@@ -84,7 +90,7 @@ if (isset($_POST['selected_books'])) {
                     <div class="adicionar_cartao">
                         <a href="#">+ adicionar cartão...</a>
                     </div>
-                    <hr>
+                    
                     <div class="pix">
                         <input type="radio" name="metodo_pagamento" id="pix">
                         <label for="pix">
@@ -102,23 +108,23 @@ if (isset($_POST['selected_books'])) {
                 </div>
             </div>
 
-
-            <!--PARTE DO MERCADO PAGO, NÃO MEXER PELO AMOR DE CRISTO-->
             <hr>
+            <!--PARTE DO MERCADO PAGO, NÃO MEXER PELO AMOR DE CRISTO-->
+            
             <div class="finalizar_compra">
                 <div class="dados_cliente">
                     <p><strong>Seus dados:</strong></p>
-                    <p>Destinatário:<?php echo htmlspecialchars($nomeUsuario);?>  </p>
+                    <p>Destinatário: <?php echo htmlspecialchars($nomeUsuario);?>  </p>
                     <p>Rua XXXXXXXXXX, XXX - XXXXX XXXXXXX</p>
                     <p>CEP: XXXXX-XXX &nbsp;&nbsp; CPF: XXX.XXX.XXX-XX</p>
-                    <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> &nbsp;&nbsp; Telefone: 11 XXXXX-XXXX</p>
-                    <button class="alterar_btn" onclick="alterarDados()">Alterar...</button>
+                    <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> </p>
+                    <p>Telefone: <?php echo htmlspecialchars($nomeUsuario);?></p>
+                    <button class="alterar_btn" onclick="alterarDados()">Alterar</button>
                 </div>
-
-                <div class="acoes">
-                    <button class="cancelar_btn" type="button" onclick="cancelarCompra()">Cancelar</button>
-                    <button class="finalizar_btn" type="submit" onclick="finalizarCompra()">Finalizar compra</button>
-                </div>
+            </div>
+            <div class="acoes">
+                <button class="cancelar_btn" type="button" onclick="cancelarCompra()">Cancelar</button>
+                <button class="finalizar_btn" type="submit" onclick="finalizarCompra()">Finalizar compra</button>
             </div>
         </div>
     </div>
