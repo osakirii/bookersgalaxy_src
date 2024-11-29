@@ -41,11 +41,12 @@ if (isset($_POST['selected_books'])) {
                     echo "Autor: " . htmlspecialchars($livro['autor']) . "<br>";
                     echo "Preço: R$ " . number_format($livro['preco'], 2, ',', '.') . "<br>";
                     echo "Quantidade: " . htmlspecialchars($livro['quantidade']) . "<br>";
-                    echo "</div>";
+                    echo "</div></div>";
                     $totalPreco += $livro['preco'] * $livro['quantidade'];
                 }
                 ?>
             </div>
+            <hr>
             <div class="preco">
                 <?php
                 echo "Subtotal:&nbsp;&nbsp;&nbsp;&nbsp;R$" . $totalPreco;
@@ -53,14 +54,21 @@ if (isset($_POST['selected_books'])) {
                 echo "<br>Taxa de Envio:&nbsp;&nbsp;&nbsp;&nbsp;R$" . $valorAleatorio;
                 echo "<br>Total:&nbsp;&nbsp;&nbsp;&nbsp;R$" . $valorAleatorio + $totalPreco;
                 ?>
-            </div></div>
+            </div>
+            <div class="cupom">
+                <select name="cupomzin" id="cupomm">
+                    <option>Escolha seu cupom</option>
+                    <option>Primeira Compra</option>
+                    <option>Black Friday</option>
+                    <option>Frete Grátis</option>
+                </select>
+            </div>
         </div>
         <div class="coluna">
             <!-- Conteúdo da segunda coluna -->
             <p>MÉTODO DE PAGAMENTO:</p>
             <!--PARTE DO MERCADO PAGO, NÃO MEXER PELO AMOR DE CRISTO-->
             <div class="metodo_pagamento">
-                <p>MÉTODO DE PAGAMENTO:</p>
                 <div class="select_metodo" onclick="toggleOpcoesPagamento()">
                     Escolha o método
                 </div>
@@ -100,23 +108,23 @@ if (isset($_POST['selected_books'])) {
                 </div>
             </div>
 
-
+            <hr>
             <!--PARTE DO MERCADO PAGO, NÃO MEXER PELO AMOR DE CRISTO-->
             
             <div class="finalizar_compra">
                 <div class="dados_cliente">
                     <p><strong>Seus dados:</strong></p>
-                    <p>Destinatário:<?php echo htmlspecialchars($nomeUsuario);?>  </p>
+                    <p>Destinatário: <?php echo htmlspecialchars($nomeUsuario);?>  </p>
                     <p>Rua XXXXXXXXXX, XXX - XXXXX XXXXXXX</p>
                     <p>CEP: XXXXX-XXX &nbsp;&nbsp; CPF: XXX.XXX.XXX-XX</p>
-                    <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> &nbsp;&nbsp; Telefone: 11 XXXXX-XXXX</p>
+                    <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> &nbsp;&nbsp; <br>
+                    Telefone: <?php echo htmlspecialchars($nomeUsuario);?></p>
                     <button class="alterar_btn" onclick="alterarDados()">Alterar...</button>
                 </div>
-
-                <div class="acoes">
+            </div>
+            <div class="acoes">
                     <button class="cancelar_btn" type="button" onclick="cancelarCompra()">Cancelar</button>
                     <button class="finalizar_btn" type="submit" onclick="finalizarCompra()">Finalizar compra</button>
-                </div>
             </div>
         </div>
     </div>

@@ -6,24 +6,32 @@ body{
 div.containerPai{
     display: flex;
     width: 100%;
-    padding: 50px;
-    gap: 50px;
+    padding: 20px 150px;
+    gap: 100px;
     justify-content: center;
+    
+}
+
+.coluna{
+    width: 50%;
 }
 
 /* AJUSTANDO IMG E INFORMAÇÕES SOBRE O LIVRO */
 .livros_selecionados{
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.361);
     background-color: #fffbfb;
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 30px;
     width: auto;
     height: auto;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    margin-bottom: 30px;
+    flex-wrap: wrap
 }
 .livros_selecionados img{
     width: 70px;
+    float: left;
 }
 .infosLivro{
     display: flex;
@@ -32,7 +40,7 @@ div.containerPai{
     max-height: 150px;
     overflow: hidden;
 }
-@media(max-width: 930px){
+@media(max-width: 1055px){
     .infosLivro:hover{
         overflow: scroll;
     }
@@ -41,14 +49,67 @@ div.containerPai{
 .livroImg{
     display: flex;
     float: left;
-    margin-bottom: 20px;
     padding-right: 20px;
+}
+
+div.item{
+    display: flex;
+    float: left;
+    padding: 10px 0;
 }
 
 /* AJUSTANDO SUBTOTAL E TOTAL */
 .preco{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.361);
+    background-color: #fffbfb;
+    border-radius: 10px;
+    padding: 30px;
+    width: max-content;
+    display: flex;
+    justify-content: left;
+    margin-top: 30px;
+
     display: flex;
     font-size: medium;
     padding-left: 20px;
     max-width: auto;
 }
+
+/* AJUSTANDO SUBTOTAL E TOTAL */
+.cupom{
+    margin-top: 10px;
+}
+#cupomm{
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    height: 30px;
+    width:220px;
+    font-size: medium;
+}
+
+/* AJUSTANDO PARTE DE PAGAMENTO */
+.metodo_pagamento{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.361);
+    background-color: #fffbfb;
+    border-radius: 10px;
+    padding: 30px;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+/* AJUSTANDO PARTE DE FINALIZAÇÃO DA CONTA */
+.finalizar_compra{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.361);
+    background-color: #fffbfb;
+    border-radius: 10px;
+    padding: 30px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
