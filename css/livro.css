@@ -219,7 +219,11 @@ span.precinho{
 }
 
 button.heart-icon{
-    size: 100px;
+    size: 30px;
+}
+button#favoritarBtn.heart-icon{
+    height: 30px;
+    size: 30px;
 }
 
 .info-column {
@@ -253,15 +257,11 @@ button.heart-icon{
 button.heart-icon {
     background-color: transparent;
     border: none;
-    width: 40px;
-    height: 40px;
     object-fit: contain;
     cursor: pointer;
 }
 
 button.heart-icon img {
-    width: 40px;
-    height: 40px;
     object-fit: contain;
 }
 .info_column {
@@ -288,6 +288,7 @@ button.heart-icon img {
     align-items: center;
     gap: 10px; 
 }
+
 
 
 .btn{

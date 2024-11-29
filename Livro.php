@@ -130,7 +130,7 @@ try {
                 <span id="precinho">R$<?php echo htmlspecialchars(number_format($livro['Preco'], 2, ',', '.')); ?></span>
                 <?php if (isset($_SESSION['cliente_id'])): ?>
                     <button name="btn_comprar" type="submit">Comprar agora</button>
-                <?php else: ?>
+                <?php else: ?> 
                     <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
                 <?php endif; ?>
                 <button id="favoritarBtn" class="heart-icon" title="Adicionar aos favoritos" style="height: 100px"><i class="fas fa-heart"></i></button>
