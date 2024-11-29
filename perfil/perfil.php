@@ -23,11 +23,11 @@
 
             <section id="perfil">
                 <div class="perfilContainer">
-                <p>| <?php echo $nomeUsuario ?></p>
+                
                 <img src="../img/usuario/placeholder.png" alt="placeholder.png">
                 </div>
                 <div class="perfilContainer">
-                    <br><br>
+                    <p>| <?php echo $nomeUsuario ?></p>
                     <a href="editarPerfil.php">
                         <i class="fas fa-pen-to-square"></i><p>Editar Perfil</p>
                 </a>
@@ -51,9 +51,9 @@
                 </div>
         </section>
 
-        <h1>VISTOS POR ÚLTIMO POR <?php echo $nomeUsuario?></h1>
+        <h1>VISTOS POR ÚLTIMO POR <?php echo $nomeUsuario?></h1><br>
 
-            <section class="estante">
+            <section class="carrossel1">
         <?php
             $livros = BuscaLivro(); // Chama a função BuscaLivro()
 
