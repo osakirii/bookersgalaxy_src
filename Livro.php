@@ -132,7 +132,6 @@ try {
                 <?php else: ?> 
                     <button name="btn_comprar" onclick="alert('Faça login para comprar')">Comprar agora</button>
                 <?php endif; ?>
-                <button id="favoritarBtn" class="heart-icon" title="Adicionar aos favoritos" style="height: 100px"><i class="fas fa-heart"></i></button>
                 <button class="sticks" title="Adicionar ao carrinho" onclick="adicionarAoCarrinho(<?php echo htmlspecialchars($id_livro); ?>)">
                     <hr id="stick1">
                     <hr id="stick2">
