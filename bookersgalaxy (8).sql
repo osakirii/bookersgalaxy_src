@@ -41,7 +41,7 @@ CREATE TABLE `arquivos` (
 -- Despejando dados para a tabela `arquivos`
 --
 
-INSERT INTO `arquivos` (`id`, `livro_id`, `nome`, `path`, `data_upload`, `is_capa`) VALUES
+INSERT INTO arquivos (id, livro_id, nome, path, data_upload, is_capa) VALUES
 (127, 63, 'dracula_capa.jpg', 'img/672fe04805677.jpg', '2024-11-09 19:20:56', 1),
 (128, 63, 'dracula_capa_aberta.jpg', 'img/672fe04805e32.jpg', '2024-11-09 19:20:56', 0),
 (129, 63, 'dracula_capa_aberta_detalhes.jpg', 'img/672fe04806885.jpg', '2024-11-09 19:20:56', 0),
@@ -72,8 +72,98 @@ INSERT INTO `arquivos` (`id`, `livro_id`, `nome`, `path`, `data_upload`, `is_cap
 (154, 68, 'saboroso_aberto3.jpg', 'img/673027050ded4.jpg', '2024-11-10 00:22:45', 0),
 (155, 68, 'saboroso_aberto4.jpg', 'img/673027050e4fb.jpg', '2024-11-10 00:22:45', 0),
 (156, 68, 'saboroso_capa.jpg', 'img/673027050eae7.jpg', '2024-11-10 00:22:45', 0),
-(157, 68, 'saboroso_capa_melhor.jpg', 'img/673027050f2c8.jpg', '2024-11-10 00:22:45', 1);
-
+(157, 68, 'saboroso_capa_melhor.jpg', 'img/673027050f2c8.jpg', '2024-11-10 00:22:45', 1),
+(158, 69, 'Inicio.png', 'img/6736c46b63eac.png', '2024-11-15 00:47:55', 1),
+(159, 70, 'Captura de tela 2023-10-29 234531.png', 'img/67377ecc39489.png', '2024-11-15 14:03:08', 1),
+(160, 71, 'Abelinha.jpg', 'img/67377f586e7dc.jpg', '2024-11-15 14:05:28', 1),
+(161, 72, 'OrgulhoePreconceito1.jpg', 'img/674939341c2cb.jpg', '2024-11-29 00:47:00', 0),
+(162, 72, 'OrgulhoePreconceito2.jpg', 'img/674939341fe90.jpg', '2024-11-29 00:47:00', 0),
+(163, 72, 'OrgulhoePreconceito3.jpg', 'img/6749393422327.jpg', '2024-11-29 00:47:00', 0),
+(164, 72, 'OrgulhoePreconceitoCapa.jpg', 'img/6749393424174.jpg', '2024-11-29 00:47:00', 1),
+(165, 73, 'OVelhoEOMar1.jpg', 'img/67493e570b8f6.jpg', '2024-11-29 01:08:55', 0),
+(166, 73, 'OVelhoEOMar2.jpg', 'img/67493e570d4d5.jpg', '2024-11-29 01:08:55', 0),
+(167, 73, 'OVelhoEOMar3.jpg', 'img/67493e570eb7a.jpg', '2024-11-29 01:08:55', 0),
+(168, 73, 'OVelhoEOMarCapa.jpg', 'img/67493e57109e0.jpg', '2024-11-29 01:08:55', 1),
+(169, 74, 'OVelhoEOMar1.jpg', 'img/67493f1aba5cb.jpg', '2024-11-29 01:12:10', 0),
+(170, 74, 'OVelhoEOMar2.jpg', 'img/67493f1abcf26.jpg', '2024-11-29 01:12:10', 0),
+(171, 74, 'OVelhoEOMar3.jpg', 'img/67493f1abe62c.jpg', '2024-11-29 01:12:10', 0),
+(172, 74, 'OVelhoEOMarCapa.jpg', 'img/67493f1abfe6f.jpg', '2024-11-29 01:12:10', 1),
+(173, 75, 'OVelhoEOMar1.jpg', 'img/67494048d8e0d.jpg', '2024-11-29 01:17:12', 0),
+(174, 75, 'OVelhoEOMar2.jpg', 'img/67494048dafcd.jpg', '2024-11-29 01:17:12', 0),
+(175, 75, 'OVelhoEOMar3.jpg', 'img/67494048dc2e8.jpg', '2024-11-29 01:17:12', 0),
+(176, 75, 'OVelhoEOMarCapa.jpg', 'img/67494048de080.jpg', '2024-11-29 01:17:12', 1),
+(177, 76, '1984Capa.jpg', 'img/674941face00a.jpg', '2024-11-29 01:24:26', 1),
+(178, 76, '19841.jpg', 'img/674941fad1eca.jpg', '2024-11-29 01:24:26', 0),
+(179, 76, '19842.jpg', 'img/674941fad4d69.jpg', '2024-11-29 01:24:26', 0),
+(180, 76, '19843.jpg', 'img/674941fad6228.jpg', '2024-11-29 01:24:26', 0),
+(181, 77, 'AGarotaNoTrem1.jpg', 'img/6749490d8b602.jpg', '2024-11-29 01:54:37', 0),
+(182, 77, 'AGarotaNoTrem2.jpg', 'img/6749490d8d909.jpg', '2024-11-29 01:54:37', 0),
+(183, 77, 'AGarotaNoTrem3.jpg', 'img/6749490d8f3f8.jpg', '2024-11-29 01:54:37', 0),
+(184, 77, 'AGarotaNoTremCapa.jpg', 'img/6749490d9081e.jpg', '2024-11-29 01:54:37', 1),
+(185, 78, 'VidasSecas1.jpg', 'img/67494a7ab7583.jpg', '2024-11-29 02:00:42', 0),
+(186, 78, 'VidasSecas2.jpg', 'img/67494a7aba645.jpg', '2024-11-29 02:00:42', 0),
+(187, 78, 'VidasSecas3.jpg', 'img/67494a7abc9a9.jpg', '2024-11-29 02:00:42', 0),
+(188, 78, 'VidasSecasCapa.jpg', 'img/67494a7abea74.jpg', '2024-11-29 02:00:42', 1),
+(189, 79, 'VidasSecas1.jpg', 'img/67494d504d9d6.jpg', '2024-11-29 02:12:48', 0),
+(190, 79, 'VidasSecas2.jpg', 'img/67494d505066a.jpg', '2024-11-29 02:12:48', 0),
+(191, 79, 'VidasSecas3.jpg', 'img/67494d5051cc4.jpg', '2024-11-29 02:12:48', 0),
+(192, 79, 'VidasSecasCapa.jpg', 'img/67494d50530ee.jpg', '2024-11-29 02:12:48', 1),
+(193, 80, 'AHipotesedoAmor1.jpg', 'img/67494e3c055b3.jpg', '2024-11-29 02:16:44', 0),
+(194, 80, 'AHipotesedoAmor2.jpg', 'img/67494e3c07ae5.jpg', '2024-11-29 02:16:44', 0),
+(195, 80, 'AHipotesedoAmor3.jpg', 'img/67494e3c0a392.jpg', '2024-11-29 02:16:44', 0),
+(196, 80, 'AHipotesedoAmorCapa.jpg', 'img/67494e3c0c208.jpg', '2024-11-29 02:16:44', 1),
+(197, 81, 'AHipotesedoAmor1.jpg', 'img/67494f5031690.jpg', '2024-11-29 02:21:20', 0),
+(198, 81, 'AHipotesedoAmor2.jpg', 'img/67494f503433d.jpg', '2024-11-29 02:21:20', 0),
+(199, 81, 'AHipotesedoAmor3.jpg', 'img/67494f5035b4b.jpg', '2024-11-29 02:21:20', 0),
+(200, 81, 'AHipotesedoAmorCapa.jpg', 'img/67494f503781b.jpg', '2024-11-29 02:21:20', 1),
+(201, 82, '9Historias1.jpg', 'img/674950929e711.jpg', '2024-11-29 02:26:42', 0),
+(202, 82, '9Historias2.jpg', 'img/67495092a1d18.jpg', '2024-11-29 02:26:42', 0),
+(203, 82, '9Historias3.jpg', 'img/67495092a4ed7.jpg', '2024-11-29 02:26:42', 0),
+(204, 82, '9HistoriasCapa.jpg', 'img/67495092aa50a.jpg', '2024-11-29 02:26:42', 1),
+(205, 83, 'RetratodeDorian1.jpg', 'img/67495263b371d.jpg', '2024-11-29 02:34:27', 0),
+(206, 83, 'RetratodeDorian2.jpg', 'img/67495263b65da.jpg', '2024-11-29 02:34:27', 0),
+(207, 83, 'RetratodeDorian3.jpg', 'img/67495263b823c.jpg', '2024-11-29 02:34:27', 0),
+(208, 83, 'RetratodeDorianCapa.jpg', 'img/67495263ba021.jpg', '2024-11-29 02:34:27', 1),
+(209, 84, 'CafeComDeusPai1.jpg', 'img/6749555d58f0f.jpg', '2024-11-29 02:47:09', 0),
+(210, 84, 'CafeComDeusPai2.jpg', 'img/6749555d5ba16.jpg', '2024-11-29 02:47:09', 0),
+(211, 84, 'CafeComDeusPai3.jpg', 'img/6749555d5ef5c.jpg', '2024-11-29 02:47:09', 0),
+(212, 84, 'CafeComDeusPaiCapa.jpg', 'img/6749555d62f7e.jpg', '2024-11-29 02:47:09', 1),
+(213, 85, 'OsDoisMorrem1.jpg', 'img/67495ca0c9761.jpg', '2024-11-29 03:18:08', 0),
+(214, 85, 'OsDoisMorrem2.jpg', 'img/67495ca0cbd92.jpg', '2024-11-29 03:18:08', 0),
+(215, 85, 'OsDoisMorrem3.jpg', 'img/67495ca0ce0ce.jpg', '2024-11-29 03:18:08', 0),
+(216, 85, 'OsDoisMorremCapa.jpg', 'img/67495ca0cfa5f.jpg', '2024-11-29 03:18:08', 1),
+(217, 86, 'ASangueFrio1.jpg', 'img/67495ef04f1f6.jpg', '2024-11-29 03:28:00', 0),
+(218, 86, 'ASangueFrio2.jpg', 'img/67495ef051b3e.jpg', '2024-11-29 03:28:00', 0),
+(219, 86, 'ASangueFrio3.jpg', 'img/67495ef0563fa.jpg', '2024-11-29 03:28:00', 0),
+(220, 86, 'ASangueFrioCapa.jpg', 'img/67495ef058f6b.jpg', '2024-11-29 03:28:00', 1),
+(221, 87, 'TartarugasAteLaEmbaixo1.jpg', 'img/67496011da16c.jpg', '2024-11-29 03:32:49', 0),
+(222, 87, 'TartarugasAteLaEmbaixo2.jpg', 'img/67496011dc97c.jpg', '2024-11-29 03:32:49', 0),
+(223, 87, 'TartarugasAteLaEmbaixo3.jpg', 'img/67496011de800.jpg', '2024-11-29 03:32:49', 0),
+(224, 87, 'TartarugasAteLaEmbaixoCapa.jpg', 'img/67496011e12a4.jpg', '2024-11-29 03:32:49', 1),
+(225, 88, '1984L1.jpg', 'img/6749627536218.jpg', '2024-11-29 03:43:01', 0),
+(226, 88, '1984L2.jpg', 'img/6749627539b04.jpg', '2024-11-29 03:43:01', 0),
+(227, 88, '1984L3.jpg', 'img/674962753c7fd.jpg', '2024-11-29 03:43:01', 0),
+(228, 88, '1984LCapa.jpg', 'img/674962753e608.jpg', '2024-11-29 03:43:01', 1),
+(229, 89, 'ACulpaédasEstrelas1.jpg', 'img/674963ad08957.jpg', '2024-11-29 03:48:13', 0),
+(230, 89, 'ACulpaédasEstrelas2.jpg', 'img/674963ad0aca2.jpg', '2024-11-29 03:48:13', 0),
+(231, 89, 'ACulpaédasEstrelas3.jpg', 'img/674963ad0c850.jpg', '2024-11-29 03:48:13', 0),
+(232, 89, 'ACulpaédasEstrelasCapa.jpg', 'img/674963ad0e9bd.jpg', '2024-11-29 03:48:13', 1),
+(233, 90, 'RainhaVermelha1.jpg', 'img/67496609580d5.jpg', '2024-11-29 03:58:17', 0),
+(234, 90, 'RainhaVermelha2.jpg', 'img/674966095cd73.jpg', '2024-11-29 03:58:17', 0),
+(235, 90, 'RainhaVermelha3.jpg', 'img/674966095ebb8.jpg', '2024-11-29 03:58:17', 0),
+(236, 90, 'RainhaVermelhaCapa.jpg', 'img/6749660962b92.jpg', '2024-11-29 03:58:17', 1),
+(237, 91, 'BibliotecaDaMeiaNoite1.jpg', 'img/67496756c1296.jpg', '2024-11-29 04:03:50', 0),
+(238, 91, 'BibliotecaDaMeiaNoite2.jpg', 'img/67496756c362a.jpg', '2024-11-29 04:03:50', 0),
+(239, 91, 'BibliotecaDaMeiaNoite3.jpg', 'img/67496756c573e.jpg', '2024-11-29 04:03:50', 0),
+(240, 91, 'BibliotecaDaMeiaNoiteCapa (1).jpg', 'img/67496756c7456.jpg', '2024-11-29 04:03:50', 1),
+(241, 92, 'BibliotecaDaMeiaNoite1.jpg', 'img/6749678f2d92c.jpg', '2024-11-29 04:04:47', 0),
+(242, 92, 'BibliotecaDaMeiaNoite2.jpg', 'img/6749678f2f331.jpg', '2024-11-29 04:04:47', 0),
+(243, 92, 'BibliotecaDaMeiaNoite3.jpg', 'img/6749678f3d660.jpg', '2024-11-29 04:04:47', 0),
+(244, 92, 'BibliotecaDaMeiaNoiteCapa (1).jpg', 'img/6749678f51a9e.jpg', '2024-11-29 04:04:47', 1),
+(245, 93, 'SenhordosAneis1.jpg', 'img/674969d8220ec.jpg', '2024-11-29 04:14:32', 0),
+(246, 93, 'SenhordosAneis2.jpg', 'img/674969d824839.jpg', '2024-11-29 04:14:32', 0),
+(247, 93, 'SenhordosAneis3.jpg', 'img/674969d8268be.jpg', '2024-11-29 04:14:32', 0),
+(248, 93, 'SenhordosAneisCapa.jpg', 'img/674969d828450.jpg', '2024-11-29 04:14:32', 1);
 -- --------------------------------------------------------
 
 --
@@ -253,38 +343,21 @@ CREATE TABLE `enderecos_editora` (
 -- Despejando dados para a tabela `enderecos_editora`
 --
 
-INSERT INTO `enderecos_editora` (`id_endereco`, `id_editora`, `tipo_endereco`, `endereco_rua`, `endereco_numero`, `endereco_bairro`, `endereco_cep`, `estado`, `cidade`) VALUES
-(1, 'Ficção Científica', 'Livros que exploram temas futuristas, avanços tecnológicos e fenômenos científicos.'),
-(2, 'Fantasia', 'Livros que incluem elementos mágicos e mundos imaginários, frequentemente com criaturas fantásticas.'),
-(3, 'Mistério', 'Livros focados em resolver enigmas, crimes ou situações misteriosas.'),
-(4, 'Romance', 'Livros que se concentram em histórias de amor ou relações afetivas.'),
-(5, 'Terror', 'Livros que têm o objetivo de assustar e provocar medo no leitor.'),
-(6, 'Aventura', 'Livros que envolvem jornadas emocionantes e desafios para os personagens principais.'),
-(7, 'Histórico', 'Livros que se baseiam em eventos reais do passado, geralmente retratando figuras históricas ou momentos significativos.'),
-(8, 'Biografia', 'Livros que contam a vida de uma pessoa, geralmente figuras públicas ou de relevância histórica.'),
-(9, 'Autoajuda', 'Livros com o objetivo de oferecer orientações para melhorar aspectos da vida pessoal ou profissional.'),
-(10, 'Poesia', 'Livros que coletam poesias e outros tipos de escrita literária focada no uso de versos e emoções intensas.'),
-(11, 'Ficção', 'Gênero literário que envolve a criação de histórias imaginárias, onde os acontecimentos, personagens e cenários não são baseados em fatos reais. A ficção pode abranger diversos subgêneros, como aventura, romance, mistério, entre outros, e permite a exploração da criatividade e imaginação do autor.'),
-(12, 'Distopia', 'Livros que retratam sociedades opressivas em futuros sombrios, com críticas sociais.'),
-(13, 'Thriller Psicológico', 'Livros que exploram a mente humana, com tensão e mistério intensos.'),
-(14, 'Suspense', 'Histórias que mantêm o leitor na expectativa, com revelações e reviravoltas surpreendentes.'),
-(15, 'Crime', 'Focam em investigações de crimes, detetives e reviravoltas na resolução de casos.'),
-(16, 'Drama', 'Explora temas emocionais e complexos sobre as relações humanas e desafios pessoais.'),
-(17, 'Infantil', 'Livros voltados para crianças, com temas educativos e histórias encantadoras.'),
-(18, 'Jovem Adulto', 'Focados em temas para adolescentes e jovens, como amizade, amor e autoconhecimento.'),
-(19, 'Clássicos', 'Obras literárias renomadas, essenciais e atemporais na história da literatura.'),
-(20, 'Filosofia', 'Exploram questões existenciais e pensamentos de filósofos sobre a vida, ética e sociedade.'),
-(21, 'Policial', 'Histórias de investigação criminal, geralmente protagonizadas por detetives ou policiais.'),
-(22, 'Literatura Erótica', 'Focada em histórias de romance e relacionamentos com temas mais íntimos e adultos.'),
-(23, 'Espiritualidade', 'Abordam temas de crescimento espiritual e desenvolvimento pessoal em várias crenças.'),
-(24, 'Humor', 'Livros com conteúdo humorístico, sátiras e histórias leves e engraçadas.'),
-(25, 'Distopias Juvenis', 'Distopias voltadas para o público jovem, com foco em aventura e temas de sobrevivência.'),
-(26, 'Ficção Histórica', 'Histórias fictícias que se passam em épocas históricas com eventos reais.'),
-(27, 'Ciência e Tecnologia', 'Exploram descobertas científicas, avanços e curiosidades sobre o universo e a tecnologia.'),
-(28, 'Psicologia', 'Livros que abordam o estudo da mente humana e o comportamento.'),
-(29, 'Esporte', 'Histórias sobre esportes, atletas e competições, com foco no desenvolvimento pessoal.'),
-(30, 'Viagem e Turismo', 'Guias e histórias sobre diferentes culturas, viagens e lugares ao redor do mundo.'),
-(31, 'Filosofia Oriental', 'Explora pensamentos e tradições filosóficas orientais, como budismo, taoísmo e zen.');
+INSERT INTO enderecos_editora (id_endereco, id_editora, tipo_endereco, endereco_rua, endereco_numero, endereco_bairro, endereco_cep, estado, cidade) VALUES
+(3, 3, 'principal', 'Estrada da Capela Velha', '46', 'Nova Itapevi', '06690-280', 'SP', 'Itapevi'),
+(4, 4, 'correspondência', 'Rua Guaxuma', '213', 'Vila Rio Branco', '03877-000', 'SP', 'São Paulo'),
+(5, 5, 'correspondência', 'Rua Guaxuma', '213', 'Vila Rio Branco', '03877-000', 'SP', 'São Paulo'),
+(6, 6, 'principal', 'Avenida Olavo Fontoura', '1209', 'Santana', '02012-021', 'SP', 'São Paulo'),
+(7, 7, 'principal', 'Rua Lima Barros', '61', 'São Cristóvão', '20.921-280', 'RJ', 'Rio de Janeiro'),
+(8, 8, 'principal', 'Rua Bandeira Paulista', '702', 'Itaim Bibi', '04532-002', 'SP', 'São Paulo'),
+(9, 9, 'principal', 'Rua Abílio Soares', '139', 'Paraíso', '04005-000', 'SP', 'São Paulo'),
+(10, 10, 'principal', 'Rua Funchal', '538', 'Vila Olímpia', '04551-060', 'SP', 'São Paulo'),
+(11, 11, 'principal', 'Rua Luís Anhaia', '44', 'Vila Madalena', '05433-020', 'SP', 'São Paulo'),
+(12, 12, 'principal', 'Rua Augusta', '423', 'Consolação', '01305-000', 'SP', 'São Paulo'),
+(13, 13, 'principal', 'Avenida das Américas', '500', 'Barra da Tijuca', '22640-100', 'RJ', 'Rio de Janeiro'),
+(14, 14, 'principal', 'Avenida das Nações Unidas', '509', 'Bonfim', '06233-903', 'SP', 'Osasco'),
+(15, 15, 'principal', 'Avenida Independência', '5269', 'Setor Aeroporto', '74070-010', 'GO', 'Goiânia'),
+(16, 16, 'principal', 'Rua da Quitanda', '86', 'Centro', '20091-005', 'RJ', 'Rio de Janeiro');
 
 -- --------------------------------------------------------
 
@@ -408,7 +481,7 @@ CREATE TABLE `livros` (
 --
 
 
-INSERT INTO `livros` (`ID_livro`, `Titulo`, `Autor`, `Data_lancamento`, `QntPaginas`, `Sinopse`, `Preco`, `ISBN`, `id_categoria`, `id_editora`) VALUES
+INSERT INTO livros (ID_livro, Titulo, Autor, Data_lancamento, QntPaginas, Sinopse, Preco, ISBN, id_categoria, id_editora) VALUES
 (63, 'Drácula', 'Bram Stoker', '2020-02-20', 580, 'Drácula , um clássico que ainda corre quente na veia de inúmeras gerações de leitores por todo o mundo e a mais celebrada narrativa de vampiros, continua a transcender fronteiras de tempo, espaço, história e memória.\r\n\r\nMais de 120 anos após sua primeira publicação, o romance epistolar mobiliza leitores e estudiosos, confirmando o vigor perene de uma árvore cujas sólidas raízes respondem pela vitalidade de suas ramificações. Embora o famoso conde não tenha sido o primeiro vampiro literário, certamente é o mais popular, sugado e adaptado para inúmeros universos: teatro, cinema, quadrinhos, séries e brinquedos, o semblante é reconhecido até mesmo por aqueles que nunca leram o romance. Ele está em todos os lugares.\r\n\r\nA obra atemporal de Bram Stoker narra, por meio de fragmentos de cartas, diários e notícias de jornal, a história de humanos lutando para sobreviver às investidas do vampiro Drácula. O grupo formado por Jonathan Harker, Mina Harker, dr. Van Helsing e dr. Seward tenta impedir que a vil criatura se alimente de sangue humano na Londres da época vitoriana, no final do século XIX.\r\n\r\nUm clássico absoluto do terror, Bram Stoker define em Drácula a forma como nós entendemos e pensamos os vampiros atualmente. Mais que isso, ele traz esse monstro para o centro do palco da cultura pop do nosso século e eterniza o vilão de modos refinados e comportamento sanguinário.\r\n\r\nNão é de agora que os leitores clamam por uma edição de Drácula feita pela DarkSide® Books para honrar o legado do mestre Bram Stoker. Uma obra tão grandiosa quanto essa será publicada em duas versões, para nenhum vampiro colocar defeito: FIRST EDITION, com a icônica capa amarela da primeira publicação, em 1897, uma edição inédita no mercado brasileiro que eterniza o brilho e o encanto do sol, algo inalcançável diante de toda a dor da eternidade; e a DARK EDITION, dedicada aos leitores trevosos de coração sombrio. Por dentro elas carregam o mesmo conteúdo sangrento; por fora demonstram a vida e a beleza de um clássico imortal.\r\n\r\nPara fazer os leitores se arrepiarem, Marcia Heloisa assina a tradução e introdução de Drácula . E como sangue tem poder, o descendente direto do autor, Dacre Stoker, escreve a preciosa apresentação desta edição.\r\n\r\nCarlos Primati e Marcia Heloisa dão suas contribuições para a perpétua criatura. O leitor encontra textos de apoio que contam as relações entre a verdadeira Transilvânia e a aquela eternizada no livro, bem como a influência dos vampiros na cultura pop mundial. E como a DarkSide® Books sabe o que faz o coração dos vivos leitores da editora bater mais forte, apresenta também o conto “O Hóspede de Drácula ”, que fazia parte do texto de Stoker, mas foi retirado da primeira publicação.\r\n\r\nTodo esse conteúdo, planejado especialmente para os darksiders que sabem que existe uma razão para as coisas serem como são, é ornamentado com as belas e poderosas imagens de Samuel Casal, premiado quadrinista e ilustrador brasileiro, que fez uma releitura deslumbrante de personagens imortais.\r\n\r\nA coleção Medo Clássico da DarkSide® se consolida a cada mestre que entra em sua casa, fazendo uma homenagem aos grandes nomes da literatura que já causaram pesadelos inenarráveis aos leitores, década após década. Para eternizar a experiência, sempre traz ilustradores convidados e tradutores que respiram e conhecem profundamente as obras originais. De fã para fã. Até o fim.', 59.90, '978-85-6663-623-9', 4, 3),
 (64, 'É Assim que Acaba: 1 Capa comum ', 'Colleen Hoover', '2018-02-20', 368, 'Em É assim que acaba , Colleen Hoover nos apresenta Lily, uma jovem que se mudou de uma cidadezinha do Maine para Boston, se formou em marketing e abriu a própria floricultura. E é em um dos terraços de Boston que ela conhece Ryle, um neurocirurgião confiante, teimoso e talvez até um pouco arrogante, com uma grande aversão a relacionamentos, mas que se sente muito atraído por ela.\r\n\r\nQuando os dois se apaixonam, Lily se vê no meio de um relacionamento turbulento que não é o que ela esperava. Mas será que ela conseguirá enxergar isso, por mais doloroso que seja?\r\n\r\nÉ assim que acaba é uma narrativa poderosa sobre a força necessária para fazer as escolhas certas nas situações mais difíceis. Considerada a obra mais pessoal de Hoover, o livro aborda sem medo alguns tabus da sociedade para explorar a complexidade das relações tóxicas, e como o amor e o abuso muitas vezes coexistem em uma confusão de sentimentos.\r\n\r\n \r\n\r\n“Um romance corajoso, de partir o coração, que enfia as garras em você e não te solta... Ninguém escreve sobre sentimentos tão bem quanto Colleen Hoover.” -Anna Todd, autora da série After\r\n\r\n“...Você vai sorrir em meio às lágrimas.” - Sarah Pekkanen, autora de Perfect Neighbors\r\n\r\n“Imperdível. Com um drama fascinante e verdades dolorosas, esse livro retrata de maneira poderosa a devastação que o abuso pode causar - e a força de quem sobrevive a ele...” - Kirkus Review', 42.00, '978-85-0111-251-4', 4, 3),
 (65, 'É assim que começa (Vol. 2 É assim que acaba)', 'Colleen Hoover', '2024-08-22', 336, 'Preparem os corações. Lily e Atlas estão de volta na aguardada sequência de É assim que acaba . É assim que começa chega para consagrar novamente Colleen Hoover como a autora mais vendida do Brasil.\r\n\r\nColleen é um fenômeno editorial, acumulando não só milhões de visualizações no TikTok, mas também milhões de exemplares vendidos.\r\n\r\n \r\n\r\nLily Bloom continua administrando uma floricultura. Seu ex-marido abusivo, Ryle Kincaid, ainda é um    cirurgião. Mas agora os dois estão oficialmente divorciados e dividem a guarda da filha, Emerson.\r\n\r\nQuando Lily esbarra em Atlas ― com quem não fala há quase dois anos ―, parece que finalmente chegou o momento de retomar o relacionamento da adolescência, já que ele também está solteiro e parece retribuir os sentimentos de Lily. Mas apesar de divorciada, Lily não está exatamente livre de Ryle. Culpando Atlas pelo fim de seu casamento, Ryle não está nada disposto a aceitar o novo relacionamento de Lily, ainda mais com Atlas, o último homem que aceitaria ver perto de sua filha e da ex-esposa.\r\n\r\nAlternando entre os pontos de vista de Atlas e Lily, É assim que começa retoma logo após o epílogo de É assim que acaba . Revelando mais sobre o passado de Atlas e acompanhando a jornada de Lily para abraçar a sua segunda chance, no amor enquanto lida com um ex-marido ciumento, É assim que começa prova que ninguém entrega uma leitura mais emocionante do que Colleen Hoover.', 41.97, '978-65-5981-139-7', 4, 3),
@@ -431,8 +504,6 @@ INSERT INTO `livros` (`ID_livro`, `Titulo`, `Autor`, `Data_lancamento`, `QntPagi
 (90, 'A Rainha Vermelha', 'Victoria Aveyard', '2015-06-09', 424, 'O mundo de Mare Barrow é dividido pelo sangue: vermelho ou prateado. Mare e sua família são vermelhos: plebeus, humildes, destinados a servir uma elite prateada cujos poderes sobrenaturais os tornam quase deuses. Mare rouba o que pode para ajudar sua família a sobreviver e não tem esperanças de escapar do vilarejo miserável onde mora. Entretanto, numa reviravolta do destino, ela consegue um emprego no palácio real, onde, em frente ao rei e a toda a nobreza, descobre que tem um poder misterioso… Mas como isso seria possível, se seu sangue é vermelho? Em meio às intrigas dos nobres prateados, as ações da garota vão desencadear uma dança violenta e fatal, que colocará príncipe contra príncipe - e Mare contra seu próprio coração.', 110.12, '978-85-6576-569-5', 4, 15),
 (92, 'A Biblioteca da Meia-Noite', 'Matt Haig', '2021-09-27', 308, 'Aos 35 anos, Nora Seed é uma mulher cheia de talentos e poucas conquistas. Arrependida das escolhas que fez no passado, ela vive se perguntando o que poderia ter acontecido caso tivesse vivido de maneira diferente. Após ser demitida e seu gato ser atropelado, Nora vê pouco sentido em sua existência e decide colocar um ponto final em tudo. Porém, quando se vê na Biblioteca da Meia-Noite, Nora ganha uma oportunidade única de viver todas as vidas que poderia ter vivido.\r\n\r\nNeste lugar entre a vida e a morte, e graças à ajuda de uma velha amiga, Nora pode, finalmente, se mudar para a Austrália, reatar relacionamentos antigos – ou começar outros –, ser uma estrela do rock, uma glaciologista, uma nadadora olímpica... enfim, as opções são infinitas. Mas será que alguma dessas outras vidas é realmente melhor do que a que ela já tem?\r\n\r\nEm A Biblioteca da Meia-Noite , Nora Seed se vê exatamente na situação pela qual todos gostaríamos de poder passar: voltar no tempo e desfazer algo de que nos arrependemos. Diante dessa possibilidade, Nora faz um mergulho interior viajando pelos livros da Biblioteca da Meia-Noite até entender o que é verdadeiramente importante na vida e o que faz, de fato, com que ela valha a pena ser vivida.', 46.87, '978-65-5838-054-2', 1, 7),
 (93, 'O Senhor dos Anéis: A sociedade do anel', 'J.R.R. Tolkien', '2022-07-15', 608, 'Bilbo Bolseiro, cujas peripécias foram contadas em O Hobbit, é um dos poucos hobbits aventureiros da Terra-Média. Ele resolve ir embora do Condado e deixa sua considerável herança nas mãos de seu jovem parente Frodo.\r\nO mais importante legado de Bilbo é o anel mágico que costumava usar para se tornar invisível. No entanto, o objeto é o Um Anel, a raiz do poder demoníaco de Sauron, o Senhor Sombrio, que deseja escravizar todos os povos da Terra-média. A única maneira de eliminar a ameaça de Sauron é destruir o Um Anel nas entranhas da própria montanha de fogo onde foi forjado.\r\nA revelação faz com que Frodo e seus companheiros hobbits Sam, Merry e Pippin deixem a segurança do Condado e iniciem uma perigosa jornada rumo ao leste. Ao lado de representantes dos outros Povos Livres que resistem ao Senhor Sombrio, eles formam a Sociedade do Anel.', 65.50, '978-65-5511-363-1', 2, 16);
--- --------------------------------------------------------
-
 --
 -- Estrutura para tabela `moradia`
 --
