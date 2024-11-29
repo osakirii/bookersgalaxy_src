@@ -41,7 +41,7 @@ if (isset($_POST['selected_books'])) {
                     echo "Autor: " . htmlspecialchars($livro['autor']) . "<br>";
                     echo "Preço: R$ " . number_format($livro['preco'], 2, ',', '.') . "<br>";
                     echo "Quantidade: " . htmlspecialchars($livro['quantidade']) . "<br>";
-                    echo "</div></div>";
+                    echo "</div>";
                     $totalPreco += $livro['preco'] * $livro['quantidade'];
                 }
                 ?>
@@ -53,7 +53,7 @@ if (isset($_POST['selected_books'])) {
                 echo "<br>Taxa de Envio:&nbsp;&nbsp;&nbsp;&nbsp;R$" . $valorAleatorio;
                 echo "<br>Total:&nbsp;&nbsp;&nbsp;&nbsp;R$" . $valorAleatorio + $totalPreco;
                 ?>
-            </div>
+            </div></div>
         </div>
         <div class="coluna">
             <!-- Conteúdo da segunda coluna -->

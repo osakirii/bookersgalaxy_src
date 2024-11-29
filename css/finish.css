@@ -11,6 +11,7 @@ div.containerPai{
     justify-content: center;
 }
 
+/* AJUSTANDO IMG E INFORMAÇÕES SOBRE O LIVRO */
 .livros_selecionados{
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.361);
     background-color: #fffbfb;
@@ -19,13 +20,35 @@ div.containerPai{
     width: auto;
     height: auto;
     display: flex;
+    justify-content: center;
 }
-
 .livros_selecionados img{
-    width: 20%;
+    width: 70px;
 }
-
 .infosLivro{
     display: flex;
+    font-size: medium;
+    min-width: 100px;
+    max-height: 150px;
+    overflow: hidden;
+}
+@media(max-width: 930px){
+    .infosLivro:hover{
+        overflow: scroll;
+    }
 }
 
+.livroImg{
+    display: flex;
+    float: left;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+
+/* AJUSTANDO SUBTOTAL E TOTAL */
+.preco{
+    display: flex;
+    font-size: medium;
+    padding-left: 20px;
+    max-width: auto;
+}
