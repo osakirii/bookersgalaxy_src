@@ -117,14 +117,14 @@ if (isset($_POST['selected_books'])) {
                     <p>Destinatário: <?php echo htmlspecialchars($nomeUsuario);?>  </p>
                     <p>Rua XXXXXXXXXX, XXX - XXXXX XXXXXXX</p>
                     <p>CEP: XXXXX-XXX &nbsp;&nbsp; CPF: XXX.XXX.XXX-XX</p>
-                    <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> &nbsp;&nbsp; <br>
-                    Telefone: <?php echo htmlspecialchars($nomeUsuario);?></p>
-                    <button class="alterar_btn" onclick="alterarDados()">Alterar...</button>
+                    <p>E-mail: <a href="mailto:jorgeval@gmail.com">jorgeval@gmail.com</a> </p>
+                    <p>Telefone: <?php echo htmlspecialchars($nomeUsuario);?></p>
+                    <button class="alterar_btn" onclick="alterarDados()">Alterar</button>
                 </div>
             </div>
             <div class="acoes">
-                    <button class="cancelar_btn" type="button" onclick="cancelarCompra()">Cancelar</button>
-                    <button class="finalizar_btn" type="submit" onclick="finalizarCompra()">Finalizar compra</button>
+                <button class="cancelar_btn" type="button" onclick="cancelarCompra()">Cancelar</button>
+                <button class="finalizar_btn" type="submit" onclick="finalizarCompra()">Finalizar compra</button>
             </div>
         </div>
     </div>
