@@ -492,6 +492,7 @@ button.next i{
     flex-direction: row;
     justify-content: space-between;
     margin: 50;
+    gap: 30px;
 }
 .similar_books img {
     aspect-ratio: 2/3;
