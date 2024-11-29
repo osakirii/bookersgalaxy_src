@@ -147,7 +147,7 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
                         <h4>${livro.titulo} - ${livro.autor}</h4>
                         <p>R$ ${Number(livro.preco).toFixed(2).replace('.', ',')}</p>
                         <label>Quantidade:</label>
-                        <input type="number" min="1" value="1" class="quantidade" data-id="${livro.id_livro}" onchange="updateQuantity(${livro.id_livro}, this.value)">
+                        <input type="number" min="1" width="20px" value="1" class="quantidade" data-id="${livro.id_livro}" onchange="updateQuantity(${livro.id_livro}, this.value)">
                     </div>
                 `;
 

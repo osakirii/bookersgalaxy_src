@@ -100,19 +100,19 @@ img{
 #mudarEdit{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 30vw;
-    height: 7%;
+    justify-content: center;
+    width: auto;
+    height: 20px;
     border-radius: 10px;
     box-shadow: 0 0 3px #7e7c7c;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background: #FBC7C7;
 }
 
 #mudarEdit p{
     cursor: pointer;
-    
+    align-items: center;
     &.active{
         border-bottom: 2px solid #1D1E1D;
     }

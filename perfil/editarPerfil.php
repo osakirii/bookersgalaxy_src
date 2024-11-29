@@ -38,16 +38,15 @@
                         <!-- Formulário "Meu Perfil" com a classe active por padrão -->
                         <form action="" class="form-perfil active">
                             <div>
-                                Email: <input type="text" name="email" maxlength="100">
+                                Email: <input type="text" name="email" maxlength="100" placeholder="ex: fulano@bookmail.com">
 
-                                Sexo
                                 Sexo: <select name="sexo">
                                     <option value="">Prefiro não informar</option>
                                     <option value="Feminino">Feminino</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Outro">Outro</option>
                                 </select>
-                                Telefone: <input type="text" name="telefone" maxlength="15">
+                                Telefone: <input type="text" name="telefone" maxlength="15" placeholder="(__)_____-____">
                                 Tem daltonismo?
                                 <select name="" id="">
                                     <option value="">Não tenho daltonismo</option>
@@ -69,10 +68,10 @@
                             <div>
                                 <h4>Endereço Principal</h4>
                                 <label>Endereço/Rua:</label>
-                                <input type="text" id="logradouro_principal" name="logradouro_principal">
+                                <input type="text" id="logradouro_principal" name="logradouro_principal" placeholder="ex: Rua Cordeirinhos">
                                 <label>N°:</label>
                                 <input type="number" id="numero_casa" name="numero_casa">
-                                Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal">
+                                Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal" placeholder="Cidade X, Estado Y">
                                 CEP: <input type="text" id="cep_principal" name="cep_principal">
                                 <span>
                                 </span>
@@ -81,10 +80,10 @@
                             <div>
                                 <h4>Endereço Secundário (Opcional)</h4>
                                 <label>Endereço/Rua:</label>
-                                <input type="text" id="logradouro_principal" name="logradouro_principal">
+                                <input type="text" id="logradouro_principal" name="logradouro_principal" placeholder="ex: Rua Cordeirinhos">
                                 <label>N°:</label>
                                 <input type="number" id="numero_casa" name="numero_casa">
-                                Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal">
+                                Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal" placeholder="Cidade X, Estado Y">
                                 CEP: <input type="text" id="cep_principal" name="cep_principal">
                                 <span>
                                 </span>
