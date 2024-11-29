@@ -43,6 +43,62 @@ if (isset($_SESSION['cliente_id'])) {
             <p class="tab active" data-tab="perfil">Meu Perfil</p>
             <p class="tab" data-tab="enderecos">Endereços</p>
         </div>
+                    <section id="editarUsuario">
+                        <!-- Formulário "Meu Perfil" com a classe active por padrão -->
+                        <form action="" class="form-perfil active">
+                            <div>
+                                Email: <input type="text" name="email" maxlength="100" placeholder="ex: fulano@bookmail.com">
+
+                                Sexo: <select name="sexo">
+                                    <option value="">Prefiro não informar</option>
+                                    <option value="Feminino">Feminino</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                                Telefone: <input type="text" name="telefone" maxlength="15" placeholder="(__)_____-____">
+                                Tem daltonismo?
+                                <select name="" id="">
+                                    <option value="">Não tenho daltonismo</option>
+                                    <option value="">Tenho Protanopia</option>
+                                    <option value="">Tenho Deuteranopia</option>
+                                    <option value="">Tenho Tritanopia</option>
+                                    <option value="">Tenho Monocromacia</option>
+                                </select>
+                            </div>
+                            <div class="linha"></div>
+                            <div>
+                                Senha: <input type="password" name="senha" maxlength="255">
+                                Confirmar Senha: <input type="password" name="confirmarSenha" maxlength="255">
+                            </div>
+                        </form>
+
+                        <!-- Formulário "Endereços" sem a classe active inicialmente -->
+                        <form action="" class="form-enderecos">
+                            <div>
+                                <h4>Endereço Principal</h4>
+                                <label>Endereço/Rua:</label>
+                                <input type="text" id="logradouro_principal" name="logradouro_principal" placeholder="ex: Rua Cordeirinhos">
+                                <label>N°:</label>
+                                <input type="number" id="numero_casa" name="numero_casa">
+                                Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal" placeholder="Cidade X, Estado Y">
+                                CEP: <input type="text" id="cep_principal" name="cep_principal">
+                                <span>
+                                </span>
+                            </div>
+                            <div class="linha"></div>
+                            <div>
+                                <h4>Endereço Secundário (Opcional)</h4>
+                                <label>Endereço/Rua:</label>
+                                <input type="text" id="logradouro_principal" name="logradouro_principal" placeholder="ex: Rua Cordeirinhos">
+                                <label>N°:</label>
+                                <input type="number" id="numero_casa" name="numero_casa">
+                                Cidade e Estado: <input type="text" id="cidade_estado_principal" name="cidade_estado_principal" placeholder="Cidade X, Estado Y">
+                                CEP: <input type="text" id="cep_principal" name="cep_principal">
+                                <span>
+                                </span>
+                            </div>
+                        </form>
+                    </section>
 
         <section id="editarUsuario">
             <!-- Formulário "Meu Perfil" com a classe active por padrão -->
