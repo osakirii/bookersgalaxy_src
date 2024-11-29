@@ -166,10 +166,10 @@ try {
                     echo '<div class="book_card">';
                     echo '<a href="Livro.php?id_livro=' . urlencode($livro['id_livro']) . '">';
                     echo '<img src="/bookersgalaxy/' . htmlspecialchars($livro['path']) . '" alt="Imagem de ' . htmlspecialchars($livro['Titulo']) . '">';
-                    echo '<br>' .htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
+                    echo '<div class="infoSemelhantes"<br>' .htmlspecialchars($livro['Titulo']) . " - " . htmlspecialchars($livro['Autor']);
                     echo "<br>R$ " . htmlspecialchars(number_format($livro['Preco'], 2, ',', '.'));
                     echo '</a>';
-                    echo '</div>';
+                    echo '</div></div>';
                 }
             } else {
                 echo 'Nenhum livro encontrado para exibir.';
@@ -210,7 +210,7 @@ try {
     <div class="form_container">
         <!--
 
-        <h2 style="font-weight:500;">AVALIAÇÃO DO LIVRO</h2>
+        
       <form method="POST" action="processa.php">
 
             <div class="estrelas">
@@ -239,14 +239,15 @@ try {
             </div>
         </form>
         -->
-
+        <br><br>
+        <h2 style="font-weight:500;">AVALIAÇÃO DO LIVRO</h2>
         <form method="POST" enctype="multipart/form-data" onsubmit="return addComent(event, <?php echo htmlspecialchars($id_livro); ?>)">
-            <p style="width:75%;">X% dos clientes gostaram de ‘Drácula’.<br><br>
-                Qual foi a sua experiência durante a leitura desse livro? Faça também a sua avaliação!</p>
+            <!--<p style="width:75%;">X% dos clientes gostaram de ‘<?php echo htmlspecialchars($livro['Titulo'])?>’.<br><br>-->
+                Qual foi a sua experiência durante a leitura desse livro? Faça a sua avaliação!</p>
             <div class="form_group">
                 <textarea id="texto_comentario" name="texto" rows="4" placeholder="Escreva seu comentario!" required></textarea>
             </div>
-
+            <br>
             <div class="form_group">
                 <label>Imagens (Máximo de 5)</label>
                 <input type="file" name="imagens[]" accept="image/*" multiple>
@@ -256,13 +257,14 @@ try {
             </div>
         </form>
     </div>
-
+    
     <div class="image_container">
+    <br><br>
         <h2>Imagens do Livro</h2>
         <img src="imagem_do_livro_1.jpg" alt="Imagem do Livro 1" class="book_image">
         <img src="imagem_do_livro_2.jpg" alt="Imagem do Livro 2" class="book_image">
     </div>
-</div>
+</div><!--
 <p></p>COMENTÁRIOS RELEVANTES</p>
 <div class="comments">
     <div class="comment_box">
@@ -292,7 +294,7 @@ try {
 
         ?>
     </div>
-</div>
+</div>-->
 
 <?php
 include("modulos/footer.php");

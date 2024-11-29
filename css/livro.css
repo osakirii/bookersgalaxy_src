@@ -498,23 +498,33 @@ button.next i{
     scroll-behavior: smooth;
     overflow-x: scroll;
     overflow-y: hidden;
-    margin: 0;
+    margin: 20px;
     padding: 0;
     gap: 20px;
 }
 
 .book_card {
     flex: 0 0 auto;
-    text-align: center;
-    width: 150px; /* Ajuste conforme necessário */
+    text-align: left;
+    width: min-content; /* Ajuste conforme necessário */
+    
+}
+.book_card {
+    flex-direction: column;
+    width: min-content;
+    height: 300px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.book_card a:hover{
+    overflow: visible;
 }
 
 .similar_books img {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    height: 220px;
-    width: auto;
-    margin-left: 10px;
-    margin-right: 10px;
+    height: 200px;
+    width: 135px;
     margin-bottom: 8%;
 }
 
@@ -543,12 +553,7 @@ button.next i{
 }
 
 
-.book_card {
-    flex-direction: column;
-    width: 200px;
-    height: 100% ;
 
-}
 
 
 
