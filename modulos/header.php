@@ -51,11 +51,6 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                     display: none;
                 }
 
-                #header-bars{
-                    margin: 0;
-                    padding: 0;
-                    display: block;
-                }
             }
 
             @media(max-width: 780px) {
@@ -64,8 +59,14 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                 }
             }
 
-            @media(max-width: 640px) {
-                #opcoes{
+            @media(max-width: 600px) {
+                img#logoimg {
+                    display: none;
+                }
+            }
+
+            /*@media(max-width: 640px) {
+                #opcoes, #filtro-daltonismo{
                     display: none;
                 }
             }
@@ -78,43 +79,35 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                             font-size: 3vw;
                         }
                 }
-            }
+            }*/
 
             @media(max-width: 566px) {
-
-                    #navbar #nav-content a{
-                        margin-bottom: 30px;
-                        padding: 0;
-                        font-size: 18px;
-                    }
-                    #navbar #nav-content a:hover{
-                        font-size: 20px;
-                    }
-
-                    #navbar #nav-rodape{
-                        bottom: 10px;
-                    }
-
-                    #navbar #nav-rodape a{
-                        margin-top: 10px;
-                        font-size: 16px;
-                    }
-                    #navbar #nav-rodape a:hover{
-                        font-size: 18px;
-                    }
-
-                    #navbar #nav-content #closebtn{
-                        font-size: 32px;
-                    }
-
-                    #header a{
-                        display: none;
-                    }
-
-                    #header #header-container #header-bars{
-                        display: flex;
-                    }
+                #navbar #nav-content a{
+                    margin-bottom: 30px;
+                    padding: 0;
+                    font-size: 18px;
                 }
+                #navbar #nav-content a:hover{
+                    font-size: 20px;
+                }
+
+                #navbar #nav-rodape{
+                    bottom: 10px;
+                }
+
+                #navbar #nav-rodape a{
+                    margin-top: 10px;
+                    font-size: 16px;
+                }
+                #navbar #nav-rodape a:hover{
+                    font-size: 18px;
+                }
+
+                #navbar #nav-content #closebtn{
+                    font-size: 32px;
+                }
+
+            }
             
     </style>
 </head>
@@ -124,7 +117,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
     <nav id="navbar">
         <div id="nav-content">
             <a href="javascript:void(0)" id="closebtn" onclick="closeNav()"><i class="fas fa-xmark"></i></a>
-            <a href="/bookersgalaxy/index.php"><img src="<?php echo Busca(1) ?>"></a>
+            <a  href="/bookersgalaxy/index.php"><img class="logo" src="<?php echo Busca(1) ?>"></a>
             <a href="#">Tenho Daltonismo</a>
             <a href="categorias.php">Categorias</a>
             <a href="#">Lançamentos</a>
@@ -196,6 +189,7 @@ if (isset($_COOKIE['filtro_daltonismo'])) {
                     echo "<a href='/bookersgalaxy/perfil/login_cad.php'><i class='far fa-circle-user'></i></a>";
                  }          
             ?>
+            </button>
 
             <a href="#" id="header-bars" onclick="openNav()"><i class="fas fa-bars bars"></i></a>
             
