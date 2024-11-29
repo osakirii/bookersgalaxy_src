@@ -83,6 +83,7 @@ $livros = BuscaLivroPorTitulo($query);
             width: 200px; /* Largura fixa */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
             text-align: center; /* Centraliza texto */
+            font-family: "Montaga", sans-serif;
             transition: transform 0.2s; /* Efeito de hover */
         }
 
@@ -121,7 +122,6 @@ $livros = BuscaLivroPorTitulo($query);
 </head>
 <body>
     <main id="corpo">
-        <h1>CATÁLOGO DE LIVROS</h1>
         <?php if (!empty($query)) {
             echo '<h2>Resultados para: "' . htmlspecialchars($query) . '"</h2>';
         } ?>
